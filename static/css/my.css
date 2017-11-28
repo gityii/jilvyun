@@ -1,0 +1,50 @@
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%; height: 100%;}
+body{ width: 100%; min-height: 100%; background-color: #efeff4;}
+*{margin:0;padding:0; line-height:1.42857; font-family: "microsoft yahei","helvetica"; box-sizing: border-box; color: #1a1a1a;}
+img{display: block; border:0}
+a{text-decoration:none; color: #1a1a1a; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+i.fa{ padding-right: 5px; color: inherit;}
+
+
+.floatdemo {
+    width:760px;
+    height:360px;
+    margin:0 auto; 		 /*与width结合，使元素居中*/
+    margin-top:20px;
+}
+.floatdemo div {
+    width:337px;
+    height:166px;
+    float:left;				/*向左浮动*/
+}
+.floatdemo div h2 {
+    border-bottom:#aaa 1px dashed;		/*下边框为1px实线*/
+    height:20px;
+    font-size:13px;
+    color:#82c6bd;
+    float:left;			 /*向左浮动*/
+    width:160px;
+}
+.floatdemo div p {
+    color:#999;
+    font-size:12px;
+    line-height:20px;
+}
+.floatdemo div .img-left {
+    float:left;
+}
+.floatdemo div .img-right {
+    float:right;
+}
+.demo03,.demo04 {
+    margin-top:15px;
+}
+.demo01 img,.demo02 img {
+    margin-right:10px;
+}
+.demo03 img,.demo04 img {
+    margin-left:10px;
+}
+.demo01,.demo03 {
+    margin-right:25px;
+}
