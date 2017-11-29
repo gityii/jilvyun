@@ -9,10 +9,39 @@
 </head>
 
 <style>
+
+    .boxdiv{
+        width:300px;
+        height: 500px;
+        margin: 0 auto;
+        border:0px solid #00c000;
+
+    }
+
+    .box1{
+        box-shadow: -10px 8px 6px #b4b4b4;
+    }
+
+    .box2{
+        box-shadow: -10px 8px 6px #00C1B3;
+    }
+
+    .box3{
+        box-shadow: -10px 8px 6px #00C;
+    }
+
+    .box4{
+        box-shadow: -10px 8px 6px #059c;
+    }
+</style>
+
+<!--
+<style>
+
     .floatdemo {
-        width:760px;
+        width:1000px;
         height:360px;
-        margin:0 auto; 		 /*与width结合，使元素居中*/
+        float:left; 		 /*与width结合，使元素居中*/
         margin-top:20px;
     }
     .floatdemo div {
@@ -52,7 +81,7 @@
         margin-right:25px;
     }
 </style>
-
+-->
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header layui-bg-cyan">
@@ -117,55 +146,84 @@
     </div>
 
     <div class="layui-body">
-        <!-- 内容主体区域 -->
-       <!--
-        <div style="padding: 15px;">内容主体区域</div>
-        -->
 
-        <div class="layui-fluid">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+            <legend>首页面</legend>
+        </fieldset>
 
-            <fieldset class="layui-elem-field layui-field-title">
-             <!--   <legend>流体容器（宽度自适应，不固定）</legend>
-            -->
-            </fieldset>
 
-            <div class="layui-row">
+        <div class="layui-col-md3">
+            <div class="grid-demo grid-demo-bg1 boxdiv box1">
 
-                <div class="layui-col-sm3">
-                    <div class="grid-demo">
-                        <h2>你等你</h2>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
+                <div class="layui-col-md7">
+                    <div class="layui-row grid-demo grid-demo-bg1">
+                        <div class="layui-col-md12">
+                            <div class="grid-demo">内部列</div>
+                        </div>
+
+                        <div class="layui-col-md9">
+                            <div class="grid-demo grid-demo-bg2">内部列</div>
+                        </div>
+
+                        <div class="layui-col-md3">
+                            <div class="grid-demo grid-demo-bg3">内部列</div>
+                        </div>
+
                     </div>
-                </div>
-
-
-
-                <div class="layui-col-sm3">
-                    <div class="grid-demo">
-                        <h2>你等你</h2>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                    </div>
-                </div>
-
-                <div class="layui-col-sm3">
-                    <div class="grid-demo grid-demo-bg1">
-                        <h2>你等我</h2>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                    </div>
-                </div>
-
-                <div class="layui-col-sm3">
-                    <div class="grid-demo"></div>
                 </div>
 
             </div>
         </div>
 
+        <div class="layui-col-md3">
+            <div class="grid-demo boxdiv box1">1/3</div>
+        </div>
+
+        <div class="layui-col-md3">
+            <div class="grid-demo grid-demo-bg1 boxdiv box1">1/3</div>
+        </div>
+
+        <div class="layui-col-md3">
+            <div class="grid-demo"></div>
+        </div>
+
     </div>
 
+</div>
+
+
+        <!-- 内容主体区域 -->
+       <!--
+        <div style="padding: 15px;">内容主体区域</div>
+        -->
+        <!--
+            <div class="layui-row layui-col-space1 layui-elem-field">
+                <div class="layui-col-md3">
+                    <div class="grid-demo grid-demo-bg1 box1">
+                        ff
+
+                    </div>
+                </div>
+
+                <div class="layui-col-md3">
+                    <div class="grid-demo box2">
+                        22
+                    </div>
+                </div>
+
+                <div class="layui-col-md3">
+                    <div class="grid-demo grid-demo-bg1 box3">
+                        33
+                    </div>
+                </div>
+
+                <div class="layui-col-md3">
+                    <div class="grid-demo box4">
+                        44
+                    </div>
+                </div>
+            </div>
+    -->
     <div class="layui-footer">
         <!-- 底部固定区域 -->
         © 浮世绘
