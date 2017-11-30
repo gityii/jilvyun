@@ -14,7 +14,7 @@
         width:300px;
         height: 500px;
         margin: 0 auto;
-        border:0px solid #00c000;
+        border:1px solid #ededed;
 
     }
 
@@ -33,74 +33,47 @@
     .box4{
         box-shadow: -10px 8px 6px #059c;
     }
+
+    #left-sidebar {
+
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    #left-sidebar ul li{
+        text-align:left;
+        width:100%;
+        height:40px;
+        line-height:40px; 			/*设置行高*/
+        font-size:22px;
+        list-style:none;			 /*清除默认列表样式*/
+        border-bottom:0px solid #ccc;			 /*边框为1px实线*/
+    }
+
+    #left-sidebar  h2{
+        text-align:left;
+        width:100%;
+        height:40px;
+        line-height:22px; 			/*设置行高*/
+        font-size:21px;
+        list-style:none;			 /*清除默认列表样式*/
+        border-bottom:2px solid #ccc;			 /*边框为1px实线*/
+    }
+
+    #left-sidebar ul li a{
+        color:#333;
+        font-family:'微软雅黑';
+        text-decoration:none;			/*清除超链接下划线*/
+    }
+
 </style>
 
-<!--
-<style>
-
-    .floatdemo {
-        width:1000px;
-        height:360px;
-        float:left; 		 /*与width结合，使元素居中*/
-        margin-top:20px;
-    }
-    .floatdemo div {
-        width:337px;
-        height:166px;
-        float:left;				/*向左浮动*/
-    }
-    .floatdemo div h2 {
-        border-bottom:#aaa 1px dashed;		/*下边框为1px实线*/
-        height:20px;
-        font-size:13px;
-        color:#82c6bd;
-        float:left;			 /*向左浮动*/
-        width:160px;
-    }
-    .floatdemo div p {
-        color:#999;
-        font-size:12px;
-        line-height:20px;
-    }
-    .floatdemo div .img-left {
-        float:left;
-    }
-    .floatdemo div .img-right {
-        float:right;
-    }
-    .demo03,.demo04 {
-        margin-top:15px;
-    }
-    .demo01 img,.demo02 img {
-        margin-right:10px;
-    }
-    .demo03 img,.demo04 img {
-        margin-left:10px;
-    }
-    .demo01,.demo03 {
-        margin-right:25px;
-    }
-</style>
--->
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header layui-bg-cyan">
         <div class="layui-logo">后台管理</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <!--
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-            -->
         </ul>
 
         <ul class="layui-nav layui-layout-right">
@@ -122,23 +95,35 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="">推广</a>
+                    <a class="">纪律规定</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="/qr/qr/display">推广</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="/qr/qr/display">规则设置</a></dd>
+                        <dd><a href="javascript:;">人员设置</a></dd>
+                        <dd><a href="javascript:;">纪律教育</a></dd>
                     </dl>
                 </li>
+
                 <li class="layui-nav-item">
-                    <a class="">专题</a>
+                    <a class="">检查登记</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="/zhuanti/zhuanti/backend">专题</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="/zhuanti/zhuanti/backend">移动录入</a></dd>
+                        <dd><a href="javascript:;">网页录入</a></dd>
+                        <dd><a href="">批量导入</a></dd>
+                        <dd><a href="">记录查询</a></dd>
+                        <dd><a href="">处分管理</a></dd>
                     </dl>
                 </li>
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="">屏蔽分析</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/qr/qr/display">日报周报</a></dd>
+                        <dd><a href="javascript:;">文明班评比</a></dd>
+                    </dl>
+                </li>
+
                 <li class="layui-nav-item"><a href="/server/server/backend">服务</a></li>
                 <li class="layui-nav-item"><a href="">发布商品</a></li>
             </ul>
@@ -155,32 +140,43 @@
         <div class="layui-col-md3">
             <div class="grid-demo grid-demo-bg1 boxdiv box1">
 
-                <div class="layui-col-md7">
-                    <div class="layui-row grid-demo grid-demo-bg1">
-                        <div class="layui-col-md12">
-                            <div class="grid-demo">内部列</div>
-                        </div>
-
-                        <div class="layui-col-md9">
-                            <div class="grid-demo grid-demo-bg2">内部列</div>
-                        </div>
-
-                        <div class="layui-col-md3">
-                            <div class="grid-demo grid-demo-bg3">内部列</div>
-                        </div>
-
-                    </div>
+                <div id="left-sidebar">
+                    <h2>纪律规定</h2>
+                    <ul>
+                        <li><a href="">规则设置</a></li>
+                        <li><a href="">人员设置</a></li>
+                        <li><a href="">纪律教育</a></li>
+                    </ul>
                 </div>
 
             </div>
         </div>
 
         <div class="layui-col-md3">
-            <div class="grid-demo boxdiv box1">1/3</div>
+            <div class="grid-demo boxdiv box1">
+                <div id="left-sidebar">
+                    <h2>检查登记</h2>
+                    <ul>
+                        <li><a href="">移动录入</a></li>
+                        <li><a href="">网页录入</a></li>
+                        <li><a href="">批量导入</a></li>
+                        <li><a href="">记录查询</a></li>
+                        <li><a href="">处分管理</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="layui-col-md3">
-            <div class="grid-demo grid-demo-bg1 boxdiv box1">1/3</div>
+            <div class="grid-demo grid-demo-bg1 boxdiv box1">
+                <div id="left-sidebar">
+                    <h2>屏蔽分析</h2>
+                    <ul>
+                        <li><a href="">日报周报</a></li>
+                        <li><a href="">文明班评比</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="layui-col-md3">
@@ -189,7 +185,6 @@
 
     </div>
 
-</div>
 
 
         <!-- 内容主体区域 -->

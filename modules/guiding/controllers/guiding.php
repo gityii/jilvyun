@@ -5,14 +5,14 @@
  * Date: 2017/11/28
  * Time: 10:34
  */
-namespace app\jilv\controllers;
+namespace app\guiding\controllers;
 
 use base\controllers\db;
 use base\controllers\web;
 use base\controllers\page;
 
 
-class jilv
+class guiding
 {
 
     public static function rule()
