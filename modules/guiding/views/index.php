@@ -2,110 +2,94 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 后台大布局 - Layui</title>
+    <link rel="stylesheet" href="/static/css/my.css">
     <link rel="stylesheet" href="/static/layui-v2.2.3/layui/css/layui.css">
 </head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">layui 后台布局</div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <!--
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-            -->
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
-        </ul>
+<body>
+<div class="layui-body" style="margin:25px">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 40px; width: 100%">
+        <legend>规则设置</legend>
+    </fieldset>
+
+    <div class="layui-btn-group demoTable">
+        <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
+        <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
+        <button class="layui-btn" data-type="isAll">验证是否全选</button>
     </div>
-
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
-
-        <div class="layui-fluid">
-            <fieldset class="layui-elem-field layui-field-title">
-                <legend>流体容器（宽度自适应，不固定）</legend>
-            </fieldset>
-            <div class="layui-row">
-                <div class="layui-col-sm3">
-                    <div class="grid-demo grid-demo-bg1">25%</div>
+        <form action="" mathod="get">
+            <div class="form-block">
+                <div class="form-group">
+                    <label for="" class="form-label f-w3">专题：</label>
+                    <span class="form-select-box size-small">
+                <select name="type" id="">
+                    <option value="">不选择</option>
+                    <?php foreach ($types as $v){
+                        echo '<option value="'.$v['typeid'].'"'.($v['typeid']==$type?' selected="selected"':'').'>'.$v['name'].'</option>';
+                    }?>
+                </select>
+            </span>
                 </div>
-                <div class="layui-col-sm3">
-                    <div class="grid-demo">25%</div>
-                </div>
-                <div class="layui-col-sm3">
-                    <div class="grid-demo grid-demo-bg1">25%</div>
-                </div>
-                <div class="layui-col-sm3">
-                    <div class="grid-demo">25%</div>
-                </div>
+                <button type="submit" class="layui-btn">搜索</button>
             </div>
+        </form>
+        <div class="table-wrap"  style="display:inline-block;width:970px;height:90px">
+            <table class="table table-border" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="f-w2 f-tac">编号</th>
+                    <th>标题</th>
+                    <th class="f-w10">发布时间</th>
+                    <th class="f-w12">专题</th>
+                    <th class="f-w5">排序</th>
+                    <th class="f-w6">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($list as $v){?>
+                    <tr id="tr_<?php echo $v['articleid'];?>">
+                        <td class="f-tac"><?php echo $v['articleid'];?></td>
+                        <td><?php echo $v['title'];?></td>
+                        <td><?php echo date('Y-m-d H:i:s',$v['dateline']);?></td>
+                        <td><?php echo $v['name'];?></td>
+                        <td><?php echo $v['order'];?></td>
+                        <td>
+                            <a href="/zhuanti/zhuanti/add?id=<?php echo $v['articleid'];?>">编辑</a>
+                            <span class="divider">/</span>
+                            <a href="javascript:;" onclick="del('<?php echo $v['articleid'];?>','<?php echo $v['title'];?>')">删除</a>
+                        </td>
+                    </tr>
+                <?php }?>
+                </tbody>
+            </table>
         </div>
-
+        <?php echo \base\controllers\page::html('/zhuanti/zhuanti/backend?'.($type==''?'':'type='.$type.'&'));?>
     </div>
 
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
-    </div>
-</div>
-<script src="/static/layui-v2.2.3/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
+<script type="text/javascript">
+    function del(id,title){
+        layer.confirm('确认要删除“'+title+'”？',{icon:3,title:'删除确认'},function(){
+            $.ajax({
+                type:"post",
+                url:"del",
+                data:{'id':id},
+                dataType:'json',
+                async:false,
+                success:function(m){
+                    if(m.status==0){
+                        layer.msg('删除成功',{time:1500});
+                        $("#tr_"+id).remove();
+                    }else{
+                        layer.msg(m.msg);
+                    }
+                }
+            });
+        },function(){});
+    }
 </script>
 </body>
 </html>
+

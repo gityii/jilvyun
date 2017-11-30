@@ -48,3 +48,141 @@ i.fa{ padding-right: 5px; color: inherit;}
 .demo01,.demo03 {
     margin-right:25px;
 }
+
+.form-block .form-group,.form-label,.form-radio-check-box,.form-textarea-box{
+    display:inline-block
+}
+
+.form-block{
+    width:100%;height:auto;padding:18px 0
+}
+
+.form-block .form-group{
+    padding-right:20px
+}
+
+.form-label{
+    vertical-align:middle
+}
+
+.f-w3{
+    width:3em
+}
+
+.form-select-box{
+    display:inline-block;
+    width:278px;
+    height:30px;
+    border:1px solid #e7e7eb;
+    border-radius:4px;
+    padding:0 10px
+}
+
+.form-select-box select{
+    width:100%;height:22px;margin:4px 0;border:0;vertical-align:middle
+}
+
+.form-select-box.size-large{
+    width:578px
+}
+
+.form-select-box.size-small{
+    width:128px
+}
+
+.table-wrap{
+    width:100%
+}
+
+.table th{
+    border-bottom:1px solid #e7e7eb
+}
+
+.table.table-border{
+    border:1px solid #e7e7eb
+}
+
+.table-wrap{
+    width:100%
+}
+
+.table{
+    width:100%;border-top:1px solid #e7e7eb
+}
+
+.table td,.table th{
+    padding:6px 20px;line-height:25px
+}
+
+.table td a{
+    color:#222
+}
+
+.table td a:hover{
+    color:#459ae9
+}
+
+.table td.td-empty{
+    padding:30px 0;color:#8d8d8d;font-size:16px
+}
+
+.table.table-toe{
+    table-layout:fixed
+}
+
+.table.table-toe td{
+    overflow:hidden
+}
+
+td span.divider{
+    color:#8d8d8d
+}
+
+.f-w2{
+    width:2em
+}
+
+.f-w3{
+    width:3em
+}
+
+.f-w4{
+    width:4em
+}
+
+.f-w5{
+    width:5em
+}
+
+.f-w6{
+    width:6em
+}
+
+.f-w7{
+    width:7em
+}
+
+.f-w8{
+    width:8em
+}
+
+.f-w9{
+    width:9em
+}
+
+.f-w10{
+    width:10em
+}
+
+.f-w11{
+    width:11em
+}
+
+.f-w12{
+    width:12em
+}
+
+
+
+
+

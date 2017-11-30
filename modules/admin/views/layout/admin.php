@@ -99,7 +99,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="">纪律规定</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="/qr/qr/display">规则设置</a></dd>
+                        <dd><a href="/guiding/guiding/rule">规则设置</a></dd>
                         <dd><a href="javascript:;">人员设置</a></dd>
                         <dd><a href="javascript:;">纪律教育</a></dd>
                     </dl>
