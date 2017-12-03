@@ -1,57 +1,55 @@
-<div class="layui-body">
 
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-        <legend>首页面</legend>
-    </fieldset>
+<div>
 
 
-    <div class="layui-col-md3">
-        <div class="grid-demo grid-demo-bg1 boxdiv box1">
 
-            <div id="left-sidebar">
-                <h2>纪律规定</h2>
-                <ul>
-                    <li><a href="">规则设置</a></li>
-                    <li><a href="">人员设置</a></li>
-                    <li><a href="">纪律教育</a></li>
-                </ul>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h4 class="page-header">首页面</h4>
+    <div class="row">
+        <div class="col-xs-6 col-sm-3">
+            <div class=" boxdiv box1">
+                <div id="left-sidebar">
+                    <h2>纪律规定</h2>
+                    <ul>
+                        <li><a href="">规 则 设 置</a></li>
+                        <li><a href="">人 员 设 置</a></li>
+                        <li><a href="">纪 律 教 育</a></li>
+                    </ul>
+                </div>
             </div>
-
         </div>
-    </div>
 
-    <div class="layui-col-md3">
-        <div class="grid-demo boxdiv box1">
+        <div class="col-xs-6 col-sm-3" style="margin-left: 5%;" >
+            <div class=" boxdiv box1">
             <div id="left-sidebar">
                 <h2>检查登记</h2>
                 <ul>
-                    <li><a href="">移动录入</a></li>
-                    <li><a href="">网页录入</a></li>
-                    <li><a href="">批量导入</a></li>
-                    <li><a href="">记录查询</a></li>
-                    <li><a href="">处分管理</a></li>
+                    <li><a href="">移 动 录 入</a></li>
+                    <li><a href="">网 页 录 入</a></li>
+                    <li><a href="">批 量 导 入</a></li>
+                    <li><a href="">记 录 查 询</a></li>
+                    <li><a href="">处 分 管 理</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="layui-col-md3">
-        <div class="grid-demo grid-demo-bg1 boxdiv box1">
+        <div class="col-xs-6 col-sm-3"  style="margin-left: 5%;" >
+            <div class=" boxdiv box1">
             <div id="left-sidebar">
                 <h2>屏蔽分析</h2>
                 <ul>
-                    <li><a href="">日报周报</a></li>
+                    <li><a href="">日 报 周 报</a></li>
                     <li><a href="">文明班评比</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="layui-col-md3">
-        <div class="grid-demo"></div>
     </div>
+  </div>
+  </div>
 
-</div>
 
 
 

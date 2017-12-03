@@ -5,6 +5,7 @@
         "jaeger/querylist-ext-multi": "^1.0",
         "jaeger/querylist-ext-login": "^1.0",
         "jaeger/http": "^1.3",
-        "jaeger/curlmulti": "^1.0"
+        "jaeger/curlmulti": "^1.0",
+        "twbs/bootstrap": "^3.3"
     }
 }

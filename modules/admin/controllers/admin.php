@@ -31,7 +31,7 @@ class admin{
 
              return  web::render(
                     'admin/views/index'
-                   // array('user'=> self::$user['user_name'])
+                   //array('user'=> self::$user['user_name'])
                 );
             }
         }

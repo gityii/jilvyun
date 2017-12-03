@@ -11,6 +11,7 @@ class LoginForm{
     {
         if(!empty($username) && !empty($password)){
             $userinfo = db::first('select `uid`,`pswd`,`right` from `admin_user` where `name`=\''.$username.'\'');
+
             if (!empty($userinfo) && $userinfo['pswd']==md5($password)) {
                 session_start();
                 web::session('user_uid', $userinfo['uid'], false);

@@ -12,7 +12,7 @@ class db {
 	'db_host'=>'localhost',
 	'db_port'=>'3306',
 	'db_user'=>'root',
-	'db_pswd'=>'',
+	'db_pswd'=>'root',
 	'db_db'=>'myframe',
 	'db_err_connect_fail'=>'can\'t connect to database'
 	);
@@ -39,7 +39,7 @@ class db {
 		if (!self::$isconnect){
 			self::configinit();
 			if (!@self::$conn=mysqli_connect(self::$config['db_host'],self::$config['db_user'],self::$config['db_pswd'],self::$config['db_db'],self::$config['db_port'])) {
-				exit(self::$config['db_err_connect_fail']);
+                exit(self::$config['db_err_connect_fail']);
 				die();
 			}
 			if (self::$conn) {

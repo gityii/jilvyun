@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "41fb740fd9afc9e1674ddfd2aa18e526",
+    "hash": "849a3a6feff2f4e644ae37a815c6f18c",
+    "content-hash": "a38eff0657f8d53aaa668d7c6a48df36",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -16,7 +17,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/guzzle/guzzle/f4db5a78a5ea468d4831de7f0bf9d9415e348699.zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
                 "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
                 "shasum": ""
             },
@@ -69,7 +70,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-06-22T18:50:49+00:00"
+            "time": "2017-06-22 18:50:49"
         },
         {
             "name": "guzzlehttp/promises",
@@ -81,7 +82,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/guzzle/promises/a59da6cf61d80060647ff4d3eb2c03a2bc694646.zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
                 "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
                 "shasum": ""
             },
@@ -120,7 +121,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-12-20T10:07:11+00:00"
+            "time": "2016-12-20 10:07:11"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -132,7 +133,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/guzzle/psr7/f5b8a8512e2b58b0071a7280e39f14f72e05d87c.zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
                 "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
                 "shasum": ""
             },
@@ -185,7 +186,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20T17:10:46+00:00"
+            "time": "2017-03-20 17:10:46"
         },
         {
             "name": "jaeger/curlmulti",
@@ -197,7 +198,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/CurlMulti/059f13241e15ddfe6155c032ef765e58233a5aab.zip",
+                "url": "https://api.github.com/repos/jae-jae/CurlMulti/zipball/059f13241e15ddfe6155c032ef765e58233a5aab",
                 "reference": "059f13241e15ddfe6155c032ef765e58233a5aab",
                 "shasum": ""
             },
@@ -222,7 +223,7 @@
                 }
             ],
             "description": "CurlMulti是PHP多线程类库,修改用于QueryList(http://querylist.cc ),CurlMulti项目地址:https://github.com/ares333/php-curlmulti",
-            "time": "2015-12-23T16:28:22+00:00"
+            "time": "2015-12-23 16:28:22"
         },
         {
             "name": "jaeger/g-http",
@@ -234,7 +235,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/GHttp/601230f9fd819208de5dc21b73898759baaf142d.zip",
+                "url": "https://api.github.com/repos/jae-jae/GHttp/zipball/601230f9fd819208de5dc21b73898759baaf142d",
                 "reference": "601230f9fd819208de5dc21b73898759baaf142d",
                 "shasum": ""
             },
@@ -258,7 +259,7 @@
                 }
             ],
             "description": "Simple Http client base on GuzzleHttp",
-            "time": "2017-09-25T10:33:21+00:00"
+            "time": "2017-09-25 10:33:21"
         },
         {
             "name": "jaeger/http",
@@ -270,7 +271,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/Http/2fb9e6bde8c42e3851c7968bd00046c299e45b5e.zip",
+                "url": "https://api.github.com/repos/jae-jae/Http/zipball/2fb9e6bde8c42e3851c7968bd00046c299e45b5e",
                 "reference": "2fb9e6bde8c42e3851c7968bd00046c299e45b5e",
                 "shasum": ""
             },
@@ -289,7 +290,7 @@
                 "MIT"
             ],
             "description": "HTTP 请求类,修改用于QueryList(http://querylist.cc )",
-            "time": "2017-07-25T07:15:08+00:00"
+            "time": "2017-07-25 07:15:08"
         },
         {
             "name": "jaeger/phpquery-single",
@@ -301,7 +302,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/phpQuery-single/7dec61d09b5954a15daecc716402501527dea1ec.zip",
+                "url": "https://api.github.com/repos/jae-jae/phpQuery-single/zipball/7dec61d09b5954a15daecc716402501527dea1ec",
                 "reference": "7dec61d09b5954a15daecc716402501527dea1ec",
                 "shasum": ""
             },
@@ -332,7 +333,7 @@
             ],
             "description": "phpQuery单文件版本，是Querylist的依赖(http://querylist.cc/)，phpQuery项目主页:http://code.google.com/p/phpquery/",
             "homepage": "http://code.google.com/p/phpquery/",
-            "time": "2017-09-22T06:57:13+00:00"
+            "time": "2017-09-22 06:57:13"
         },
         {
             "name": "jaeger/querylist",
@@ -344,7 +345,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/QueryList/72a7543da3c7dc7a1a72662a3b8081a6aed965c1.zip",
+                "url": "https://api.github.com/repos/jae-jae/QueryList/zipball/72a7543da3c7dc7a1a72662a3b8081a6aed965c1",
                 "reference": "72a7543da3c7dc7a1a72662a3b8081a6aed965c1",
                 "shasum": ""
             },
@@ -380,7 +381,7 @@
                 "phpQuery",
                 "spider"
             ],
-            "time": "2017-11-15T02:46:51+00:00"
+            "time": "2017-11-15 02:46:51"
         },
         {
             "name": "jaeger/querylist-ext-aquery",
@@ -392,7 +393,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/QueryList-Ext-AQuery/bfbf417363bb8f0caec2573f02d24ba2e921aeef.zip",
+                "url": "https://api.github.com/repos/jae-jae/QueryList-Ext-AQuery/zipball/bfbf417363bb8f0caec2573f02d24ba2e921aeef",
                 "reference": "bfbf417363bb8f0caec2573f02d24ba2e921aeef",
                 "shasum": ""
             },
@@ -413,7 +414,7 @@
                 }
             ],
             "description": "QueryList扩展，AQuery扩展基类",
-            "time": "2016-01-06T07:51:20+00:00"
+            "time": "2016-01-06 07:51:20"
         },
         {
             "name": "jaeger/querylist-ext-login",
@@ -425,7 +426,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/QueryList-Ext-Login/4e1279ead32eea96b45f5cec64a9646573f646ce.zip",
+                "url": "https://api.github.com/repos/jae-jae/QueryList-Ext-Login/zipball/4e1279ead32eea96b45f5cec64a9646573f646ce",
                 "reference": "4e1279ead32eea96b45f5cec64a9646573f646ce",
                 "shasum": ""
             },
@@ -449,7 +450,7 @@
                 }
             ],
             "description": "QueryList扩展，Login模拟登陆扩展",
-            "time": "2015-12-28T06:42:48+00:00"
+            "time": "2015-12-28 06:42:48"
         },
         {
             "name": "jaeger/querylist-ext-multi",
@@ -461,7 +462,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/QueryList-Ext-Multi/2c633480411b1cea31d93b2c1b754eb0bc79fea8.zip",
+                "url": "https://api.github.com/repos/jae-jae/QueryList-Ext-Multi/zipball/2c633480411b1cea31d93b2c1b754eb0bc79fea8",
                 "reference": "2c633480411b1cea31d93b2c1b754eb0bc79fea8",
                 "shasum": ""
             },
@@ -486,7 +487,7 @@
                 }
             ],
             "description": "QueryList扩展，Multi多线程扩展",
-            "time": "2015-12-28T06:09:36+00:00"
+            "time": "2015-12-28 06:09:36"
         },
         {
             "name": "jaeger/querylist-ext-request",
@@ -498,7 +499,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jae-jae/QueryList-Ext-Request/27d06b35fb810b919d242a3dbbdac0e1cb838bc4.zip",
+                "url": "https://api.github.com/repos/jae-jae/QueryList-Ext-Request/zipball/27d06b35fb810b919d242a3dbbdac0e1cb838bc4",
                 "reference": "27d06b35fb810b919d242a3dbbdac0e1cb838bc4",
                 "shasum": ""
             },
@@ -523,7 +524,7 @@
                 }
             ],
             "description": "QueryList扩展，Request网络操作扩展",
-            "time": "2015-12-28T06:24:02+00:00"
+            "time": "2015-12-28 06:24:02"
         },
         {
             "name": "psr/http-message",
@@ -535,7 +536,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/php-fig/http-message/f6561bf28d520154e4b0ec72be95418abe6d9363.zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
                 "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
                 "shasum": ""
             },
@@ -573,7 +574,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "tightenco/collect",
@@ -585,7 +586,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/tightenco/collect/ea6c2f9df3786d0997f34ef4f12e66bba85774c3.zip",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/ea6c2f9df3786d0997f34ef4f12e66bba85774c3",
                 "reference": "ea6c2f9df3786d0997f34ef4f12e66bba85774c3",
                 "shasum": ""
             },
@@ -623,7 +624,58 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2017-11-09T17:52:28+00:00"
+            "time": "2017-11-09 17:52:28"
+        },
+        {
+            "name": "twbs/bootstrap",
+            "version": "v3.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/0b9c4a4007c44201dce9a6cc1a38407005c26c86",
+                "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86",
+                "shasum": ""
+            },
+            "replace": {
+                "twitter/bootstrap": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
+                },
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "homepage": "http://getbootstrap.com",
+            "keywords": [
+                "JS",
+                "css",
+                "framework",
+                "front-end",
+                "less",
+                "mobile-first",
+                "responsive",
+                "web"
+            ],
+            "time": "2016-07-25 15:51:55"
         }
     ],
     "packages-dev": [],

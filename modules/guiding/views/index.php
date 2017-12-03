@@ -6,8 +6,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/static/css/my.css">
-    <link rel="stylesheet" href="/static/layui-v2.2.3/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/bootstrap_3_3_7_dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="layui-body" style="margin:25px">
