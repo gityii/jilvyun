@@ -129,7 +129,7 @@
                       <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;" >
-                      <li><a  href="#">规 则 设 置</a></li>
+                      <li><a  href="guiding/guiding/rule">规 则 设 置</a></li>
                       <li><a  href="#">人 员 设 置</a></li>
                       <li><a  href="#">纪 律 教 育</a></li>
                   </ul>
