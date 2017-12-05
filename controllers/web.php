@@ -74,10 +74,10 @@ class web
             $$k = $v;
         }
         if (self::$_layout===false){//没有使用模板
-            include __ROOT__.'/modules/'.$temp.'.php';
+            include __ROOT__.'/modules/'.$temp.'.views.php';
         }else {
             ob_start();
-            include __ROOT__.'/modules/'.$temp.'.php';
+            include __ROOT__.'/modules/'.$temp.'.views.php';
             $layout_content = ob_get_contents();
             ob_end_clean();
             foreach (self::$_layout_data as $k=>$v) {

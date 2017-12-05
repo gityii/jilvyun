@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/static/img/favicon.ico">
     <link href="/static/css/dashboard.css" rel="stylesheet">
-    <title>信阳市第二实验小学--纪律云</title>
+    <title>云</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap_3_3_7_dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,62 +32,61 @@
 </head>
 
 <body>
-<div class="container theme-showcase" role="main">
+<div class="col-md-9 col-md-push-3" role="main">
 
     <div class="page-header">
-        <h1>规则设置</h1>
+        <h2>人员设置</h2>
     </div>
     <p>
-        <a class="btn btn-lg btn-success" href="#" role="button">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加规则
+        <a class="btn btn-lg btn-success" href="" role="button">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加人员
         </a>
-        <a class="btn btn-lg btn-success" href="#" role="button">
-            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 规则类别列表
+        <a class="btn btn-lg btn-success" href="" role="button">
+            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 人员类型列表
         </a>
     </p>
-</div>
 
-<div class="main-bd">
-    <form action="" mathod="get">
-        <div class="form-block">
-            <div class="form-group">
-                <label for="" class="form-label f-w3">专题：</label>
-                <span class="form-select-box size-small">
-		        <select name="type" id="">
+<div>
+    <form action="" mathod="get" class="form-horizontal">
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label" style="text-align:left; width: 7%" for="">人员类型：</label>
+                <div class=" col-xs-3">
+		        <select name="type" id="" class="form-control">
 		        	<option value="">不选择</option>
                     <?php foreach ($types as $v){
                         echo '<option value="'.$v['typeid'].'"'.($v['typeid']==$type?' selected="selected"':'').'>'.$v['name'].'</option>';
                     }?>
 		        </select>
-		    </span>
+                </div>
+                <button type="submit" class="btn btn-default btn-lg btn-info">搜索</button>
             </div>
-            <button type="submit" class="btn btn-default">搜索</button>
-        </div>
     </form>
+
     <div class="table-wrap">
-        <table class="table table-border" cellspacing="0">
+        <table class="table table-bordered table-responsive table-striped table-hover" cellspacing="0">
             <thead>
             <tr>
-                <th class="f-w2 f-tac">编号</th>
-                <th>标题</th>
-                <th class="f-w10">发布时间</th>
-                <th class="f-w12">专题</th>
-                <th class="f-w5">排序</th>
-                <th class="f-w6">操作</th>
+                <th class="text-center">编号</th>
+                <th class="text-center">项目</th>
+                <th class="text-center">分值</th>
+                <th class="text-center">类别</th>
+                <th class="text-center">对象</th>
+                <th class="text-center">备注</th>
+                <th class="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($list as $v){?>
-                <tr id="tr_<?php echo $v['articleid'];?>">
-                    <td class="f-tac"><?php echo $v['articleid'];?></td>
-                    <td><?php echo $v['title'];?></td>
-                    <td><?php echo date('Y-m-d H:i:s',$v['dateline']);?></td>
-                    <td><?php echo $v['name'];?></td>
-                    <td><?php echo $v['order'];?></td>
-                    <td>
-                        <a href="/zhuanti/zhuanti/add?id=<?php echo $v['articleid'];?>">编辑</a>
-                        <span class="divider">/</span>
-                        <a href="javascript:;" onclick="del('<?php echo $v['articleid'];?>','<?php echo $v['title'];?>')">删除</a>
+                <tr id="tr_<?php echo $v['id'];?>">
+                    <td class="text-center"><?php echo $v['id'];?></td>
+                    <td class="text-center"><?php echo $v['project'];?></td>
+                    <td class="text-center"><?php echo $v['val'];?></td>
+                    <td class="text-center"><?php echo $v['family'];?></td>
+                    <td class="text-center"><?php echo $v['objects'];?></td>
+                    <td class="text-center"><?php echo $v['comments'];?></td>
+                    <td class="text-center">
+                        <a class="btn btn-primary" href="/zhuanti/zhuanti/add?id=<?php echo $v['id'];?>">编辑</a>
+                        <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['objects'];?>')">删除</a>
                     </td>
                 </tr>
             <?php }?>
@@ -95,6 +94,7 @@
         </table>
     </div>
     <?php echo \base\controllers\page::html('/zhuanti/zhuanti/backend?'.($type==''?'':'type='.$type.'&'));?>
+</div>
 </div>
 <script type="text/javascript">
     function del(id,title){

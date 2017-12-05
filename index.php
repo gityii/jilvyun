@@ -34,6 +34,8 @@ if(empty($_magic_quote)) {
     $_REQUEST = base\controllers\base::filter($_REQUEST);
 }
 
+//var_dump($_GET);
+
 //对请求数据进行过滤
 // Validate what page to show，要显示的内容是基于发送给这个页面的值，如index.php?p=contact:
 /*

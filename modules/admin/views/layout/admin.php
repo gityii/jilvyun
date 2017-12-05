@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/static/img/favicon.ico">
       <link href="/static/css/dashboard.css" rel="stylesheet">
-    <title>信阳市第二实验小学--纪律云</title>
+    <title>TEST云</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap_3_3_7_dist/css/bootstrap.min.css" rel="stylesheet">
@@ -101,12 +101,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">纪律云</a>
+          <a class="navbar-brand">TEST</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">个人设置</a></li>
+            <li><a href="/admin/views/index">首页</a></li>
+            <li><a href="">个人设置</a></li>
             <li>
               <a href="javascript:;">
                   用户(<?php echo \base\controllers\web::session('user_name');?>)
@@ -121,7 +121,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">导 航 栏 <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a>导 航 栏 <span class="sr-only"></span></a></li>
 
               <li class="dropdown">
                   <a  class="dropdown-toggle" data-toggle="dropdown">
@@ -129,9 +129,9 @@
                       <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;" >
-                      <li><a  href="guiding/guiding/rule">规 则 设 置</a></li>
-                      <li><a  href="#">人 员 设 置</a></li>
-                      <li><a  href="#">纪 律 教 育</a></li>
+                      <li><a  href="/guiding/guiding/rule">规 则 设 置</a></li>
+                      <li><a  href="/guiding/guiding/person">人 员 设 置</a></li>
+                      <li><a  href="">纪 律 教 育</a></li>
                   </ul>
 
               </li>
@@ -142,11 +142,11 @@
                       <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;" >
-                      <li><a  href="#">移 动 录 入</a></li>
-                      <li><a  href="#">网 页 录 入</a></li>
-                      <li><a  href="#">批 量 导 入</a></li>
-                      <li><a  href="#">记 录 查 询</a></li>
-                      <li><a  href="#">处 分 管 理</a></li>
+                      <li><a  href="">移 动 录 入</a></li>
+                      <li><a  href="">网 页 录 入</a></li>
+                      <li><a  href="">批 量 导 入</a></li>
+                      <li><a  href="">记 录 查 询</a></li>
+                      <li><a  href="">处 分 管 理</a></li>
                   </ul>
 
               </li>
@@ -157,8 +157,8 @@
                       <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;" >
-                      <li><a  href="#">日 报 周 报</a></li>
-                      <li><a  href="#">文明班评比</a></li>
+                      <li><a  href="">日 报 周 报</a></li>
+                      <li><a  href="">文明班评比</a></li>
                   </ul>
 
               </li>

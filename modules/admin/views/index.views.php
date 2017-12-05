@@ -8,7 +8,7 @@
                     <h2>纪律规定</h2>
                     <ul>
                         <li><a href="/guiding/guiding/rule">规 则 设 置</a></li>
-                        <li><a href="">人 员 设 置</a></li>
+                        <li><a href="/guiding/guiding/person">人 员 设 置</a></li>
                         <li><a href="">纪 律 教 育</a></li>
                     </ul>
                 </div>
