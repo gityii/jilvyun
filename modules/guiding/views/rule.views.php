@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/static/img/favicon.ico">
     <link href="/static/css/dashboard.css" rel="stylesheet">
-    <title>云</title>
+    <title>规则</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap_3_3_7_dist/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 <div>
     <form action="" mathod="get" class="form-horizontal">
             <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 7%" for="">规则选择：</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">规则选择</label>
                 <div class=" col-xs-3">
 		        <select name="type" id="" class="form-control">
 		        	<option value="">不选择</option>
@@ -67,24 +67,26 @@
             <thead>
             <tr>
                 <th class="text-center">编号</th>
-                <th class="text-center">标题</th>
-                <th class="text-center">发布时间</th>
-                <th class="text-center">专题</th>
-                <th class="text-center">排序</th>
+                <th class="text-center">项目</th>
+                <th class="text-center">分值</th>
+                <th class="text-center">类别</th>
+                <th class="text-center">对象</th>
+                <th class="text-center">备注</th>
                 <th class="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($list as $v){?>
-                <tr id="tr_<?php echo $v['articleid'];?>">
-                    <td class="text-center"><?php echo $v['articleid'];?></td>
-                    <td class="text-center"><?php echo $v['title'];?></td>
-                    <td class="text-center"><?php echo date('Y-m-d H:i:s',$v['dateline']);?></td>
-                    <td class="text-center"><?php echo $v['name'];?></td>
-                    <td class="text-center"><?php echo $v['order'];?></td>
+                <tr id="tr_<?php echo $v['id'];?>">
+                    <td class="text-center"><?php echo $v['id'];?></td>
+                    <td class="text-center"><?php echo $v['project'];?></td>
+                    <td class="text-center"><?php echo $v['val'];?></td>
+                    <td class="text-center"><?php echo $v['family'];?></td>
+                    <td class="text-center"><?php echo $v['objects'];?></td>
+                    <td class="text-center"><?php echo $v['comments'];?></td>
                     <td class="text-center">
-                        <a class="btn btn-primary" href="/zhuanti/zhuanti/add?id=<?php echo $v['articleid'];?>">编辑</a>
-                        <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['articleid'];?>','<?php echo $v['title'];?>')">删除</a>
+                        <a class="btn btn-primary" href="/guiding/guiding/edit?id=<?php echo $v['id'];?>">编辑</a>
+                        <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['objects'];?>')">删除</a>
                     </td>
                 </tr>
             <?php }?>
@@ -96,7 +98,7 @@
 </div>
 <script type="text/javascript">
     function del(id,title){
-        layer.confirm('确认要删除“'+title+'”？',{icon:3,title:'删除确认'},function(){
+        layer.confirm('确认要删除�?+title+'”？',{icon:3,title:'删除确认'},function(){
             $.ajax({
                 type:"post",
                 url:"del",

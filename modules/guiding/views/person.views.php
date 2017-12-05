@@ -49,7 +49,7 @@
 <div>
     <form action="" mathod="get" class="form-horizontal">
             <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 7%" for="">人员类型：</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">人员类型：</label>
                 <div class=" col-xs-3">
 		        <select name="type" id="" class="form-control">
 		        	<option value="">不选择</option>
@@ -85,7 +85,7 @@
                     <td class="text-center"><?php echo $v['objects'];?></td>
                     <td class="text-center"><?php echo $v['comments'];?></td>
                     <td class="text-center">
-                        <a class="btn btn-primary" href="/zhuanti/zhuanti/add?id=<?php echo $v['id'];?>">编辑</a>
+                        <a class="btn btn-primary" href="/guiding/guiding/edit?id=<?php echo $v['id'];?>">编辑</a>
                         <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['objects'];?>')">删除</a>
                     </td>
                 </tr>
