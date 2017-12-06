@@ -10,7 +10,7 @@ namespace app\guiding\controllers;
 use base\controllers\db;
 use base\controllers\web;
 use base\controllers\page;
-
+use base\controllers\file;
 
 class guiding
 {
@@ -18,25 +18,23 @@ class guiding
     public static function rule()
     {
 
-        $type ='';
-        $where1 = '';
-        $where2 = '';
-        if ($type!='')
+        $ruleid = web::get('id');
+        $where = '';
+        if ($ruleid!='')
         {
-            $where1 = ' where `type`=\''.$type.'\'';
-            $where2 = ' where l.`type`=\''.$type.'\'';
+            $where = ' where `ruleid`=\''.$ruleid.'\'';;
         }
         $per = 20;
-        $countdata = db::first('select count(*) from `t_articlec`'.$where1);
-        $articlecount = $countdata['count(*)'];
-        page::init(0,$articlecount,$per);
-        $list = db::query_get('select * from `t_person`');
-        $types = db::query_get('select `typeid`,`name` from `t_articlec_type` where `name`!=\'\' order by `order` asc');
+        $countdata = db::first('select count(*) from `t_rule`'.$where);
+        $recordcount = $countdata['count(*)'];
+        page::init(0,$recordcount,$per);
+        $list = db::query_get('select * from `t_rule`'.$where);
+        $rules = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\' order by `id` asc');
         web::layout('admin/views/layout/admin');
         web::render('guiding/views/rule',array(
             'list'=>$list,
-            'types'=>$types,
-            'type'=>$type
+            'rules'=>$rules,
+            'ruleid'=>$ruleid
         ));
 
     }
@@ -74,163 +72,120 @@ class guiding
 
     }
 
+    public static function add()
+    {
 
+
+
+    }
 
     public static function edit()
     {
-        //$ctype = web::request('ctype','');
+        $ctype = web::request('ctype','');
         $id = web::request('id',0);
+
         $msg = array();
         $success = false;
         $error = '';
-        $title = '';
-        $order = '';
-        $from = '';
-        $type = '1';
-        $content = '';
-        $url = '';
-        $nimg = '';
-        $types = array();
-        $types_data = db::query_get('select `typeid`,`name` from `t_articlec_type` where `name`!=\'\'');
-
-        foreach ($types_data as $v){
-            $types[$v['typeid']] = $v['name'];
-        }
+        $project = '';
+        $family = '';
+        $ruleid = '';
+        $objects = '';
+        $val = 0;
+        $comments = '';
+        //$types = array();
 
         if ($id>0)
         {
-            $info = db::first('select `title`,`type`,`img`,`from`,`content`,`order`,`url` from `t_person` where `id`=\''.$id.'\'');
+            $info = db::first('select `project`,`family`,`ruleid`,`objects`,`val`,`comments` from `t_rule` where `id`=\''.$id.'\'');
+
             if (!empty($info))
             {
-                $title = $info['title'];
-                $nimg = $info['img'];
-                $from = $info['from'];
-                $content = $info['content'];
-                $order = $info['order'];
-                $type = $info['type'];
-                $url = $info['url'];
-                if ($url!='')
-                {
-                    $ctype = 'link';
-                }
+                $project = $info['project'];
+                $family = $info['family'];
+                $ruleid = $info['ruleid'];
+                $objects = $info['objects'];
+                $val = $info['val'];
+                $comments= $info['comments'];
             }else {
-                $id = 0;
+                $msg['title'] = '查询有误，请核实数据';
             }
+        }else{
+            $msg['title'] = '请求数据有误';
         }
 
         if (!empty($_POST))
         {
-            $title = web::post('title','');
-            $order = intval(web::post('order',0));
-            $from = web::post('from','');
-            $content = web::post('content','');
-            $type = web::post('type','');
-            $url = web::post('url','');
-            if ($title=='')
+            $project = web::post('project', '');
+            $family = intval(web::post('family', 0));
+            $ruleid = web::post('ruleid', '');
+            $objects = web::post('objects', '');
+            $val = web::post('val', '');
+            $comments = web::post('comments', '');
+
+            if ($project == '')
             {
-                $msg['title'] = '请输入标题';
-            }else {
-                if (web::strlen($title)>240)
-                {
-                    $msg['title'] = '标题不能超过120个汉字';
-                }
+                $msg['project'] = '请输入项目名称';
+            }else if (web::strlen($project) > 240)
+            {
+                $msg['title'] = '项目名称不能超过100个汉字';
+
             }
 
-            if (web::strlen($from)>80)
+            if ($family != '集体' || $family != '个人')
             {
-                $msg['from'] = '来源不能超过40个汉字';
+                $msg['family'] = '请输入集体 或 个人';
             }
 
-            if ($ctype=='link')
+
+            if (web::strlen($comments) > 1000)
             {
-                if ($url=='')
-                {
-                    $msg['url'] = '请输入链接地址';
-                }else {
-                    if (web::strlen($url)>1200)
-                    {
-                        $msg['url'] = '链接地址太长了';
-                    }
-                }
-            }else {
-                if ($content=='')
-                {
-                    $msg['content'] = '请输入内容';
-                }else {
-                    if (web::strlen($content)>100000)
-                    {
-                        $msg['content'] = '内容太长了';
-                    }
-                }
+                $msg['content'] = '备注内容太长了';
             }
 
-            $img = file::upload('img','',2048);
-
-            if (!is_string($img) && $img!=100)
-            {
-                $msg['img'] = '图片上传失败';
-            }
 
             if (empty($msg))
             {
                 $data = array(
-                    'title'=>$title,
-                    'type'=>$type,
-                    'from'=>$from,
-                    'content'=>$content,
-                    'order'=>$order,
-                    'url'=>$url,
-                    'dateline'=>time(),
+                    'project' => $project,
+                    'family' => $family,
+                    'ruleid' => $ruleid,
+                    'objects' => $objects,
+                    'val' => $val,
+                    'comments' => $comments,
                 );
-                if (is_string($img))
-                {
-                    $data['img'] = '/'.$img;
-                    $nimg = '/'.$img;
-                }
 
-                if ($id==0)
+
+                if ($id == 0)
                 {
-                    if (db::insert('t_articlec',$data))
-                    {
-                        $success = true;
-                    }else {
-                        $error = '提交失败，请重试';
-                    }
-                }else {
-                    if (db::update('t_articlec',$data,'`articleid`=\''.$id.'\''))
-                    {
+                    $error = '参数错误';
+                } else if (db::update('t_rule', $data, '`id`=\'' . $id . '\'')) {
                         $success = true;
                         $error = '保存成功';
-                    }else {
+                    } else {
                         $error = '保存失败，请重试';
                     }
                 }
             }
+
+            web::layout('/admin/views/layout/admin');
+            web::render('/guiding/views/edit', array(
+                'id' => $id,
+                'success' => $success,
+                'error' => $error,
+                'msg' => $msg,
+                'data' => array(
+                    'project' => $project,
+                    'comments' => stripslashes($comments),
+                    'ruleid' => $ruleid,
+                    'objects' => $objects,
+                    'val' => $val
+                ),
+                'ctype' => $ctype,
+              //  'types' => $types
+            ));
+
         }
-
-        web::layout('admin/views/layout/admin');
-        web::render('zhuanti/views/add',array(
-            'id'=>$id,
-            'success'=>$success,
-            'error'=>$error,
-            'msg'=>$msg,
-            'data'=>array(
-                'title'=>$title,
-                'content'=>stripslashes($content),
-                'order'=>$order,
-                'from'=>$from,
-                'img'=>$nimg,
-                'type'=>$type,
-                'url'=>$url
-            ),
-            'ctype'=>$ctype,
-            'types'=>$types
-        ));
-    }
-
-
-
-
 
 
 }

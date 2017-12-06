@@ -49,12 +49,12 @@
 <div>
     <form action="" mathod="get" class="form-horizontal">
             <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">规则选择</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">规则类别 :</label>
                 <div class=" col-xs-3">
-		        <select name="type" id="" class="form-control">
+		        <select name="id" id="" class="form-control">
 		        	<option value="">不选择</option>
-                    <?php foreach ($types as $v){
-                        echo '<option value="'.$v['typeid'].'"'.($v['typeid']==$type?' selected="selected"':'').'>'.$v['name'].'</option>';
+                    <?php foreach ($rules as $v){
+                        echo '<option value="'.$v['ruleid'].'"'.($v['ruleid']==$ruleid?' selected="selected"':'').'>'.$v['name'].'</option>';
                     }?>
 		        </select>
                 </div>
@@ -93,12 +93,12 @@
             </tbody>
         </table>
     </div>
-    <?php echo \base\controllers\page::html('/zhuanti/zhuanti/backend?'.($type==''?'':'type='.$type.'&'));?>
+    <?php echo \base\controllers\page::html('/guiding/guiding/rule?'.($ruleid==''?'':'id='.$ruleid.'&'));?>
 </div>
 </div>
 <script type="text/javascript">
     function del(id,title){
-        layer.confirm('确认要删除�?+title+'”？',{icon:3,title:'删除确认'},function(){
+        layer.confirm('确认要删除“'+title+'”？',{icon:3,title:'删除确认'},function(){
             $.ajax({
                 type:"post",
                 url:"del",
