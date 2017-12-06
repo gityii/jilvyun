@@ -48,6 +48,30 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">所属类别：</label>
+                <div class=" col-xs-3">
+                <select name="project" id="" class="form-control">
+                <?php foreach ($types as $k=>$v){?>
+                    <option value="<?php echo $k;?>"<?php echo $data['project']==$k?' selected="selected"':'';?>><?php echo $v;?></option>
+                <?php }?>
+                </select>
+                </div>
+            </div>
+
+
+                <div class="form-group form-group-lg">
+                    <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">规则类别 :</label>
+                    <div class=" col-xs-3">
+                        <select name="id" id="" class="form-control">
+                            <?php foreach ($rules as $v){
+                                echo '<option value="'.$v['ruleid'].'"'.($v['ruleid']==$ruleid?' selected="selected"':'').'>'.$v['name'].'</option>';
+                            }?>
+                        </select>
+                    </div>
+                </div>
+
+
         </form>
 
     </div>
