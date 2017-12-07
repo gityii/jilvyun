@@ -45,7 +45,6 @@
             <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 规则类别列表
         </a>
     </p>
-
 <div>
     <form action="" mathod="get" class="form-horizontal">
             <div class="form-group form-group-lg">

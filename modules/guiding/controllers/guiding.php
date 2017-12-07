@@ -81,7 +81,7 @@ class guiding
 
     public static function edit()
     {
-        $ctype = web::request('ctype','');
+      //  $ctype = web::request('ctype','');
         $id = web::request('id',0);
 
         $msg = array();
@@ -89,11 +89,16 @@ class guiding
         $error = '';
         $project = '';
         $family = '';
-        $ruleid = '';
         $objects = '';
-        $val = 0;
+        $val = '';
+        $ruleid ='';
         $comments = '';
-        //$types = array();
+        $types = array();
+
+        $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
+        foreach ($types_data as $v){
+            $types[$v['ruleid']] = $v['name'];
+        }
 
         if ($id>0)
         {
@@ -103,25 +108,28 @@ class guiding
             {
                 $project = $info['project'];
                 $family = $info['family'];
-                $ruleid = $info['ruleid'];
                 $objects = $info['objects'];
+                $ruleid = $info['ruleid'];
                 $val = $info['val'];
                 $comments= $info['comments'];
             }else {
                 $msg['title'] = '查询有误，请核实数据';
             }
-        }else{
+        }
+        else{
             $msg['title'] = '请求数据有误';
         }
 
         if (!empty($_POST))
         {
+
             $project = web::post('project', '');
-            $family = intval(web::post('family', 0));
-            $ruleid = web::post('ruleid', '');
+            $family = web::post('family', '');
             $objects = web::post('objects', '');
             $val = web::post('val', '');
             $comments = web::post('comments', '');
+
+
 
             if ($project == '')
             {
@@ -132,9 +140,9 @@ class guiding
 
             }
 
-            if ($family != '集体' || $family != '个人')
+            if ($objects != '集体' && $objects != '个人')
             {
-                $msg['family'] = '请输入集体 或 个人';
+                $msg['objects'] = '请输入集体 或 个人';
             }
 
 
@@ -143,17 +151,18 @@ class guiding
                 $msg['content'] = '备注内容太长了';
             }
 
+            $getid = db::first('select `ruleid` from `t_family` where `name`=\''.$family.'\'');
 
-            if (empty($msg))
-            {
+            if (empty($msg)) {
                 $data = array(
                     'project' => $project,
                     'family' => $family,
-                    'ruleid' => $ruleid,
+                    'ruleid' => $getid['ruleid'],
                     'objects' => $objects,
                     'val' => $val,
                     'comments' => $comments,
                 );
+
 
 
                 if ($id == 0)
@@ -161,28 +170,29 @@ class guiding
                     $error = '参数错误';
                 } else if (db::update('t_rule', $data, '`id`=\'' . $id . '\'')) {
                         $success = true;
-                        $error = '保存成功';
+                        $error = '修改成功';
                     } else {
                         $error = '保存失败，请重试';
                     }
                 }
             }
 
-            web::layout('/admin/views/layout/admin');
-            web::render('/guiding/views/edit', array(
+            web::layout('admin/views/layout/admin');
+            web::render('guiding/views/edit', array(
                 'id' => $id,
                 'success' => $success,
                 'error' => $error,
                 'msg' => $msg,
                 'data' => array(
                     'project' => $project,
-                    'comments' => stripslashes($comments),
+                    'family' => $family,
                     'ruleid' => $ruleid,
+                    'comments' => stripslashes($comments),
                     'objects' => $objects,
                     'val' => $val
                 ),
-                'ctype' => $ctype,
-              //  'types' => $types
+               // 'ctype' => $ctype,
+                'types' => $types
             ));
 
         }
