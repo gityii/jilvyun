@@ -81,7 +81,7 @@ class guiding
 
     public static function edit()
     {
-      //  $ctype = web::request('ctype','');
+        $ctype = web::request('ctype','');
         $id = web::request('id',0);
 
         $msg = array();
@@ -91,10 +91,9 @@ class guiding
         $family = '';
         $objects = '';
         $val = '';
-        $ruleid ='';
+        $ruleid = '';
         $comments = '';
         $types = array();
-
         $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
         foreach ($types_data as $v){
             $types[$v['ruleid']] = $v['name'];
@@ -115,8 +114,7 @@ class guiding
             }else {
                 $msg['title'] = '查询有误，请核实数据';
             }
-        }
-        else{
+        }else{
             $msg['title'] = '请求数据有误';
         }
 
@@ -129,31 +127,30 @@ class guiding
             $val = web::post('val', '');
             $comments = web::post('comments', '');
 
-
-
             if ($project == '')
             {
                 $msg['project'] = '请输入项目名称';
             }else if (web::strlen($project) > 240)
             {
-                $msg['title'] = '项目名称不能超过100个汉字';
+                $msg['project'] = '项目名称不能超过100个汉字';
 
             }
 
             if ($objects != '集体' && $objects != '个人')
             {
-                $msg['objects'] = '请输入集体 或 个人';
+                $msg['objects'] = '请输入集体或个人';
             }
 
 
             if (web::strlen($comments) > 1000)
             {
-                $msg['content'] = '备注内容太长了';
+                $msg['content'] = '备注内容太长';
             }
 
             $getid = db::first('select `ruleid` from `t_family` where `name`=\''.$family.'\'');
 
-            if (empty($msg)) {
+            if (empty($msg))
+            {
                 $data = array(
                     'project' => $project,
                     'family' => $family,
@@ -164,21 +161,20 @@ class guiding
                 );
 
 
-
                 if ($id == 0)
                 {
                     $error = '参数错误';
                 } else if (db::update('t_rule', $data, '`id`=\'' . $id . '\'')) {
                         $success = true;
-                        $error = '修改成功';
+                        $error = '保存成功';
                     } else {
                         $error = '保存失败，请重试';
                     }
                 }
             }
 
-            web::layout('admin/views/layout/admin');
-            web::render('guiding/views/edit', array(
+            web::layout('/admin/views/layout/admin');
+            web::render('/guiding/views/edit', array(
                 'id' => $id,
                 'success' => $success,
                 'error' => $error,
@@ -191,7 +187,7 @@ class guiding
                     'objects' => $objects,
                     'val' => $val
                 ),
-               // 'ctype' => $ctype,
+                'ctype' => $ctype,
                 'types' => $types
             ));
 
