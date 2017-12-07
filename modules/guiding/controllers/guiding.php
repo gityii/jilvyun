@@ -82,7 +82,7 @@ class guiding
     public static function edit()
     {
         $ctype = web::request('ctype','');
-        $id = web::request('id',0);
+        $id = web::request('id','');
 
         $msg = array();
         $success = false;
@@ -118,6 +118,7 @@ class guiding
             $msg['title'] = '请求数据有误';
         }
 
+
         if (!empty($_POST))
         {
 
@@ -149,6 +150,7 @@ class guiding
 
             $getid = db::first('select `ruleid` from `t_family` where `name`=\''.$family.'\'');
 
+
             if (empty($msg))
             {
                 $data = array(
@@ -161,17 +163,19 @@ class guiding
                 );
 
 
-                if ($id == 0)
+                if ($id == 0 )
                 {
                     $error = '参数错误';
-                } else if (db::update('t_rule', $data, '`id`=\'' . $id . '\'')) {
+                }else if (db::update('t_rule',$data,'`id`=\''.$id.'\'')) {
                         $success = true;
                         $error = '保存成功';
-                    } else {
-                        $error = '保存失败，请重试';
-                    }
-                }
+                    }else {
+                            $error = '保存失败，请重试';
+                           }
             }
+        }
+
+
 
             web::layout('/admin/views/layout/admin');
             web::render('/guiding/views/edit', array(

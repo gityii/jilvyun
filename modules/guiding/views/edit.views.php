@@ -7,7 +7,7 @@
     </div>
 
     <div>
-        <form action="/guiding/guiding/edit" method="post" class="form-horizontal">
+        <form action="/guiding/guiding/edit?id=<?php echo $id;?>" method="post" class="form-horizontal">
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">项目 :</label>
                 <div class="col-xs-3">
