@@ -1,7 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+<body>
+<script src="/static/assets/js/vendor/jquery.min.js"></script>
+<script src="/static/js/layer/layer.js"></script>
+
 <div class="col-md-9 col-md-push-3" role="main">
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
-            <li role="presentation" class="active"><a href="#">服务列表</a></li>
+            <li role="presentation" class="active"><a href="/guiding/guiding/rule">规则列表</a></li>
             <li role="presentation"><a>规则编辑</a></li>
         </ul>
     </div>
@@ -61,3 +75,21 @@
 
 
 </div>
+
+<script type="text/javascript">
+    <?php if ($success){?>
+    layer.msg('修改成功',{icon:1,time:1500},function(){
+        window.location.href="/guiding/guiding/rule";
+    });
+    <?php }?>
+    <?php if ($error!=''){?>
+    layer.msg('<?php echo $error;?>',{icon:5,time: 3000},function(){
+        //do something
+    });
+    <?php }?>
+</script>
+
+</body>
+</html>
+
+

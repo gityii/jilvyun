@@ -168,7 +168,7 @@ class guiding
                     $error = '参数错误';
                 }else if (db::update('t_rule',$data,'`id`=\''.$id.'\'')) {
                         $success = true;
-                        $error = '保存成功';
+                        $error = '';
                     }else {
                             $error = '保存失败，请重试';
                            }
