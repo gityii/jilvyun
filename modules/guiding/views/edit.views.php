@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">分�?:</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">分值:</label>
                 <div class="col-xs-3">
                     <input type="text" name="val" class="form-control" id="exampleInputName2" value="<?php echo $data['val'];?>">
                     <?php if (isset($msg['val'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['val'].'</span>';}?>

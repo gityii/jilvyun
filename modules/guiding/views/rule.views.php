@@ -20,7 +20,7 @@
         <a class="btn btn-lg btn-success" href="/guiding/guiding/ruleadd" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加规则
         </a>
-        <a class="btn btn-lg btn-success" href="" role="button">
+        <a class="btn btn-lg btn-success" href="/guiding/guiding/classlist" role="button">
             <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 规则类别列表
         </a>
     </p>

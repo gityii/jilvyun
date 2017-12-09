@@ -291,4 +291,172 @@ class guiding
     }
 
 
+
+    public static function classlist()
+    {
+        $per = 10;
+        $countdata = db::first('select count(*) from `t_family`');
+        $count = $countdata['count(*)'];
+        page::init(0,$count,$per);
+        $list = db::query_get('select `ruleid`,`name`, `id` from `t_family` where `name`!=\'\' order by `id` desc'.page::limitsql());
+        web::layout('/admin/views/layout/admin');
+        web::render('/guiding/views/classlist',array(
+        'list'=>$list,
+        ));
+    }
+
+
+    public static function classadd()
+    {
+
+        $ruleid = '';
+        $name = '';
+        $success ='';
+        $error = '';
+        $msg = array();
+        $types = array();
+
+        if (!empty($_POST))
+        {
+            $ruleid = intval(web::post('ruleid', 0));
+            $name = web::post('name', '');
+
+
+            $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
+
+            foreach ($types_data as $v) {
+                $types[$v['ruleid']] = $v['name'];
+
+                if ($ruleid == '')
+                {
+                    $msg['ruleid'] = '请输入类别编码';
+                } else if($v['ruleid'] == $ruleid)
+                {
+                    $msg['ruleid'] = '此类别编码已存在！';
+                }
+
+                if($v['name'] == '')
+                {
+                    $msg['ruleid'] = '请输入类别名称';
+                } else if($v['name'] == $name)
+                {
+                    $msg['ruleid'] = '此类别名称已存在！';
+                }
+            }
+
+            if (empty($msg)) {
+                $data = array(
+                    'ruleid' => $ruleid,
+                    'name' => $name,
+                );
+
+                if (db::insert('t_family', $data)) {
+                    $success = true;
+                } else {
+                    $error = '提交失败';
+                }
+            }
+
+        }
+
+
+        web::layout('/admin/views/layout/admin');
+        web::render('/guiding/views/classadd', array(
+            'success' => $success,
+            'error' => $error,
+            'msg' => $msg,
+            'data' => array(
+                'ruleid' => $ruleid,
+                'name' => $name,
+            ),
+            'types' => $types
+        ));
+
+    }
+
+
+
+    public static function classedit()
+    {
+        $ruleid = '';
+        $name = '';
+        $success ='';
+        $error = '';
+        $msg = array();
+        $types = array();
+        $id = web::request('id','');
+
+
+            $info = db::first('select `ruleid`,`name` from `t_family` where `id`=\''.$id.'\'');
+
+            if (!empty($info))
+            {
+                $ruleid = $info['ruleid'];
+                $name = $info['name'];
+            }else {
+                $msg['title'] = '查询有误，请核实数据';
+            }
+
+        if (!empty($_POST))
+        {
+            $name = web::post('name', '');
+            $ruleid = intval(web::post('ruleid', 0));
+
+
+            if ($ruleid == '') {
+                $msg['ruleid'] = '请输入类别编号';
+            }
+
+            if ($name == '') {
+                $msg['name'] = '请输入类别名称';
+            }
+
+
+            if (empty($msg))
+            {
+                $data = array(
+                    'ruleid' => $ruleid,
+                    'name' => $name,
+                );
+
+                if (db::update('t_family',$data,'`id`=\''.$id.'\'')) {
+                    $success = true;
+                }else {
+                    $error = '提交失败';
+                }
+            }
+        }
+
+        web::layout('/admin/views/layout/admin');
+        web::render('/guiding/views/classedit', array(
+            'id' => $id,
+            'success' => $success,
+            'error' => $error,
+            'msg' => $msg,
+            'data' => array(
+                'ruleid' => $ruleid,
+                'name' => $name,
+            ),
+        ));
+    }
+
+    public static function classdel()
+    {
+        $id = intval(web::post('id', 0));
+        $res = array(
+            'status' => 1,
+            'msg' => '',
+            'id' => 0
+        );
+
+        if (db::delete('t_family', '`id`=\'' . $id . '\'')) {
+            $res['status'] = 0;
+            $res['id'] = $id;
+        } else {
+            $res['msg'] = '删除失败';
+        }
+        echo json_encode($res);
+    }
+
+
 }
