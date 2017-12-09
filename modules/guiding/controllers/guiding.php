@@ -133,7 +133,7 @@ class guiding
                 $msg['project'] = '请输入项目名称';
             }else if (web::strlen($project) > 240)
             {
-                $msg['project'] = '项目名称不能超过100个汉字';
+                $msg['project'] = '长度太长';
 
             }
 
@@ -175,8 +175,6 @@ class guiding
             }
         }
 
-
-
             web::layout('/admin/views/layout/admin');
             web::render('/guiding/views/edit', array(
                 'id' => $id,
@@ -196,6 +194,101 @@ class guiding
             ));
 
         }
+
+
+    public static function ruleadd()
+    {
+        $msg = array();
+        $success = false;
+        $error = '';
+        $project = '';
+        $family = '';
+        $objects = '';
+        $val = '';
+        $comments = '';
+        $types = array();
+
+        $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
+        foreach ($types_data as $v) {
+            $types[$v['ruleid']] = $v['name'];
+        }
+
+        if (!empty($_POST)) {
+            $project = web::post('project', '');
+            $family = web::post('family', '');
+            $objects = web::post('objects', '');
+            $val = web::post('val', '');
+            $comments = web::post('comments', '');
+
+            if ($project == '') {
+                $msg['project'] = '请输入项目名称';
+            } else if (web::strlen($project) > 240) {
+                $msg['project'] = '项目名称不能超过100个汉字';
+
+            }
+
+            if ($objects != '集体' && $objects != '个人') {
+                $msg['objects'] = '请输入集体或个人';
+            }
+
+            if (web::strlen($comments) > 1000) {
+                $msg['content'] = '备注内容太长';
+            }
+
+            $getid = db::first('select `ruleid` from `t_family` where `name`=\'' . $family . '\'');
+
+            if (empty($msg)) {
+                $data = array(
+                    'project' => $project,
+                    'family' => $family,
+                    'ruleid' => $getid['ruleid'],
+                    'objects' => $objects,
+                    'val' => $val,
+                    'comments' => $comments,
+                );
+
+                if (db::insert('t_rule', $data)) {
+                    $success = true;
+                } else {
+                    $error = '提交失败';
+                }
+            }
+
+        }
+
+        web::layout('/admin/views/layout/admin');
+        web::render('/guiding/views/ruleadd', array(
+            'success' => $success,
+            'error' => $error,
+            'msg' => $msg,
+            'data' => array(
+                'project' => $project,
+                'family' => $family,
+                'comments' => stripslashes($comments),
+                'objects' => $objects,
+                'val' => $val
+            ),
+            'types' => $types
+        ));
+    }
+
+    public static function ruledel()
+    {
+        $id = intval(web::post('id', 0));
+        $res = array(
+            'status' => 1,
+            'msg' => '',
+            'id' => 0
+        );
+
+        if (db::delete('t_rule', '`id`=\'' . $id . '\'')) {
+            $res['status'] = 0;
+            $res['id'] = $id;
+        } else {
+            $res['msg'] = '删除失败';
+        }
+        echo json_encode($res);
+    }
 
 
 }

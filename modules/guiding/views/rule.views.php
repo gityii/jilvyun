@@ -1,10 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+<body>
+<script src="/static/assets/js/vendor/jquery.min.js"></script>
+<script src="/static/admin/js/layer/layer.js"></script>
 <div class="col-md-9 col-md-push-3" role="main">
 
     <div class="page-header">
         <h2>规则设置</h2>
     </div>
     <p>
-        <a class="btn btn-lg btn-success" href="" role="button">
+        <a class="btn btn-lg btn-success" href="/guiding/guiding/ruleadd" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加规则
         </a>
         <a class="btn btn-lg btn-success" href="" role="button">
@@ -52,22 +65,21 @@
                     <td class="text-center"><?php echo $v['comments'];?></td>
                     <td class="text-center">
                         <a class="btn btn-primary" href="/guiding/guiding/edit?id=<?php echo $v['id'];?>">编辑</a>
-                        <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['objects'];?>')">删除</a>
+                        <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['project'];?>')">删除</a>
                     </td>
                 </tr>
             <?php }?>
             </tbody>
         </table>
     </div>
-    <?php echo \base\controllers\page::html('/guiding/guiding/rule?'.($ruleid==''?'':'id='.$ruleid.'&'));?>
 </div>
 </div>
 <script type="text/javascript">
     function del(id,title){
-        layer.confirm('确认要删除“'+title+'”？',{icon:3,title:'删除确认'},function(){
+        layer.confirm('确认要删除"'+title+'"?',{icon:3,title:'删除确认'},function(){
             $.ajax({
                 type:"post",
-                url:"del",
+                url:"ruledel",
                 data:{'id':id},
                 dataType:'json',
                 async:false,
@@ -84,3 +96,5 @@
     }
 </script>
 
+</body>
+</html>

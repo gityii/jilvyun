@@ -16,12 +16,12 @@
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
             <li role="presentation" class="active"><a href="/guiding/guiding/rule">规则列表</a></li>
-            <li role="presentation"><a>规则编辑</a></li>
+            <li role="presentation"><a>规则添加</a></li>
         </ul>
     </div>
 
     <div>
-        <form action="/guiding/guiding/edit?id=<?php echo $id;?>" method="post" class="form-horizontal">
+        <form action="/guiding/guiding/ruleadd" method="post" class="form-horizontal">
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">项目 :</label>
                 <div class="col-xs-3">
@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">分�?:</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">分值 :</label>
                 <div class="col-xs-3">
                     <input type="text" name="val" class="form-control" id="exampleInputName2" value="<?php echo $data['val'];?>">
                     <?php if (isset($msg['val'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['val'].'</span>';}?>
@@ -58,10 +58,10 @@
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">所属类别：</label>
                 <div class=" col-xs-3">
                     <select name="family" id="" class="form-control">
-                <?php foreach ($types as $k=>$v){?>
-                            <option value="<?php echo $v;?>"<?php echo $data['ruleid']==$k?' selected="selected"':'';?>><?php echo $v;?></option>
-                <?php }?>
-                </select>
+                        <?php foreach ($types as $k=>$v){?>
+                            <option value="<?php echo $v;?>"<?php echo $data['family']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
+                        <?php }?>
+                    </select>
                 </div>
             </div>
             <div class="col-md-3" style="margin-left:7%">
@@ -78,7 +78,7 @@
 
 <script type="text/javascript">
     <?php if ($success){?>
-    layer.msg('修改成功',{icon:1,time:1500},function(){
+    layer.msg('添加成功',{icon:1,time:1500},function(){
         window.location.href="/guiding/guiding/rule";
     });
     <?php }?>
