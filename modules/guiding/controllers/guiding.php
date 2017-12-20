@@ -22,7 +22,7 @@ class guiding
         $where = '';
         if ($ruleid!='')
         {
-            $where = ' where `ruleid`=\''.$ruleid.'\'';;
+            $where = ' where `ruleid`=\''.$ruleid.'\'';
         }
         $per = 20;
         $countdata = db::first('select count(*) from `t_rule`'.$where);
@@ -51,10 +51,10 @@ class guiding
             $where2 = ' where l.`type`=\''.$type.'\'';
         }
         $per = 20;
-        $countdata = db::first('select count(*) from `t_articlec`'.$where1);
+        $countdata = db::first('select count(*) from `t_user`');
         $articlecount = $countdata['count(*)'];
         page::init(0,$articlecount,$per);
-        $list = db::query_get('select * from `t_person`');
+        $list = db::query_get('select * from `t_user`');
         $types = db::query_get('select `typeid`,`name` from `t_articlec_type` where `name`!=\'\' order by `order` asc');
         web::layout('admin/views/layout/admin');
         web::render('guiding/views/person',array(

@@ -12,47 +12,41 @@
         </a>
     </p>
 
+
 <div>
-    <form action="" mathod="get" class="form-horizontal">
-            <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">人员类型：</label>
-                <div class=" col-xs-3">
-		        <select name="type" id="" class="form-control">
-		        	<option value="">不选择</option>
-                    <?php foreach ($types as $v){
-                        echo '<option value="'.$v['typeid'].'"'.($v['typeid']==$type?' selected="selected"':'').'>'.$v['name'].'</option>';
-                    }?>
-		        </select>
-                </div>
-                <button type="submit" class="btn btn-default btn-lg btn-info">搜索</button>
-            </div>
+
+    <form class="form-search">
+    <div class="input-group  col-xs-6 col-md-3" style="float:right; margin:10px;">
+        <input type="text" class="form-control"placeholder="请输入字段名" / >
+        <span class="input-group-btn">
+               <button  type="button" class="btn btn-info btn-search">查找</button>
+            </span>
+    </div>
     </form>
 
     <div class="table-wrap">
         <table class="table table-bordered table-responsive table-striped table-hover" cellspacing="0">
             <thead>
             <tr>
-                <th class="text-center">编号</th>
-                <th class="text-center">项目</th>
-                <th class="text-center">分值</th>
-                <th class="text-center">类别</th>
-                <th class="text-center">对象</th>
-                <th class="text-center">备注</th>
+                <th class="text-center">用户类型</th>
+                <th class="text-center">用户姓名</th>
+                <th class="text-center">用户学号</th>
+                <th class="text-center">检查部门</th>
+                <th class="text-center">录入权限</th>
                 <th class="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($list as $v){?>
                 <tr id="tr_<?php echo $v['id'];?>">
-                    <td class="text-center"><?php echo $v['id'];?></td>
-                    <td class="text-center"><?php echo $v['project'];?></td>
-                    <td class="text-center"><?php echo $v['val'];?></td>
-                    <td class="text-center"><?php echo $v['family'];?></td>
-                    <td class="text-center"><?php echo $v['objects'];?></td>
-                    <td class="text-center"><?php echo $v['comments'];?></td>
+                    <td class="text-center"><?php echo $v['type'];?></td>
+                    <td class="text-center"><?php echo $v['name'];?></td>
+                    <td class="text-center"><?php echo $v['uid'];?></td>
+                    <td class="text-center"><?php echo $v['dept'];?></td>
+                    <td class="text-center"><?php echo $v['right'];?></td>
                     <td class="text-center">
                         <a class="btn btn-primary" href="/guiding/guiding/edit?id=<?php echo $v['id'];?>">编辑</a>
-                        <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['objects'];?>')">删除</a>
+                        <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['name'];?>')">删除</a>
                     </td>
                 </tr>
             <?php }?>
