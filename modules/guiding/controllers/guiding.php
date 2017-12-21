@@ -40,32 +40,6 @@ class guiding
     }
 
 
-    public static function person()
-    {
-        $type ='';
-        $where1 = '';
-        $where2 = '';
-        if ($type!='')
-        {
-            $where1 = ' where `type`=\''.$type.'\'';
-            $where2 = ' where l.`type`=\''.$type.'\'';
-        }
-        $per = 20;
-        $countdata = db::first('select count(*) from `t_user`');
-        $articlecount = $countdata['count(*)'];
-        page::init(0,$articlecount,$per);
-        $list = db::query_get('select * from `t_user`');
-        $types = db::query_get('select `typeid`,`name` from `t_articlec_type` where `name`!=\'\' order by `order` asc');
-        web::layout('admin/views/layout/admin');
-        web::render('guiding/views/person',array(
-            'list'=>$list,
-            'types'=>$types,
-            'type'=>$type
-        ));
-
-    }
-
-
     public static function edu()
     {
 
@@ -81,9 +55,7 @@ class guiding
 
     public static function edit()
     {
-        $ctype = web::request('ctype','');
         $id = web::request('id','');
-
         $msg = array();
         $success = false;
         $error = '';
@@ -189,7 +161,6 @@ class guiding
                     'objects' => $objects,
                     'val' => $val
                 ),
-                'ctype' => $ctype,
                 'types' => $types
             ));
 

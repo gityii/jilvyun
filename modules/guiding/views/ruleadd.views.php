@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" action="" >
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">备注 :</label>
                 <div class="col-xs-3">
                     <input type="text" name="comments" class="form-control" id="exampleInputName2" value="<?php echo $data['comments'];?>">
@@ -64,6 +64,7 @@
                     </select>
                 </div>
             </div>
+
             <div class="col-md-3" style="margin-left:7%">
                 <button type="submit" class="btn btn-info  btn-block">提交</button>
             </div>
