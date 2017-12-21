@@ -105,6 +105,74 @@ class person
     }
 
 
+    public static function deptedit()
+    {
+        $id = web::request('id','');
+        $deptid = '';
+        $name = '';
+        $success ='';
+        $error = '';
+        $msg = array();
+
+        if ($id>0)
+        {
+            $info = db::first('select `name`,`deptid`  from `t_dept` where `id`=\''.$id.'\'');
+
+            if (!empty($info))
+            {
+                $name= $info['name'];
+                $deptid = $info['deptid'];
+            }else {
+                $msg['title'] = '查询有误，请核实数据';
+            }
+        }else{
+            $msg['title'] = '请求数据有误';
+        }
+
+
+        if (!empty($_POST))
+        {
+            $deptid = intval(web::post('deptid', 0));
+            $name = web::post('name', '');
+
+            if ($deptid == '') {
+                $msg['uid'] = '请输入学号';
+            }
+
+
+            if ($name == '') {
+                $msg['dept'] = '请输入部门';
+            }
+
+            if (empty($msg)) {
+                $data = array(
+                    'deptid' => $deptid,
+                    'name' => $name,
+                );
+
+                if ($id == 0) {
+                    $error = '参数错误';
+                } else if (db::update('t_dept', $data, '`id`=\'' . $id . '\'')) {
+                    $success = true;
+                    $error = '';
+                } else {
+                    $error = '保存失败，请重试';
+                }
+            }
+        }
+
+        web::layout('/admin/views/layout/admin');
+        web::render('/guiding/views/deptedit', array(
+            'id' => $id,
+            'success' => $success,
+            'error' => $error,
+            'msg' => $msg,
+            'data' => array(
+                'deptid' => $deptid,
+                'name' => $name,
+            )));
+    }
+
     public static function deptlist()
     {
         $per = 10;
@@ -116,6 +184,24 @@ class person
         web::render('/guiding/views/deptlist',array(
             'list'=>$list,
         ));
+    }
+
+    public static function deptdel()
+    {
+        $id = intval(web::post('id', 0));
+        $res = array(
+            'status' => 1,
+            'msg' => '',
+            'id' => 0
+        );
+
+        if (db::delete('t_dept', '`id`=\'' . $id . '\'')) {
+            $res['status'] = 0;
+            $res['id'] = $id;
+        } else {
+            $res['msg'] = '删除失败';
+        }
+        echo json_encode($res);
     }
 
 

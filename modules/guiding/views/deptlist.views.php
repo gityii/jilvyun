@@ -42,7 +42,7 @@
                         <td class="text-center"><?php echo $v['name'];?></td>
                         <td class="text-center"><?php echo $v['deptid'];?></td>
                         <td class="text-center">
-                            <a class="btn btn-primary" href="/guiding/person/deptdit?id=<?php echo $v['id'];?>">编辑</a>
+                            <a class="btn btn-primary" href="/guiding/person/deptedit?id=<?php echo $v['id'];?>">编辑</a>
                             <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['name'];?>')">删除</a>
                         </td>
                     </tr>
