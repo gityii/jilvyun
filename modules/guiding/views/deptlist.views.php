@@ -17,11 +17,11 @@
         <h2>规则类别列表</h2>
     </div>
     <p>
-        <a class="btn btn-lg btn-success" href="/guiding/person/deptadd" role="button">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加部门
-        </a>
         <a class="btn btn-lg btn-success" href="/guiding/person/person" role="button">
             <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 人员列表
+        </a>
+        <a class="btn btn-lg btn-success" href="/guiding/person/deptadd" role="button">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加部门
         </a>
     </p>
 
@@ -40,9 +40,9 @@
                 <?php foreach ($list as $v){?>
                     <tr id="tr_<?php echo $v['id'];?>">
                         <td class="text-center"><?php echo $v['name'];?></td>
-                        <td class="text-center"><?php echo $v['ruleid'];?></td>
+                        <td class="text-center"><?php echo $v['deptid'];?></td>
                         <td class="text-center">
-                            <a class="btn btn-primary" href="/guiding/guiding/classedit?id=<?php echo $v['id'];?>">编辑</a>
+                            <a class="btn btn-primary" href="/guiding/person/deptdit?id=<?php echo $v['id'];?>">编辑</a>
                             <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['name'];?>')">删除</a>
                         </td>
                     </tr>
@@ -57,7 +57,7 @@
         layer.confirm('确认要删除类别"'+title+'"?',{icon:3,title:'删除确认'},function(){
             $.ajax({
                 type:"post",
-                url:"classdel",
+                url:"deptdel",
                 data:{'id':id},
                 dataType:'json',
                 async:false,

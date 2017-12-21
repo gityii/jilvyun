@@ -53,7 +53,6 @@ class person
             $deptid = intval(web::post('deptid', 0));
             $name = web::post('name', '');
 
-
             $types_data = db::query_get('select `deptid`,`name` from `t_dept` where `name`!=\'\'');
 
             foreach ($types_data as $v) {
@@ -82,7 +81,7 @@ class person
                     'name' => $name,
                 );
 
-                if (db::insert('t_family', $data)) {
+                if (db::insert('t_dept', $data)) {
                     $success = true;
                 } else {
                     $error = '提交失败';

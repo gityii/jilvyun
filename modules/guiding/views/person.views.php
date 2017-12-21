@@ -20,7 +20,7 @@
         <a class="btn btn-lg btn-success" href="/guiding/person/personadd" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加人员
         </a>
-        <a class="btn btn-lg btn-success" href="/guiding/person/persontype" role="button">
+        <a class="btn btn-lg btn-success" href="/guiding/person/deptlist" role="button">
             <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 部门列表
         </a>
     </p>
