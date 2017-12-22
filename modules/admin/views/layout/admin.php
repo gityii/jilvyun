@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/dashboard.css" rel="stylesheet">
-
+    <link href="/static/css/home.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/static/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/static/assets/js/ie-emulation-modes-warning.js"></script>
@@ -57,11 +57,29 @@
           box-shadow: -10px 8px 6px #059c;
       }
 
+      p.fontsize{
+          font-family:'幼圆';
+          font-size:22px;
+          text-align:center;
+      }
+
+      p.fontsize1{
+          font-family:'幼圆';
+          font-size:28px;
+          text-align:center;
+      }
+
       #left-sidebar {
 
           margin: 0 auto;
           padding: 20px;
       }
+
+      .mark{
+          background-color: inherit;
+          color: white
+      }
+
 
       #left-sidebar ul li{
           text-align:left;
@@ -92,56 +110,55 @@
   </style>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class=" navbar-default  navbar-fixed-top" style="background-color: #0066CC;">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">TEST</a>
+          <a class="navbar-brand"><mark class="mark">TEST</mark></a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+
+          <div>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin/views/index">首页</a></li>
-            <li><a href="">个人设置</a></li>
+              <li style="color:white"><a href="/admin/views/index"><mark class="mark">首页</mark></a></li>
+            <li><a href=""><mark class="mark">个人设置</mark></a></li>
             <li>
-              <a href="javascript:;">
-                  用户(<?php echo \base\controllers\web::session('user_name');?>)
+              <a href="javascript:;"><mark class="mark">用户
+                  (<?php echo \base\controllers\web::session('user_name');?>)</mark>
               </a></li>
-            <li><a href="/admin/admin/logout">退出</a></li>
+            <li><a href="/admin/admin/logout"><mark class="mark">退出</mark></a></li>
           </ul>
         </div>
+
       </div>
     </nav>
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a>导 航 栏 <span class="sr-only">(current)</span></a></li>
-
+          <ul class="nav">
+            <!--
+            <li class="active"><a>导 航 栏 <span class="sr-only"  style="background-color: #FF9966">(current)</span></a></li>
+            -->
+              <p class ="fontsize1" style="background-color: #FF9966">导 航 栏</p>
+              <p></p>
               <li class="dropdown">
-                  <a  class="dropdown-toggle" data-toggle="dropdown">
+                  <p  class="dropdown-toggle fontsize" data-toggle="dropdown">
                       纪 律 规 定
                       <b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;" >
+                  </p>
+                  <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
                       <li><a  href="/guiding/guiding/rule">规 则 设 置</a></li>
                       <li><a  href="/guiding/person/person">人 员 设 置</a></li>
                       <li><a  href="">纪 律 教 育</a></li>
                   </ul>
 
               </li>
-
+              <p></p>
               <li class="dropdown">
-                  <a  class="dropdown-toggle" data-toggle="dropdown">
+                  <p  class="dropdown-toggle fontsize" data-toggle="dropdown">
                       检 查 录 入
                       <b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;" >
+                  </p>
+                  <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
                       <li><a  href="">移 动 录 入</a></li>
                       <li><a  href="">网 页 录 入</a></li>
                       <li><a  href="">批 量 导 入</a></li>
@@ -150,13 +167,13 @@
                   </ul>
 
               </li>
-
+              <p></p>
               <li class="dropdown">
-                  <a  class="dropdown-toggle" data-toggle="dropdown">
+                  <p  class="dropdown-toggle fontsize" data-toggle="dropdown">
                       评 比 分 析
                       <b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;" >
+                  </p>
+                  <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
                       <li><a  href="">日 报 周 报</a></li>
                       <li><a  href="">文明班评比</a></li>
                   </ul>
