@@ -19,7 +19,6 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/dashboard.css" rel="stylesheet">
-    <link href="/static/css/home.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/static/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/static/assets/js/ie-emulation-modes-warning.js"></script>
@@ -118,7 +117,7 @@
 
           <div>
           <ul class="nav navbar-nav navbar-right">
-              <li style="color:white"><a href="/admin/views/index"><mark class="mark">首页</mark></a></li>
+              <li style="color:white"><a href="/admin/views/home"><mark class="mark">首页</mark></a></li>
             <li><a href=""><mark class="mark">个人设置</mark></a></li>
             <li>
               <a href="javascript:;"><mark class="mark">用户

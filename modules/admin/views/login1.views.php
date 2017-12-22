@@ -31,21 +31,38 @@
     <![endif]-->
   </head>
 
+  <style>
+  .mark{
+  background-color: inherit;
+  color: white
+  }
+  </style>
+
   <body>
 
-    <div class="blog-masthead">
-      <div class="container">
-        <nav class="blog-nav">
-          <a class="blog-nav-item active" href="#">Home</a>
-          <a class="blog-nav-item" href="#">New features</a>
-          <a class="blog-nav-item" href="#">Press</a>
-          <a class="blog-nav-item" href="#">New hires</a>
-          <a class="blog-nav-item" href="#">About</a>
-        </nav>
-      </div>
-    </div>
 
     <div class="container">
+
+        <nav class=" navbar-default  navbar-fixed-top" style="background-color: #0066CC;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand"><mark class="mark">TEST</mark></a>
+                </div>
+
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li style="color:white"><a href="/admin/views/index"><mark class="mark">首页</mark></a></li>
+                        <li><a href=""><mark class="mark">个人设置</mark></a></li>
+                        <li>
+                            <a href="javascript:;"><mark class="mark">用户
+                                    (<?php echo \base\controllers\web::session('user_name');?>)</mark>
+                            </a></li>
+                        <li><a href="/admin/admin/logout"><mark class="mark">退出</mark></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
 
       <div class="blog-header">
         <h1 class="blog-title">The Bootstrap Blog</h1>

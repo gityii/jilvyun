@@ -37,7 +37,7 @@ class admin{
         }
 
       return  web::render(
-            'admin/views/login',
+            'admin/views/home',
             array('msg' => $errmsg)
         );
 
@@ -50,8 +50,15 @@ class admin{
         web::session('user_name','',false);
         web::session('user_right','',false);
         session_write_close();
-        header('location:/admin/admin/login');
+        header('location:/admin/admin/home');
 
+    }
+
+    public static function home(){
+
+        return  web::render(
+            'admin/views/home'
+        );
     }
 
 }
