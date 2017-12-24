@@ -54,12 +54,7 @@ class admin{
 
     }
 
-    public static function home(){
 
-        return  web::render(
-            'admin/views/home'
-        );
-    }
 
 }
 

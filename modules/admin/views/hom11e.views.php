@@ -64,7 +64,7 @@
 
                 <div>
                     <ul class="nav navbar-nav navbar-right">
-                        <li style="color:white"><a href="/admin/views/index"><mark class="mark">首页</mark></a></li>
+                        <li style="color:white"><a href="/admin/admin/home"><mark class="mark">首页</mark></a></li>
                         <li><a href=""><mark class="mark">个人设置</mark></a></li>
                         <li>
                             <a href="javascript:;"><mark class="mark">用户
@@ -78,64 +78,73 @@
         </nav>
 
         <header class="toper">
-            <p>&copy; 2016 Company, Inc.</p>
+            <p>欢迎！信阳市第二实验小学</p>
         </header>
         <div class="row">
         <div class="col-sm-8 blog-main">
-      <div class="jumbotron">
-        <h1>Jumbotron heading</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-      </div>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <a href=""><img src="/static/images/DSCF3243.JPG" alt="First slide"></a>
+                        <div class="carousel-caption">标题 1</div>
+                    </div>
+                    <div class="item">
+                        <a href=""><img src="/static/images/DSCF3252.JPG" alt="Second slide"></a>
+                        <div class="carousel-caption">标题 2</div>
+                    </div>
+                    <div class="item">
+                        <a href=""><img src="/static/images/DSCF3253.JPG" alt="Third slide"></a>
+                        <div class="carousel-caption">标题 3</div>
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#myCarousel"
+                   data-slide="prev">&lsaquo;
+                </a>
+                <a class="carousel-control right" href="#myCarousel"
+                   data-slide="next">&rsaquo;
+                </a>
+            </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
-          <h4>Subheading</h4>
+          <h4>头条1</h4>
           <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
 
         <div class="col-lg-6">
-          <h4>Subheading</h4>
+          <h4>头条2</h4>
           <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
       </div>
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
-                <h4>About</h4>
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <h5>- - 关于纪律云 - -</h5>
+                <p>纪律云系统是一个为方便学校管理使用而开发的系统.</p>
             </div>
+            <div><p></p></div>
             <div class="sidebar-module">
-                <h4>Archives</h4>
+                <h4>重要通知</h4>
                 <ol class="list-unstyled">
-                    <li><a href="#">March 2014</a></li>
-                    <li><a href="#">February 2014</a></li>
-                    <li><a href="#">January 2014</a></li>
-                    <li><a href="#">December 2013</a></li>
-                    <li><a href="#">November 2013</a></li>
-                    <li><a href="#">October 2013</a></li>
-                    <li><a href="#">September 2013</a></li>
-                    <li><a href="#">August 2013</a></li>
-                    <li><a href="#">July 2013</a></li>
-                    <li><a href="#">June 2013</a></li>
-                    <li><a href="#">May 2013</a></li>
-                    <li><a href="#">April 2013</a></li>
+                    <li><a href="#">二月   2018</a></li>
+                    <li><a href="#">一月   2018</a></li>
+                    <li><a href="#">十二月 2017</a></li>
+                    <li><a href="#">十一月 2017</a></li>
+                    <li><a href="#">十月   2017</a></li>
                 </ol>
             </div>
             <div class="sidebar-module">
-                <h4>Elsewhere</h4>
+                <h4>友情连接</h4>
                 <ol class="list-unstyled">
                     <li><a href="#">GitHub</a></li>
                     <li><a href="#">Twitter</a></li>
@@ -146,7 +155,7 @@
 
         </div>
         <footer class="footer">
-            <p>&copy; 2016 Company, Inc.</p>
+            <p>&copy; 2017 Company, Inc.</p>
         </footer>
     </div> <!-- /container -->
 

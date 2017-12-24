@@ -117,7 +117,7 @@
 
           <div>
           <ul class="nav navbar-nav navbar-right">
-              <li style="color:white"><a href="/admin/views/home"><mark class="mark">首页</mark></a></li>
+              <li style="color:white"><a href="/admin/admin/home"><mark class="mark">首页</mark></a></li>
             <li><a href=""><mark class="mark">个人设置</mark></a></li>
             <li>
               <a href="javascript:;"><mark class="mark">用户
@@ -139,6 +139,18 @@
             -->
               <p class ="fontsize1" style="background-color: #FF9966">导 航 栏</p>
               <p></p>
+              <li class="dropdown">
+                  <p  class="dropdown-toggle fontsize" data-toggle="dropdown">
+                      首 页 显 示
+                      <b class="caret"></b>
+                  </p>
+                  <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
+                      <li><a  href="/home/home/rule">轮播图设置</a></li>
+                      <li><a  href="/home/home/topic">头 条 设 置</a></li>
+                      <li><a  href="/home/home/notice">通 知 设 置</a></li>
+                  </ul>
+
+              </li>
               <li class="dropdown">
                   <p  class="dropdown-toggle fontsize" data-toggle="dropdown">
                       纪 律 规 定
