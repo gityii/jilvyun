@@ -15,7 +15,7 @@ class file{
 	public static function upload($name,$types='',$size=0,$position=''){
         $msg = 0;
         if ($position==''){
-        	$position = 'data/upload/imgge/'.date('Ymd',time());
+        	$position = 'static/upload/images/'.date('Ymd',time());
         }
         $filename = '';
         if (isset($_FILES[$name]["name"]) && $_FILES[$name]["name"]!=''){

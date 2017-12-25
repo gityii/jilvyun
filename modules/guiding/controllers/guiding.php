@@ -411,6 +411,7 @@ class guiding
         ));
     }
 
+
     public static function classdel()
     {
         $id = intval(web::post('id', 0));

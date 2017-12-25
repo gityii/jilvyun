@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 </head>
+
 <body>
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
@@ -15,10 +16,8 @@
 <div class="col-md-9 col-md-push-3" role="main">
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
-        <!--    <li role="presentation" class="active"><a href="/home/home/notice">通知列表</a></li>-->
-            <a class="btn btn-lg btn-success" href="/home/home/notice" role="button">
-                <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 通知列表
-            </a>
+            <li role="presentation" class="active"><a href="/guiding/guiding/rule">轮播图列表</a></li>
+            <li role="presentation"><a>添加</a></li>
         </ul>
     </div>
 
@@ -32,6 +31,25 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="" class="">图片：</label>
+                <span class=".form-input-box">
+                    <span class=".form-input-box disabled">
+                        <input type="text" accept="image/jpg,image/jpeg,image/png,image/gif" id="file-input" disabled="" />
+                    </span>
+                    <label for="fileupload" class="fileupload">
+                        <input type="file" name="img" id="fileupload" onchange="document.getElementById('file-input').value=this.value" accept="image/jpg,image/jpeg,image/png,image/gif" value="" />选择文件
+                    </label>
+	            </span>
+            </div>
+            <?php if ($data['img']!=''){?>
+                <div class="form-group">
+                    <label for="" class=""></label>
+                    <span class="">
+	        <img src="<?php echo $data['img'];?>" style="width:100px;" />
+	    </span>
+                </div>
+            <?php }?>
 
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label" style="text-align:left; width: 8%">正文：</label>
@@ -46,8 +64,6 @@
             <div class="col-md-3" style="margin-left:7%">
                 <button type="submit" class="btn btn-info  btn-block">提交</button>
             </div>
-
-
         </form>
 
     </div>
@@ -58,7 +74,7 @@
 <script type="text/javascript">
     <?php if ($success){?>
     layer.msg('添加成功',{icon:1,time:1500},function(){
-        window.location.href="/home/home/notice";
+        window.location.href="/guiding/guiding/rule";
     });
     <?php }?>
     <?php if ($error!=''){?>

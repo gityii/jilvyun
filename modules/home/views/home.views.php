@@ -39,7 +39,10 @@
     }
 
     .footer {
-        padding-top: 19px;
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:100px;
         color: #777;
         border-top: 1px solid #e5e5e5;
     }
@@ -78,7 +81,7 @@
         </nav>
 
         <header class="toper">
-            <p>欢迎！信阳市第二实验小学</p>
+            <p></p>
         </header>
         <div class="row">
         <div class="col-sm-8 blog-main">
@@ -113,7 +116,7 @@
                 </a>
             </div>
 
-      <div class="row marketing">
+      <div class="row marketing" style="padding-top: 20px;">
         <div class="col-lg-6">
           <h4>Subheading</h4>
           <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
@@ -127,17 +130,20 @@
         </div>
       </div>
         </div>
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-sm-3 blog-sidebar" style="margin-left:3%;width: 30%">
             <div class="sidebar-module sidebar-module-inset">
                 <h5>- - 关于纪律云 - -</h5>
-                <p>纪律云系统是一个为方便学校管理使用而开发的系统.</p>
+                <p>纪律云系统是一个为方便学校管理和评估而开发的系统</p>
             </div>
             <div><p></p></div>
             <div class="sidebar-module">
                 <h4>重要通知</h4>
                 <ol class="list-unstyled">
                     <?php foreach ($list as $k=>$v){?>
-                        <li><a target="_blank" href="/site/info/id/<?php echo $k;?>"><?php echo $v['title'];?></a></li>
+                        <li>
+                            <div><a target="_blank" href="/home/home/info?id=<?php echo $v['id'];?>"><?php echo $v['title'].' ['.date('Y-m-d',$v['date']).']';?></a></div>
+                            <div><p></p></div>
+                        </li>
                     <?php }?>
                     <!--
                     <li><a href="#">二月   2018</a></li>
@@ -159,12 +165,12 @@
         </div><!-- /.blog-sidebar -->
 
         </div>
-        <footer class="footer">
-            <p>&copy; 2017 Company, Inc.</p>
-        </footer>
+
     </div> <!-- /container -->
 
-
+    <footer class="footer">
+        <p>&copy; 2017 Company, Inc.</p>
+    </footer>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/assets/js/vendor/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/static/assets/js/vendor/jquery.min.js"><\/script>')</script>
