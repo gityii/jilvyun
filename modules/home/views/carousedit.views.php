@@ -22,12 +22,12 @@
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
             <li role="presentation" class="active"><a href="/home/home/carousel">轮播图列表</a></li>
-            <li role="presentation"><a>添加</a></li>
+            <li role="presentation"><a>编辑</a></li>
         </ul>
     </div>
 
     <div>
-        <form action="/home/home/carouseladd" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <form action="/home/home/carousedit?id=<?php echo $id;?>" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">标题 :</label>
                 <div class="col-xs-3">
@@ -78,7 +78,7 @@
 
 <script type="text/javascript">
     <?php if ($success){?>
-    layer.msg('添加成功',{icon:1,time:1500},function(){
+    layer.msg('修改成功',{icon:1,time:1500},function(){
         window.location.href="/home/home/carousel";
     });
     <?php }?>

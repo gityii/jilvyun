@@ -67,7 +67,7 @@
 
                 <div>
                     <ul class="nav navbar-nav navbar-right">
-                        <li style="color:white"><a href="/admin/admin/home"><mark class="mark">首页</mark></a></li>
+                        <li style="color:white"><a href="/home/home/homepage"><mark class="mark">首页</mark></a></li>
                         <li><a href=""><mark class="mark">个人设置</mark></a></li>
                         <li>
                             <a href="javascript:;"><mark class="mark">用户
@@ -83,86 +83,78 @@
         <header class="toper">
             <p></p>
         </header>
-        <div class="row">
-        <div class="col-sm-8 blog-main">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-                <!-- 轮播（Carousel）指标 -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                <!-- 轮播（Carousel）项目 -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <a href=""><img src="/static/images/DSCF3243.JPG" alt="First slide"></a>
-                        <div class="carousel-caption">标题 1</div>
+        <div class="row" style="width:1400px">
+            <div class="col-sm-8 blog-main">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- 轮播（Carousel）项目 -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <a href="/home/home/carousinfo?id=<?php echo $view0['id'];?>"><img src="<?php echo $view0['img'];?>" alt="First slide"></a>
+                            <div class="carousel-caption"><?php echo $view0['title'];?></div>
+                        </div>
+                        <div class="item">
+                            <a href="/home/home/carousinfo?id=<?php echo $view1['id'];?>"><img src="<?php echo $view1['img'];?>" alt="Second slide"></a>
+                            <div class="carousel-caption"><?php echo $view1['title'];?></div>
+                        </div>
+                        <div class="item">
+                            <a href="/home/home/carousinfo?id=<?php echo $view2['id'];?>"><img src="<?php echo $view2['img'];?>" alt="Third slide"></a>
+                            <div class="carousel-caption"><?php echo $view2['title'];?></div>
+                        </div>
                     </div>
-                    <div class="item">
-                        <a href=""><img src="/static/images/DSCF3252.JPG" alt="Second slide"></a>
-                        <div class="carousel-caption">标题 2</div>
+                    <!-- 轮播（Carousel）导航 -->
+                    <a class="carousel-control left" href="#myCarousel"
+                       data-slide="prev">&lsaquo;
+                    </a>
+                    <a class="carousel-control right" href="#myCarousel"
+                       data-slide="next">&rsaquo;
+                    </a>
+                </div>
+
+                <div class="row marketing" style="padding-top: 20px;">
+                    <div class="col-lg-6">
+                      <h4>Subheading</h4>
+                      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
                     </div>
-                    <div class="item">
-                        <a href=""><img src="/static/images/DSCF3253.JPG" alt="Third slide"></a>
-                        <div class="carousel-caption">标题 3</div>
+
+                    <div class="col-lg-6">
+                      <h4>Subheading</h4>
+                      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
                     </div>
                 </div>
-                <!-- 轮播（Carousel）导航 -->
-                <a class="carousel-control left" href="#myCarousel"
-                   data-slide="prev">&lsaquo;
-                </a>
-                <a class="carousel-control right" href="#myCarousel"
-                   data-slide="next">&rsaquo;
-                </a>
             </div>
 
-      <div class="row marketing" style="padding-top: 20px;">
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-        </div>
-      </div>
-        </div>
-        <div class="col-sm-3 blog-sidebar" style="margin-left:3%;width: 30%">
-            <div class="sidebar-module sidebar-module-inset">
-                <h5>- - 关于纪律云 - -</h5>
-                <p>纪律云系统是一个为方便学校管理和评估而开发的系统</p>
-            </div>
-            <div><p></p></div>
-            <div class="sidebar-module">
-                <h4>重要通知</h4>
-                <ol class="list-unstyled">
-                    <?php foreach ($list as $k=>$v){?>
-                        <li>
-                            <div><a target="_blank" href="/home/home/info?id=<?php echo $v['id'];?>"><?php echo $v['title'].' ['.date('Y-m-d',$v['date']).']';?></a></div>
-                            <div><p></p></div>
-                        </li>
-                    <?php }?>
-                    <!--
-                    <li><a href="#">二月   2018</a></li>
-                    <li><a href="#">一月   2018</a></li>
-                    <li><a href="#">十二月 2017</a></li>
-                    <li><a href="#">十一月 2017</a></li>
-                    <li><a href="#">十月   2017</a></li>
-                    -->
-                </ol>
-            </div>
-            <div class="sidebar-module">
-                <h4>友情连接</h4>
-                <ol class="list-unstyled">
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
-                </ol>
-            </div>
-        </div><!-- /.blog-sidebar -->
+            <div class=" col-sm-4 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                    <h5>- - 关于纪律云 - -</h5>
+                    <p>纪律云系统是一个为方便学校管理和评估而开发的系统</p>
+                </div>
+                <div><p></p></div>
+                <div class="sidebar-module">
+                    <h4>重要通知</h4>
+                    <ol class="list-unstyled">
+                        <?php foreach ($list as $k=>$v){?>
+                            <li>
+                                <div><a target="_blank" href="/home/home/info?id=<?php echo $v['id'];?>"><?php echo $v['title'].' ['.date('Y-m-d',$v['date']).']';?></a></div>
+                                <div><p></p></div>
+                            </li>
+                        <?php }?>
+                    </ol>
+                </div>
+                <div class="sidebar-module">
+                    <h4>友情连接</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>
+            </div><!-- /.blog-sidebar -->
 
         </div>
 

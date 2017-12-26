@@ -145,7 +145,7 @@
                       <b class="caret"></b>
                   </p>
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
-                      <li><a  href="/home/home/rule">轮播图设置</a></li>
+                      <li><a  href="/home/home/carousel">轮播图设置</a></li>
                       <li><a  href="/home/home/topic">头 条 设 置</a></li>
                       <li><a  href="/home/home/notice">通 知 设 置</a></li>
                   </ul>

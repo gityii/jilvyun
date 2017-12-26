@@ -21,8 +21,13 @@ class home
         page::init(0,$recordcount,$per);
         $list = db::query_get('select * from `t_notice` order by `date` desc'.page::limitsql());
 
+        $view = db::query_get('select * from `t_carousel` order by `date` desc limit 3');
+
         web::render('home/views/home',array(
-            'list'=>$list,
+            'list'=> $list,
+            'view0'=> $view[0],
+            'view1'=> $view[1],
+            'view2'=> $view[2]
         ));
 
     }
@@ -100,52 +105,33 @@ class home
     }
 
 
-    public static function carouseledit()
+    public static function carousedit()
     {
-
-
-    }
-
-    public static function carousel()
-    {
-        defined('__R__') or exit('');
-        $ctype = web::request('ctype','');
-        $id = web::request('id',0);
-        $msg = array();
-        $success = false;
-        $error = '';
         $title = '';
         $content = '';
+        $success ='';
+        $error = '';
+        $msg = array();
         $nimg = '';
-        $types = array();
-//        foreach ($types_data as $v){
-//            $types[$v['typeid']] = $v['name'];
-//        }
-        if ($id>0){
-            $info = db::first('select `title`,`type`,`img`,`from`,`content`,`order`,`url` from `t_articlec` where `articleid`=\''.$id.'\'');
-            if (!empty($info)){
-                $title = $info['title'];
-                $nimg = $info['img'];
-                $from = $info['from'];
-                $content = $info['content'];
-                $order = $info['order'];
-                $type = $info['type'];
-                $url = $info['url'];
-                if ($url!=''){
-                    $ctype = 'link';
-                }
-            }else {
-                $id = 0;
-            }
+        $id = web::request('id','');
+
+        $info = db::first('select `title`,`content` from `t_carousel` where `id`=\''.$id.'\'');
+
+        if (!empty($info))
+        {
+            $title = $info['title'];
+            $content= $info['content'];
+        }else {
+            $msg['title'] = '查询有误，请核实数据';
         }
-        if (!empty($_POST)){
+
+        if (!empty($_POST))
+        {
             $title = web::post('title','');
-            $order = intval(web::post('order',0));
-            $from = web::post('from','');
             $content = web::post('content','');
-            $type = web::post('type','');
-            $url = web::post('url','');
-            if ($title==''){
+
+            if ($title=='')
+            {
                 $msg['title'] = '请输入标题';
             }else {
                 if (web::strlen($title)>240){
@@ -153,79 +139,101 @@ class home
                 }
             }
 
-            if (web::strlen($from)>80){
-                $msg['from'] = '来源不能超过40个汉字';
+            if ($content=='')
+            {
+                $msg['content'] = '请输入内容';
+            }else {
+                if (web::strlen($content)>10000){
+                    $msg['content'] = '内容太长';
+                }
             }
 
-            if ($ctype=='link'){
-                if ($url==''){
-                    $msg['url'] = '请输入链接地址';
-                }else {
-                    if (web::strlen($url)>1200){
-                        $msg['url'] = '链接地址太长了';
-                    }
-                }
-            }else {
-                if ($content==''){
-                    $msg['content'] = '请输入内容';
-                }else {
-                    if (web::strlen($content)>100000){
-                        $msg['content'] = '内容太长了';
-                    }
-                }
-            }
+
             $img = file::upload('img','',2048);
-            if (!is_string($img) && $img!=100){
+
+            if (!is_string($img) && $img!=100)
+            {
                 $msg['img'] = '图片上传失败';
             }
+
             if (empty($msg)){
                 $data = array(
                     'title'=>$title,
-                    'type'=>$type,
-                    'from'=>$from,
                     'content'=>$content,
-                    'order'=>$order,
-                    'url'=>$url,
-                    'dateline'=>time(),
+                    'date'=>time(),
                 );
                 if (is_string($img)){
                     $data['img'] = '/'.$img;
                     $nimg = '/'.$img;
                 }
-                if ($id==0){
-                    if (db::insert('t_articlec',$data)){
-                        $success = true;
-                    }else {
-                        $error = '提交失败，请重试';
-                    }
+
+                if (db::update('t_carousel',$data,'`id`=\''.$id.'\'')) {
+                    $success = true;
                 }else {
-                    if (db::update('t_articlec',$data,'`articleid`=\''.$id.'\'')){
-                        $error = '保存成功';
-                    }else {
-                        $error = '保存失败，请重试';
-                    }
+                    $error = '提交失败';
                 }
             }
         }
-        web::layout('admin');
-        web::render('admin/articlec/add',array(
-            'id'=>$id,
+
+        web::layout('/admin/views/layout/admin');
+        web::render('home/views/carousedit',array(
+            'id' => $id,
             'success'=>$success,
             'error'=>$error,
             'msg'=>$msg,
             'data'=>array(
                 'title'=>$title,
                 'content'=>stripslashes($content),
-                'order'=>$order,
-                'from'=>$from,
                 'img'=>$nimg,
-                'type'=>$type,
-                'url'=>$url
             ),
-            'ctype'=>$ctype,
-            'types'=>$types
         ));
     }
+
+    public static function carousel()
+    {
+        $per = 10;
+        $countdata = db::first('select count(*) from `t_carousel`');
+        $recordcount = $countdata['count(*)'];
+        page::init(0,$recordcount,$per);
+        $list = db::query_get('select * from `t_carousel` order by `date` desc'.page::limitsql());
+
+        web::layout('admin/views/layout/admin');
+        web::render('home/views/carousel',array(
+            'list'=>$list,
+        ));
+    }
+
+    public static function carousdel()
+    {
+        $id = intval(web::post('id', 0));
+        $res = array(
+            'status' => 1,
+            'msg' => '',
+            'id' => 0
+        );
+
+        if (db::delete('t_carousel', '`id`=\'' . $id . '\'')) {
+            $res['status'] = 0;
+            $res['id'] = $id;
+        } else {
+            $res['msg'] = '删除失败';
+        }
+        echo json_encode($res);
+    }
+
+
+    public static function carousinfo()
+    {
+        $id = web::request('id','');
+
+        $info = db::first('select * from `t_carousel` where `id`=\''.$id.'\'');
+
+        web::render('home/views/carousinfo',array(
+            'info'=>$info
+        ));
+
+    }
+
 
 
     public static function info()
