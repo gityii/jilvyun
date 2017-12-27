@@ -9,7 +9,6 @@
                     <ul>
                         <li><a href="/guiding/guiding/rule">规 则 设 置</a></li>
                         <li><a href="/guiding/person/person">人 员 设 置</a></li>
-                        <li><a href="">纪 律 教 育</a></li>
                     </ul>
                 </div>
             </div>
@@ -33,7 +32,7 @@
         <div class="col-xs-6 col-sm-3"  style="margin-left: 5%;" >
             <div class=" boxdiv box1">
             <div id="left-sidebar">
-                <h2>屏蔽分析</h2>
+                <h2>评比分析</h2>
                 <ul>
                     <li><a href="">日 报 周 报</a></li>
                     <li><a href="">文明班评比</a></li>

@@ -77,8 +77,7 @@
                         <!--<li><a href=""><mark class="mark">个人设置</mark></a></li>-->
                         <li><a href="/admin/admin/control"><mark class="mark">控制台</mark></a></li>
                         <li>
-                            <a href="javascript:;"><mark class="mark">用户
-                                    (<?php echo \base\controllers\web::session('user_name');?>)</mark>
+                            <a href="/admin/admin/login"><mark class="mark">登录</mark>
                             </a></li>
                         <li><a href="/admin/admin/logout"><mark class="mark">退出</mark></a></li>
                     </ul>

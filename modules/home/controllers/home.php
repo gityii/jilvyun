@@ -23,14 +23,224 @@ class home
 
         $view = db::query_get('select * from `t_carousel` order by `date` desc limit 3');
 
+        $topic = db::query_get('select * from `t_topic` order by `date` desc limit 2');
+
         web::render('home/views/home',array(
             'list'=> $list,
             'view0'=> $view[0],
             'view1'=> $view[1],
-            'view2'=> $view[2]
+            'view2'=> $view[2],
+            'topic0' => $topic[0],
+            'topic1' => $topic[1]
         ));
 
     }
+
+
+    public static function topicadd()
+    {
+        $msg = array();
+        $success = false;
+        $error = '';
+        $title = '';
+        $content = '';
+        $nimg = '';
+
+        if (!empty($_POST))
+        {
+            $title = web::post('title','');
+            $content = web::post('content','');
+
+            if ($title=='')
+            {
+                $msg['title'] = '请输入标题';
+            }else {
+                if (web::strlen($title)>240){
+                    $msg['title'] = '标题不能超过120个汉字';
+                }
+            }
+
+            if ($content=='')
+            {
+                $msg['content'] = '请输入内容';
+            }else {
+                if (web::strlen($content)>10000){
+                    $msg['content'] = '内容太长';
+                }
+            }
+
+
+            $img = file::upload('img','',2048);
+
+            if (!is_string($img) && $img!=100)
+            {
+                $msg['img'] = '图片上传失败';
+            }
+
+            if (empty($msg)){
+                $data = array(
+                    'title'=>$title,
+                    'content'=>$content,
+                    'date'=>time(),
+                );
+                if (is_string($img)){
+                    $data['img'] = '/'.$img;
+                    $nimg = '/'.$img;
+                }
+
+                if (db::insert('t_topic',$data)){
+                    $success = true;
+                }else {
+                    $error = '提交失败，请重试';
+                }
+            }
+        }
+
+        web::layout('/admin/views/layout/admin');
+        web::render('home/views/topicadd',array(
+            'success'=>$success,
+            'error'=>$error,
+            'msg'=>$msg,
+            'data'=>array(
+                'title'=>$title,
+                'content'=>stripslashes($content),
+                'img'=>$nimg,
+            ),
+        ));
+    }
+
+
+    public static function topicedit()
+    {
+        $title = '';
+        $content = '';
+        $success ='';
+        $error = '';
+        $msg = array();
+        $nimg = '';
+        $id = web::request('id','');
+
+        $info = db::first('select `title`,`content` from `t_topic` where `id`=\''.$id.'\'');
+
+        if (!empty($info))
+        {
+            $title = $info['title'];
+            $content= $info['content'];
+        }else {
+            $msg['title'] = '查询有误，请核实数据';
+        }
+
+        if (!empty($_POST))
+        {
+            $title = web::post('title','');
+            $content = web::post('content','');
+
+            if ($title=='')
+            {
+                $msg['title'] = '请输入标题';
+            }else {
+                if (web::strlen($title)>240){
+                    $msg['title'] = '标题不能超过120个汉字';
+                }
+            }
+
+            if ($content=='')
+            {
+                $msg['content'] = '请输入内容';
+            }else {
+                if (web::strlen($content)>10000){
+                    $msg['content'] = '内容太长';
+                }
+            }
+
+
+            $img = file::upload('img','',2048);
+
+            if (!is_string($img) && $img!=100)
+            {
+                $msg['img'] = '图片上传失败';
+            }
+
+            if (empty($msg)){
+                $data = array(
+                    'title'=>$title,
+                    'content'=>$content,
+                    'date'=>time(),
+                );
+                if (is_string($img)){
+                    $data['img'] = '/'.$img;
+                    $nimg = '/'.$img;
+                }
+
+                if (db::update('t_topic',$data,'`id`=\''.$id.'\'')) {
+                    $success = true;
+                }else {
+                    $error = '提交失败';
+                }
+            }
+        }
+
+        web::layout('/admin/views/layout/admin');
+        web::render('home/views/topicedit',array(
+            'id' => $id,
+            'success'=>$success,
+            'error'=>$error,
+            'msg'=>$msg,
+            'data'=>array(
+                'title'=>$title,
+                'content'=>stripslashes($content),
+                'img'=>$nimg,
+            ),
+        ));
+    }
+
+
+    public static function topic()
+    {
+        $per = 10;
+        $countdata = db::first('select count(*) from `t_topic`');
+        $recordcount = $countdata['count(*)'];
+        page::init(0,$recordcount,$per);
+        $list = db::query_get('select * from `t_topic` order by `date` desc'.page::limitsql());
+
+        web::layout('admin/views/layout/admin');
+        web::render('home/views/topic',array(
+            'list'=>$list,
+        ));
+    }
+
+
+    public static function topicdel()
+    {
+        $id = intval(web::post('id', 0));
+        $res = array(
+            'status' => 1,
+            'msg' => '',
+            'id' => 0
+        );
+
+        if (db::delete('t_topic', '`id`=\'' . $id . '\'')) {
+            $res['status'] = 0;
+            $res['id'] = $id;
+        } else {
+            $res['msg'] = '删除失败';
+        }
+        echo json_encode($res);
+    }
+
+
+    public static function topicinfo()
+    {
+        $id = web::request('id','');
+
+        $info = db::first('select * from `t_topic` where `id`=\''.$id.'\'');
+
+        web::render('home/views/topicinfo',array(
+            'info'=>$info
+        ));
+
+    }
+
 
     public static function carouseladd()
     {
@@ -313,26 +523,6 @@ class home
         ));
     }
 
-
-    public static function topic()
-    {
-        $ruleid = web::get('id');
-        $where = '';
-        if ($ruleid!='')
-        {
-            $where = ' where `ruleid`=\''.$ruleid.'\'';
-        }
-        $per = 10;
-        $countdata = db::first('select count(*) from `t_topic`'.$where);
-        $recordcount = $countdata['count(*)'];
-        page::init(0,$recordcount,$per);
-        $list = db::query_get('select * from `t_topic`'.$where.' order by `time` desc'.page::limitsql());
-
-        web::layout('admin/views/layout/admin');
-        web::render('home/views/topic',array(
-            'list'=>$list
-        ));
-    }
 
 
     public static function notice()

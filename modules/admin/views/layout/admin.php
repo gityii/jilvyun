@@ -117,8 +117,9 @@
 
           <div>
           <ul class="nav navbar-nav navbar-right">
-              <li style="color:white"><a href="/admin/admin/home"><mark class="mark">首页</mark></a></li>
-            <li><a href=""><mark class="mark">个人设置</mark></a></li>
+              <li style="color:white"><a href="/home/home/homepage"><mark class="mark">首页</mark></a></li>
+           <!-- <li><a href=""><mark class="mark">个人设置</mark></a></li>-->
+              <li><a href="/admin/admin/control"><mark class="mark">控制台</mark></a></li>
             <li>
               <a href="javascript:;"><mark class="mark">用户
                   (<?php echo \base\controllers\web::session('user_name');?>)</mark>
@@ -159,7 +160,6 @@
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
                       <li><a  href="/guiding/guiding/rule">规 则 设 置</a></li>
                       <li><a  href="/guiding/person/person">人 员 设 置</a></li>
-                      <li><a  href="">纪 律 教 育</a></li>
                   </ul>
 
               </li>

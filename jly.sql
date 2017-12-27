@@ -49,16 +49,6 @@ CREATE TABLE `t_notice` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-DROP TABLE IF EXISTS `t_topic`;
-CREATE TABLE `t_topic` (
-  `id` int(11) NOT NULL auto_increment,
-  `title` varchar(360) collate utf8_unicode_ci NOT NULL COMMENT '标题',
-  `content` longtext collate utf8_unicode_ci NOT NULL COMMENT '内容',
-  `date` int(11) NOT NULL default '0' COMMENT '发布时间',
-  `viewcount` int(11) NOT NULL default '0' COMMENT '阅读量',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 
 DROP TABLE IF EXISTS `t_carousel`;
 CREATE TABLE `t_carousel` (
@@ -73,6 +63,17 @@ CREATE TABLE `t_carousel` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+DROP TABLE IF EXISTS `t_topic`;
+CREATE TABLE `t_topic` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(360) collate utf8_unicode_ci NOT NULL COMMENT '标题',
+  `img` varchar(360) collate utf8_unicode_ci default '' COMMENT '缩略图',
+  `content` longtext collate utf8_unicode_ci NOT NULL COMMENT '内容',
+  `date` int(11) NOT NULL default '0' COMMENT '发布时间',
+  `viewcount` int(11) NOT NULL default '0' COMMENT '阅读量',
+  `goodcount` int(11) NOT NULL default '0' COMMENT '点赞量',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 

@@ -1,7 +1,7 @@
 <?php
-namespace app\usercenter\controllers;
+namespace app\verify\controllers;
 
-class verificate
+class verify
 {
 
     public static function randomcode()

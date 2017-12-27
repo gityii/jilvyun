@@ -69,9 +69,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li style="color:white"><a href="/home/home/homepage"><mark class="mark">首页</mark></a></li>
                     <li>
-                        <a href="javascript:;"><mark class="mark">用户
+                        <mark class="mark">用户
                                 (<?php echo \base\controllers\web::session('user_name');?>)</mark>
-                        </a></li>
+                        </li>
                     <li><a href="/admin/admin/logout"><mark class="mark">退出</mark></a></li>
                 </ul>
             </div>
