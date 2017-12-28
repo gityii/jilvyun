@@ -77,5 +77,29 @@ CREATE TABLE `t_topic` (
 
 
 
+DROP TABLE IF EXISTS `t_school`;
+CREATE TABLE `t_school` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `unit` varchar(360) COLLATE utf8_unicode_ci NOT NULL COMMENT '学校名',
+  `grade` int(11) NOT NULL DEFAULT '0' COMMENT '年级',
+  `class` int(11) NOT NULL DEFAULT '0' COMMENT '班级',
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '备注',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unid` (`class`,`grade`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `t_grade`;
+CREATE TABLE `t_grade` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `unit` varchar(360) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '学校名',
+  `grade` int(11) DEFAULT '0' COMMENT '年级',
+  `content` longtext COLLATE utf8_unicode_ci COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+
 
 

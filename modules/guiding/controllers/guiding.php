@@ -17,7 +17,6 @@ class guiding
 
     public static function rule()
     {
-
         $ruleid = web::get('id');
         $where = '';
         if ($ruleid!='')
@@ -36,7 +35,6 @@ class guiding
             'rules'=>$rules,
             'ruleid'=>$ruleid
         ));
-
     }
 
 

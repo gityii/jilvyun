@@ -171,7 +171,7 @@
                   </p>
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
                       <li><a  href="">移 动 录 入</a></li>
-                      <li><a  href="">网 页 录 入</a></li>
+                      <li><a  href="/record/record/pcrecord">网 页 录 入</a></li>
                       <li><a  href="">批 量 导 入</a></li>
                       <li><a  href="">记 录 查 询</a></li>
                       <li><a  href="">处 分 管 理</a></li>
