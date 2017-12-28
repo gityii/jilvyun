@@ -16,7 +16,7 @@
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
             <li role="presentation" class="active"><a href="/guiding/school/school">班级列表</a></li>
-            <li role="presentation"><a>班级添加</a></li>
+            <li role="presentation"><a>添加班级</a></li>
         </ul>
     </div>
 

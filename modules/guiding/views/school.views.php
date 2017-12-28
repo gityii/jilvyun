@@ -58,8 +58,8 @@
                     <td class="text-center"><?php echo $v['grade'];?></td>
                     <td class="text-center"><?php echo $v['class'];?></td>
                     <td class="text-center">
-                    <a class="btn btn-primary" href="/guiding/person/personedit?id=<?php echo $v['id'];?>">编辑</a>
-                    <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['name'];?>')">删除</a>
+                    <a class="btn btn-primary" href="/guiding/school/classedit?id=<?php echo $v['id'];?>">编辑</a>
+                    <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo '班级'.$v['class'];?>')">删除</a>
                     </td>
                 </tr>
             <?php }?>
@@ -73,7 +73,7 @@
         layer.confirm('确认要删除“'+title+'”？',{icon:3,title:'删除确认'},function(){
             $.ajax({
                 type:"post",
-                url:"persondel",
+                url:"classdel",
                 data:{'id':id},
                 dataType:'json',
                 async:false,

@@ -40,8 +40,8 @@
                     <tr id="tr_<?php echo $v['id'];?>">
                         <td class="text-center"><?php echo $v['grade'];?></td>
                         <td class="text-center">
-                            <a class="btn btn-primary" href="/guiding/person/deptedit?id=<?php echo $v['id'];?>">编辑</a>
-                            <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['id'];?>')">删除</a>
+                            <a class="btn btn-primary" href="/guiding/school/gradeedit?id=<?php echo $v['id'];?>">编辑</a>
+                            <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo '年级'.$v['grade'];?>')">删除</a>
                         </td>
                     </tr>
                 <?php }?>

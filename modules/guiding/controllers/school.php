@@ -106,23 +106,26 @@ class school
     }
 
 
-    public static function deptedit()
+    public static function gradeedit()
     {
-        $id = web::request('id','');
-        $deptid = '';
-        $name = '';
+        $grade = '';
+        $content = '';
+        $unit = '';
         $success ='';
         $error = '';
         $msg = array();
 
+        $id = web::request('id','');
+
         if ($id>0)
         {
-            $info = db::first('select `name`,`deptid`  from `t_dept` where `id`=\''.$id.'\'');
+            $info = db::first('select `grade`, `content`, `unit` from `t_grade` where `id`=\''.$id.'\'');
 
             if (!empty($info))
             {
-                $name= $info['name'];
-                $deptid = $info['deptid'];
+                $grade = $info['grade'];
+                $content = $info['content'];
+                $unit = $info['unit'];
             }else {
                 $msg['title'] = '查询有误，请核实数据';
             }
@@ -133,27 +136,28 @@ class school
 
         if (!empty($_POST))
         {
-            $deptid = intval(web::post('deptid', 0));
-            $name = web::post('name', '');
+            $grade = web::post('grade', '');
+            $content= web::post('content', '');
+            $unit = web::post('unit', '');
 
-            if ($deptid == '') {
-                $msg['uid'] = '请输入学号';
+
+            if ($grade == '')
+            {
+                $msg['grade'] = '请输入年级号';
             }
 
 
-            if ($name == '') {
-                $msg['dept'] = '请输入部门';
-            }
-
-            if (empty($msg)) {
+            if (empty($msg))
+            {
                 $data = array(
-                    'deptid' => $deptid,
-                    'name' => $name,
+                    'grade' => $grade,
+                    'content' => $content,
+                    'unit' => $unit
                 );
 
                 if ($id == 0) {
                     $error = '参数错误';
-                } else if (db::update('t_dept', $data, '`id`=\'' . $id . '\'')) {
+                } else if (db::update('t_grade', $data, '`id`=\'' . $id . '\'')) {
                     $success = true;
                     $error = '';
                 } else {
@@ -163,15 +167,99 @@ class school
         }
 
         web::layout('/admin/views/layout/admin');
-        web::render('/guiding/views/deptedit', array(
+        web::render('/guiding/views/gradeedit', array(
             'id' => $id,
             'success' => $success,
             'error' => $error,
             'msg' => $msg,
             'data' => array(
-                'deptid' => $deptid,
-                'name' => $name,
+                'grade' => $grade,
+                'content' => $content,
+                'unit' => $unit
             )));
+    }
+
+
+    public static function classedit()
+    {
+        $grade = '';
+        $content = '';
+        $unit = '';
+        $class = '';
+        $success ='';
+        $error = '';
+        $msg = array();
+
+        $id = web::request('id','');
+
+        $types = db::query_get('select `grade` from `t_grade` where `grade`!=\'\'');
+
+        if ($id>0)
+        {
+            $info = db::first('select `class`, `grade`, `content`, `unit` from `t_school` where `id`=\''.$id.'\'');
+
+            if (!empty($info))
+            {
+                $class= $info['class'];
+                $grade = $info['grade'];
+                $content = $info['content'];
+                $unit = $info['unit'];
+            }else {
+                $msg['title'] = '查询有误，请核实数据';
+            }
+        }else{
+            $msg['title'] = '请求数据有误';
+        }
+
+
+        if (!empty($_POST))
+        {
+            $class = web::post('class', '');
+            $grade = web::post('grade', '');
+            $content= web::post('content', '');
+            $unit = web::post('unit', '');
+
+            if ($class == '') {
+                $msg['uid'] = '请输入班级号';
+            }
+
+
+            if ($grade == '') {
+                $msg['dept'] = '请输入年级号';
+            }
+
+            if (empty($msg)) {
+                $data = array(
+                    'class' => $class,
+                    'grade' => $grade,
+                    'content' => $content,
+                    'unit' => $unit
+                );
+
+                if ($id == 0) {
+                    $error = '参数错误';
+                } else if (db::update('t_school', $data, '`id`=\'' . $id . '\'')) {
+                    $success = true;
+                    $error = '';
+                } else {
+                    $error = '保存失败，请重试';
+                }
+            }
+        }
+
+        web::layout('/admin/views/layout/admin');
+        web::render('/guiding/views/classedit', array(
+            'id' => $id,
+            'success' => $success,
+            'error' => $error,
+            'msg' => $msg,
+            'data' => array(
+                'class' => $class,
+                'grade' => $grade,
+                'content' => $content,
+                'unit' => $unit
+            ),
+            'types' => $types));
     }
 
     public static function gradelist()
@@ -183,7 +271,7 @@ class school
         ));
     }
 
-    public static function deptdel()
+    public static function gradedel()
     {
         $id = intval(web::post('id', 0));
         $res = array(
@@ -192,7 +280,25 @@ class school
             'id' => 0
         );
 
-        if (db::delete('t_dept', '`id`=\'' . $id . '\'')) {
+        if (db::delete('t_grade', '`id`=\'' . $id . '\'')) {
+            $res['status'] = 0;
+            $res['id'] = $id;
+        } else {
+            $res['msg'] = '删除失败';
+        }
+        echo json_encode($res);
+    }
+
+    public static function classdel()
+    {
+        $id = intval(web::post('id', 0));
+        $res = array(
+            'status' => 1,
+            'msg' => '',
+            'id' => 0
+        );
+
+        if (db::delete('t_school', '`id`=\'' . $id . '\'')) {
             $res['status'] = 0;
             $res['id'] = $id;
         } else {
@@ -218,7 +324,7 @@ class school
             $unit = web::post('unit', '');
             $content = web::post('content', '');
 
-            $types_data = db::query_get('select `grade` from `t_grade` where `grade`!=\'\'');
+            $types_data = db::query_get('select `grade`, `id`from `t_grade` where `grade`!=\'\'');
 
             foreach ($types_data as $v) {
                 $types[$v['id']] = $v['grade'];
@@ -403,6 +509,11 @@ class school
         $types = array();
         $where = '';
 
+        $data = db::query_get('select `grade`, `id` from `t_grade` where `grade`!=\'\'');
+        foreach ($data as $v) {
+            $types[$v['id']] = $v['grade'];
+        }
+
 
         if (!empty($_POST)) {
             $grade = web::post('grade', '');
@@ -444,7 +555,7 @@ class school
         }
 
         web::layout('/admin/views/layout/admin');
-        web::render('/guiding/views/personadd', array(
+        web::render('/guiding/views/classadd', array(
             'success' => $success,
             'error' => $error,
             'msg' => $msg,

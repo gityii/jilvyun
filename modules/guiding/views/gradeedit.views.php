@@ -15,29 +15,19 @@
 <div class="col-md-9 col-md-push-3" role="main">
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
-            <li role="presentation" class="active"><a href="/guiding/school/school">班级列表</a></li>
-            <li role="presentation"><a>编辑班级</a></li>
+            <li role="presentation" class="active"><a href="/guiding/school/gradelist">年级列表</a></li>
+            <li role="presentation"><a>编辑年级</a></li>
         </ul>
     </div>
 
     <div>
-        <form action="/guiding/school/classadd" method="post" class="form-horizontal">
-            <div class="form-group" action="" >
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">年级 :</label>
-                <div class=" col-xs-3">
-                    <select name="grade" id="" class="form-control">
-                        <?php foreach ($types as $k=>$v){?>
-                            <option value="<?php echo $v['grade'];?>"<?php echo $data['grade']==$v['grade']?' selected="selected"':'';?>><?php echo $v['grade'];?></option>
-                        <?php }?>
-                    </select>
-                </div>
-            </div>
+        <form action="/guiding/school/gradeadd" method="post" class="form-horizontal">
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">班级 :</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">年级 :</label>
                 <div class="col-xs-3">
-                    <input type="text" name="class" class="form-control" id="exampleInputName2" value="<?php echo $data['class'];?>">
-                    <?php if (isset($msg['class'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['class'].'</span>';}?>
+                    <input type="text" name="grade" class="form-control" id="exampleInputName2" value="<?php echo $data['grade'];?>">
+                    <?php if (isset($msg['grade'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['grade'].'</span>';}?>
                 </div>
             </div>
 
@@ -70,7 +60,7 @@
 
 <script type="text/javascript">
     <?php if ($success){?>
-    layer.msg('添加成功',{icon:1,time:1500},function(){
+    layer.msg('修改成功',{icon:1,time:1500},function(){
         window.location.href="/guiding/school/school";
     });
     <?php }?>
