@@ -15,13 +15,43 @@
 <div class="col-md-9 col-md-push-3" role="main">
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
-            <li role="presentation" class="active"><a href="/guiding/guiding/rule">规则列表</a></li>
+            <li role="presentation" class="active"><a href="/record/record/group">规则列表</a></li>
             <li role="presentation"><a>规则添加</a></li>
         </ul>
     </div>
 
     <div>
-        <form action="/guiding/guiding/ruleadd" method="post" class="form-horizontal">
+        <form action="/record/record/groupadd" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">年级：</label>
+                <div class=" col-xs-3">
+                    <select name="grade" id="" class="form-control">
+                        <?php foreach ($grades as $k=>$v){?>
+                            <option value="<?php echo $v;?>"<?php echo $data['grade']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
+                        <?php }?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">班级 :</label>
+                <div class="col-xs-3">
+                    <input type="text" name="class" class="form-control" id="exampleInputName2" value="<?php echo $data['class'];?>">
+                    <?php if (isset($msg['class'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['class'].'</span>';}?>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">类别 :</label>
+                <div class=" col-xs-3">
+                    <select name="family" id="" class="form-control">
+                        <?php foreach ($familys as $k=>$v){?>
+                            <option value="<?php echo $v;?>"<?php echo $data['family']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
+                        <?php }?>
+                    </select>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">项目 :</label>
                 <div class="col-xs-3">
@@ -30,19 +60,20 @@
                 </div>
             </div>
 
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">分值 :</label>
+                <div class="col-xs-3">
+                    <input type="text" name="val" class="form-control" id="exampleInputName2" value="<?php echo $data['val'];?>" disabled>
+                    <?php if (isset($msg['val'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['val'].'</span>';}?>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">对象 :</label>
                 <div class="col-xs-3">
                     <input type="text" name="objects" class="form-control" id="exampleInputName2" value="<?php echo $data['objects'];?>">
                     <?php if (isset($msg['objects'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['objects'].'</span>';}?>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">分值 :</label>
-                <div class="col-xs-3">
-                    <input type="text" name="val" class="form-control" id="exampleInputName2" value="<?php echo $data['val'];?>">
-                    <?php if (isset($msg['val'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['val'].'</span>';}?>
                 </div>
             </div>
 

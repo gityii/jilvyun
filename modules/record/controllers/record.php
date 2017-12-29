@@ -37,6 +37,29 @@ class record
         ));
     }
 
+
+    public static function group()
+    {
+//        $ruleid = web::get('id');
+//        $where = '';
+//        if ($ruleid!='')
+//        {
+//            $where = ' where `ruleid`=\''.$ruleid.'\'';
+//        }
+//        $per = 20;
+//        $countdata = db::first('select count(*) from `t_group`'.$where);
+//        $recordcount = $countdata['count(*)'];
+//        page::init(0,$recordcount,$per);
+        $list = db::query_get('select * from `t_group` order by `date` asc');
+        web::layout('admin/views/layout/admin');
+        web::render('record/views/group',array(
+            'list'=>$list
+        ));
+
+    }
+
+
+
     public static function groupadd()
     {
         $msg = array();
@@ -45,25 +68,48 @@ class record
         $project = '';
         $family = '';
         $objects = '';
+        $postgrade = '';
+        $postclass = '';
+        $postfamily = '';
         $val = '';
         $comments = '';
         $types = array();
         $ftypes = array();
-
+        $grades = array();
+        $familys = array();
         $ftypes[0] = '个人';
         $ftypes[1] = '集体';
 
-        $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
-        foreach ($types_data as $v) {
-            $types[$v['ruleid']] = $v['name'];
+        $grade = db::query_get('select `id`,`grade` from `t_grade` where `id`!=\'\'');
+        foreach ($grade as $v) {
+            $grades[$v['id']] = $v['grade'];
+        }
+
+        $family = db::query_get('select `id`,`name` from `t_family` where `id`!=\'\'');
+        foreach ($family as $v) {
+            $familys[$v['id']] = $v['name'];
         }
 
         if (!empty($_POST)) {
             $project = web::post('project', '');
-            $family = web::post('family', '');
+            $postfamily = web::post('family', '');
             $objects = web::post('objects', '');
             $val = web::post('val', '');
             $comments = web::post('comments', '');
+            $postgrade = web::post('grade', '');
+            $postclass = web::post('class', '');
+
+            $class = db::query_get('select `id`,`class` from `t_shool` where `grade`=\''.$postgrade.'\'');
+            foreach ($class as $v) {
+                $types[$v['id']] = $v['class'];
+            }
+
+            $isin = in_array($postclass, $types);
+            if($isin){
+            } else{
+                $msg['class'] = "输入的班级号超出范围";
+            }
+
 
             if ($project == '') {
                 $msg['project'] = '请输入项目名称';
@@ -71,6 +117,9 @@ class record
                 $msg['project'] = '项目名称不能超过100个汉字';
 
             }
+
+            $val = db::first('select `val` from `t_rule` where `project`=\'' . $project.'\' and `family`=\''.$postfamily.'\'');
+
 
             if (web::strlen($comments) > 1000) {
                 $msg['content'] = '备注内容太长';
@@ -98,18 +147,21 @@ class record
         }
 
         web::layout('/admin/views/layout/admin');
-        web::render('/guiding/views/ruleadd', array(
+        web::render('/record/views/groupadd', array(
             'success' => $success,
             'error' => $error,
             'msg' => $msg,
             'data' => array(
+                'grade' => $postgrade,
+                'class' => $postclass,
                 'project' => $project,
-                'family' => $family,
+                'family' => $postfamily,
                 'comments' => stripslashes($comments),
                 'objects' => $objects,
                 'val' => $val
             ),
-            'types' => $types,
+            'grades' => $grades,
+            'familys' => $familys,
             'ftypes' => $ftypes
         ));
 

@@ -48,7 +48,6 @@
         <table class="table table-bordered table-responsive table-striped table-hover" cellspacing="0">
             <thead>
             <tr>
-                <th class="text-center">编号</th>
                 <th class="text-center">项目</th>
                 <th class="text-center">分值</th>
                 <th class="text-center">类别</th>
@@ -60,7 +59,6 @@
             <tbody>
             <?php foreach ($list as $v){?>
                 <tr id="tr_<?php echo $v['id'];?>">
-                    <td class="text-center"><?php echo $v['id'];?></td>
                     <td class="text-center"><?php echo $v['project'];?></td>
                     <td class="text-center"><?php echo $v['val'];?></td>
                     <td class="text-center"><?php echo $v['family'];?></td>
