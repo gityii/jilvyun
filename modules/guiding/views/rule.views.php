@@ -17,14 +17,14 @@
         <h2>规则设置</h2>
     </div>
     <p>
-        <a class="btn btn-lg btn-success" href="/guiding/school/school" role="button">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 班级年级设置
-        </a>
         <a class="btn btn-lg btn-success" href="/guiding/guiding/ruleadd" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加规则
         </a>
-        <a class="btn btn-lg btn-success" href="/guiding/guiding/classlist" role="button">
-            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 规则类别列表
+        <a class="btn btn-lg btn-success" href="/guiding/guiding/typelist" role="button">
+            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 类别列表
+        </a>
+        <a class="btn btn-lg btn-success" href="/guiding/school/school" role="button">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 班级年级设置
         </a>
     </p>
 

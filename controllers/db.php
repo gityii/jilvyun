@@ -12,7 +12,7 @@ class db {
 	'db_host'=>'localhost',
 	'db_port'=>'3306',
 	'db_user'=>'root',
-	'db_pswd'=>'root',
+	'db_pswd'=>'',
 	'db_db'=>'myframe',
 	'db_err_connect_fail'=>'can\'t connect to database'
 	);

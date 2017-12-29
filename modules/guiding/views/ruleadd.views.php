@@ -32,9 +32,12 @@
 
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">对象 :</label>
-                <div class="col-xs-3">
-                    <input type="text" name="objects" class="form-control" id="exampleInputName2" value="<?php echo $data['objects'];?>">
-                    <?php if (isset($msg['objects'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['objects'].'</span>';}?>
+                <div class=" col-xs-3">
+                    <select name="objects" id="" class="form-control">
+                        <?php foreach ($ftypes as $k=>$v){?>
+                            <option value="<?php echo $v;?>"<?php echo $data['objects']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
+                        <?php }?>
+                    </select>
                 </div>
             </div>
 

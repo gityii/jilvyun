@@ -17,11 +17,11 @@
         <h2>规则类别列表</h2>
     </div>
     <p>
-        <a class="btn btn-lg btn-success" href="/guiding/guiding/classadd" role="button">
+        <a class="btn btn-lg btn-success" href="/guiding/guiding/typeadd" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加类别
         </a>
         <a class="btn btn-lg btn-success" href="/guiding/guiding/rule" role="button">
-            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 详细规则列表
+            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 规则列表
         </a>
     </p>
 
@@ -33,6 +33,7 @@
                 <tr>
                     <th class="text-center">类别</th>
                     <th class="text-center">编号</th>
+                    <th class="text-center">所属部门</th>
                     <th class="text-center">操作</th>
                 </tr>
                 </thead>
@@ -41,8 +42,9 @@
                     <tr id="tr_<?php echo $v['id'];?>">
                         <td class="text-center"><?php echo $v['name'];?></td>
                         <td class="text-center"><?php echo $v['ruleid'];?></td>
+                        <td class="text-center"><?php echo $v['dept'];?></td>
                         <td class="text-center">
-                            <a class="btn btn-primary" href="/guiding/guiding/classedit?id=<?php echo $v['id'];?>">编辑</a>
+                            <a class="btn btn-primary" href="/guiding/guiding/typeedit?id=<?php echo $v['id'];?>">编辑</a>
                             <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['name'];?>')">删除</a>
                         </td>
                     </tr>

@@ -15,28 +15,26 @@
 <div class="col-md-9 col-md-push-3" role="main">
     <div class="page-header">
         <ul class="nav nav-pills" role="tablist">
-            <li role="presentation" class="active"><a href="/guiding/school/gradelist">年级列表</a></li>
-            <li role="presentation"><a>编辑年级</a></li>
+            <li role="presentation" class="active"><a href="/guiding/guiding/classlist">类别列表</a></li>
+            <li role="presentation"><a>类别编辑</a></li>
         </ul>
     </div>
 
     <div>
-        <form action="/guiding/school/gradeadd" method="post" class="form-horizontal">
-
+        <form action="/guiding/guiding/typeedit?id=<?php echo $id;?>" method="post" class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">年级 :</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">类别名称 :</label>
                 <div class="col-xs-3">
-                    <input type="text" name="grade" class="form-control" id="exampleInputName2" value="<?php echo $data['grade'];?>">
-                    <?php if (isset($msg['grade'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['grade'].'</span>';}?>
+                    <input type="text" name="name" class="form-control" id="exampleInputName2" value="<?php echo $data['name'];?>">
+                    <?php if (isset($msg['name'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['name'].'</span>';}?>
                 </div>
             </div>
 
-
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">备注 :</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">类别编号 :</label>
                 <div class="col-xs-3">
-                    <input type="text" name="content" class="form-control" id="exampleInputName2" value="<?php echo $data['content'];?>">
-                    <?php if (isset($msg['content'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['content'].'</span>';}?>
+                    <input type="text" name="ruleid" class="form-control" id="exampleInputName2" value="<?php echo $data['ruleid'];?>">
+                    <?php if (isset($msg['ruleid'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['ruleid'].'</span>';}?>
                 </div>
             </div>
 
@@ -44,16 +42,14 @@
                 <button type="submit" class="btn btn-info  btn-block">提交</button>
             </div>
         </form>
-
     </div>
-
 
 </div>
 
 <script type="text/javascript">
     <?php if ($success){?>
     layer.msg('修改成功',{icon:1,time:1500},function(){
-        window.location.href="/guiding/school/school";
+        window.location.href="/guiding/guiding/typelist";
     });
     <?php }?>
     <?php if ($error!=''){?>
@@ -65,7 +61,3 @@
 
 </body>
 </html>
-
-
-
-

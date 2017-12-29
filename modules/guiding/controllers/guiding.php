@@ -176,6 +176,10 @@ class guiding
         $val = '';
         $comments = '';
         $types = array();
+        $ftypes = array();
+
+        $ftypes[0] = '个人';
+        $ftypes[1] = '集体';
 
         $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
         foreach ($types_data as $v) {
@@ -193,11 +197,6 @@ class guiding
                 $msg['project'] = '请输入项目名称';
             } else if (web::strlen($project) > 240) {
                 $msg['project'] = '项目名称不能超过100个汉字';
-
-            }
-
-            if ($objects != '集体' && $objects != '个人') {
-                $msg['objects'] = '请输入集体或个人';
             }
 
             if (web::strlen($comments) > 1000) {
@@ -222,7 +221,6 @@ class guiding
                     $error = '提交失败';
                 }
             }
-
         }
 
         web::layout('/admin/views/layout/admin');
@@ -237,9 +235,11 @@ class guiding
                 'objects' => $objects,
                 'val' => $val
             ),
-            'types' => $types
+            'types' => $types,
+            'ftypes' => $ftypes
         ));
     }
+
 
     public static function ruledel()
     {
@@ -261,35 +261,41 @@ class guiding
 
 
 
-    public static function classlist()
+    public static function typelist()
     {
         $per = 10;
         $countdata = db::first('select count(*) from `t_family`');
         $count = $countdata['count(*)'];
         page::init(0,$count,$per);
-        $list = db::query_get('select `ruleid`,`name`, `id` from `t_family` where `name`!=\'\' order by `id` desc'.page::limitsql());
+        $list = db::query_get('select `ruleid`,`name`,`id`,`dept` from `t_family` where `name`!=\'\' order by `id` desc'.page::limitsql());
         web::layout('/admin/views/layout/admin');
-        web::render('/guiding/views/classlist',array(
+        web::render('/guiding/views/typelist',array(
         'list'=>$list,
         ));
     }
 
 
-    public static function classadd()
+    public static function typeadd()
     {
-
         $ruleid = '';
+        $dept = '';
+        $deptid = '';
         $name = '';
         $success ='';
         $error = '';
         $msg = array();
-        $types = array();
+        $ftypes = array();
+
+        $ftypes_data = db::query_get('select `id`,`deptid`,`name` from `t_dept` where `name`!=\'\'');
+        foreach ($ftypes_data as $v) {
+            $ftypes[$v['id']] = $v['name'];
+        }
 
         if (!empty($_POST))
         {
             $ruleid = intval(web::post('ruleid', 0));
             $name = web::post('name', '');
-
+            $dept = web::post('dept', '');
 
             $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
 
@@ -306,18 +312,24 @@ class guiding
 
                 if($v['name'] == '')
                 {
-                    $msg['ruleid'] = '请输入类别名称';
+                    $msg['name'] = '请输入类别名称';
                 } else if($v['name'] == $name)
                 {
-                    $msg['ruleid'] = '此类别名称已存在！';
+                    $msg['name'] = '此类别名称已存在！';
                 }
             }
+
+            $deptid = db::first('select `deptid` from `t_dept` where `name`=\'' . $dept . '\'');
+
 
             if (empty($msg)) {
                 $data = array(
                     'ruleid' => $ruleid,
                     'name' => $name,
+                    'dept' => $dept,
+                    'deptid' => $deptid['deptid']
                 );
+
 
                 if (db::insert('t_family', $data)) {
                     $success = true;
@@ -328,33 +340,30 @@ class guiding
 
         }
 
-
         web::layout('/admin/views/layout/admin');
-        web::render('/guiding/views/classadd', array(
+        web::render('/guiding/views/typeadd', array(
             'success' => $success,
             'error' => $error,
             'msg' => $msg,
             'data' => array(
                 'ruleid' => $ruleid,
                 'name' => $name,
+                'dept' => $dept
             ),
-            'types' => $types
+            'ftypes' => $ftypes,
         ));
-
     }
 
 
 
-    public static function classedit()
+    public static function typeedit()
     {
         $ruleid = '';
         $name = '';
         $success ='';
         $error = '';
         $msg = array();
-        $types = array();
         $id = web::request('id','');
-
 
             $info = db::first('select `ruleid`,`name` from `t_family` where `id`=\''.$id.'\'');
 
@@ -397,7 +406,7 @@ class guiding
         }
 
         web::layout('/admin/views/layout/admin');
-        web::render('/guiding/views/classedit', array(
+        web::render('/guiding/views/typeedit', array(
             'id' => $id,
             'success' => $success,
             'error' => $error,

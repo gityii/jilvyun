@@ -21,15 +21,12 @@
     </div>
 
     <div>
-        <form action="/guiding/school/classadd" method="post" class="form-horizontal">
+        <form action="/guiding/school/classedit" method="post" class="form-horizontal">
             <div class="form-group" action="" >
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">年级 :</label>
-                <div class=" col-xs-3">
-                    <select name="grade" id="" class="form-control">
-                        <?php foreach ($types as $k=>$v){?>
-                            <option value="<?php echo $v['grade'];?>"<?php echo $data['grade']==$v['grade']?' selected="selected"':'';?>><?php echo $v['grade'];?></option>
-                        <?php }?>
-                    </select>
+                <div class="col-xs-3">
+                    <input type="text" name="grade" class="form-control" id="exampleInputName2" value="<?php echo $data['grade'];?>">
+                    <?php if (isset($msg['grade'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['grade'].'</span>';}?>
                 </div>
             </div>
 
