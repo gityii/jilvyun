@@ -30,11 +30,13 @@
             <tr>
                 <th class="text-center" width="70px">年级</th>
                 <th class="text-center" width="70px">班级</th>
+                <th class="text-center">类别</th>
                 <th class="text-center">项目</th>
                 <th class="text-center">分值</th>
                 <th class="text-center">记录人</th>
                 <th class="text-center">部门</th>
                 <th class="text-center">时间</th>
+                <th class="text-center">注释</th>
                 <th class="text-center">操作</th>
             </tr>
             </thead>
@@ -43,14 +45,14 @@
                 <tr id="tr_<?php echo $v['id'];?>">
                     <td class="text-center"><?php echo $v['grade'];?></td>
                     <td class="text-center"><?php echo $v['class'];?></td>
+                    <td class="text-center"><?php echo $v['family'];?></td>
                     <td class="text-center"><?php echo $v['project'];?></td>
                     <td class="text-center"><?php echo $v['val'];?></td>
                     <td class="text-center"><?php echo $v['name'];?></td>
                     <td class="text-center"><?php echo $v['dept'];?></td>
-                    <td class="text-center"><?php echo $v['date'];?></td>
+                    <td class="text-center"><?php echo date('Y-m-d',$v['date']);?></td>
                     <td class="text-center"><?php echo $v['content'];?></td>
                     <td class="text-center">
-                        <a class="btn btn-primary" href="/record/record/groupedit?id=<?php echo $v['id'];?>">编辑</a>
                         <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['project'];?>')">删除</a>
                     </td>
                 </tr>
@@ -65,7 +67,7 @@
         layer.confirm('确认要删除"'+title+'"?',{icon:3,title:'删除确认'},function(){
             $.ajax({
                 type:"post",
-                url:"ruledel",
+                url:"groupdel",
                 data:{'id':id},
                 dataType:'json',
                 async:false,

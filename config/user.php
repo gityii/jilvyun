@@ -11,7 +11,7 @@ $_CONFIG = array(
         'db_host'=>'localhost',
         'db_port'=>'3306',
         'db_user'=>'root',
-        'db_pswd'=>'',
+        'db_pswd'=>'root',
         'db_db'=>'myframe',
         /*
                 'db_pswd'=>'root',

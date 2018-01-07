@@ -55,144 +55,8 @@ class record
         web::render('record/views/group',array(
             'list'=>$list
         ));
-    }
-
-    public static function groupdel()
-    {
-        $id = intval(web::post('id', 0));
-        $res = array(
-            'status' => 1,
-            'msg' => '',
-            'id' => 0
-        );
-
-        if (db::delete('t_group', '`id`=\'' . $id . '\'')) {
-            $res['status'] = 0;
-            $res['id'] = $id;
-        } else {
-            $res['msg'] = '删除失败';
-        }
-        echo json_encode($res);
-    }
-
-
-//    public static function groupaddroute()
-//    {
-//        $msg = array();
-//        $success = false;
-//        $error = '';
-//
-//        $project = web::post('project', '');
-//
-//        if ($project == '') {
-//            $msg['project'] = '请输入项目名称';
-//        } else if (web::strlen($project) > 240) {
-//            $msg['project'] = '项目名称不能超过100个汉字';
-//
-//        }
-//        web::layout('/admin/views/layout/admin');
-//        web::render('/record/views/groupadd', array(
-//            'success' => $success,
-//            'error' => $error,
-//            'msg' => $msg,
-//            'data' => array(
-//                'project' => $project,
-////                'grade' => $postgrade,
-//
-//            ),
-////            'grades' => $grades,
-////            'familys' => $familys,
-////            'classes' => $postclass,
-//        ));
-//    }
-
-
-    public static function jiliangrade()
-    {
-
-        $postgrade = '';
-        $chtml = '';
-        $ghtml = '';
-
-            $grade = db::query_get('select `grade` from `t_grade`');
-
-            foreach ($grade as $v) {
-                $ghtml .= '<option value="' . $v['grade'] . '">' . $v['grade'] . '</option>';
-            }
-
-            if(!empty($_POST['grade']))
-            {
-                $postgrade = web::post('grade', '');
-                $postclass = db::query_get('select `class` from `t_school` where `grade`='.$postgrade.'');
-
-                foreach ($postclass as $v) {
-                    $chtml .= '<option value="' . $v['class'] . '">' . $v['class'] . '</option>';
-                }
-            }
-
-        if($postgrade==0)
-        {
-            $html = '<div class="grade form-group">
-                     <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">年级： </label> 
-                     <div class="col-xs-3">
-                     <select name="nianji" id="grade" class="form-control"><option value="">请选择</option>' . $ghtml . '</select>
-                     </div></div>';
-        }else{
-            $html = '<div class="class form-group">
-                     <label class="col-sm-2 control-label" style="text-align:left;width: 8%" for="">班级： </label>
-                     <div class="col-xs-3">
-                     <select name="banji" class="form-control"><option value="">请选择</option>' . $chtml . '</select>
-                     </div></div>';
-        }
-
-        //输出下拉菜单
-        echo($html);
 
     }
-
-
-    public static function jilianrule()
-    {
-
-        $postcateg = '';
-        $chtml = '';
-        $phtml = '';
-
-        $category = db::query_get('select `category` from `t_family`');
-
-        foreach ($category as $v) {
-            $chtml .= '<option value="' . $v['category'] . '">' . $v['category'] . '</option>';
-        }
-
-        if(!empty($_POST['category']))
-        {
-            $postcateg = web::post('category', '');
-            $postproj = db::query_get('select `project`,`val` from `t_rule` where `family`=\''.$postcateg.'\'');
-            foreach ($postproj as $v) {
-                $phtml .= '<option value="' . $v['project'] . '">' . $v['project'] . '</option>';
-            }
-        }
-
-
-
-        if(empty($postcateg))
-        {
-            $html = '<div class="category form-group">
-                     <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">类别： </label> 
-                     <div class="col-xs-3">
-                     <select name="category" id="category" class="form-control"><option value="">请选择</option>' . $chtml . '</select>
-                     </div></div>';
-        }else{
-            $html = '<div class="proj form-group">
-                     <label class="col-sm-2 control-label" style="text-align:left;width: 8%" for="">项目： </label>
-                     <div class="col-xs-3">
-                     <select name="project" class="form-control"><option value="">请选择</option>' . $phtml . '</select>
-                     </div></div>';
-        }
-
-        echo($html);
-    }
-
 
 
 
@@ -201,52 +65,79 @@ class record
         $msg = array();
         $success = false;
         $error = '';
+        $project = '';
+        $family = '';
+        $objects = '';
+        $postgrade = '';
         $postclass = '';
-        $val = 0;
-        $content = '';
+        $postfamily = '';
+        $val = '';
+        $comments = '';
         $types = array();
+        $ftypes = array();
+        $grades = array();
+        $familys = array();
+        $ftypes[0] = '个人';
+        $ftypes[1] = '集体';
+
+        $grade = db::query_get('select `id`,`grade` from `t_grade` where `id`!=\'\'');
+        foreach ($grade as $v) {
+            $grades[$v['id']] = $v['grade'];
+        }
+
+        $family = db::query_get('select `id`,`name` from `t_family` where `id`!=\'\'');
+        foreach ($family as $v) {
+            $familys[$v['id']] = $v['name'];
+        }
 
         if (!empty($_POST)) {
-            $category = web::post('category', '');
             $project = web::post('project', '');
-            $grade = web::post('nianji', '');
-            $class = web::post('banji', '');
+            $postfamily = web::post('family', '');
+            $objects = web::post('objects', '');
+            $val = web::post('val', '');
+            $comments = web::post('comments', '');
+            $postgrade = web::post('grade', '');
+            $postclass = web::post('class', '');
 
-            $val = db::first('select `val` from `t_rule` where `project`=\'' . $project.'\' and `family`=\''.$category.'\'');
+            $class = db::query_get('select `id`,`class` from `t_shool` where `grade`=\''.$postgrade.'\'');
+            foreach ($class as $v) {
+                $types[$v['id']] = $v['class'];
+            }
 
-//            foreach ($class as $v) {
-//                $types[$v['id']] = $v['class'];
-//            }
-//
-//            $isin = in_array($postclass, $types);
-//            if($isin){
-//            } else{
-//                $msg['class'] = "输入的班级号超出范围";
-//            }
-//
-//
-//            if ($project == '') {
-//                $msg['project'] = '请输入项目名称';
-//            } else if (web::strlen($project) > 240) {
-//                $msg['project'] = '项目名称不能超过100个汉字';
-//
-//            }
+            $isin = in_array($postclass, $types);
+            if($isin){
+            } else{
+                $msg['class'] = "输入的班级号超出范围";
+            }
+
+
+            if ($project == '') {
+                $msg['project'] = '请输入项目名称';
+            } else if (web::strlen($project) > 240) {
+                $msg['project'] = '项目名称不能超过100个汉字';
+
+            }
+
+            $val = db::first('select `val` from `t_rule` where `project`=\'' . $project.'\' and `family`=\''.$postfamily.'\'');
+
+
+            if (web::strlen($comments) > 1000) {
+                $msg['content'] = '备注内容太长';
+            }
+
+            $getid = db::first('select `ruleid` from `t_family` where `name`=\'' . $family . '\'');
 
             if (empty($msg)) {
                 $data = array(
-                    'class' => $class,
-                    'grade' => $grade,
                     'project' => $project,
-                    'family' => $category,
-                    'ruleid' => 0,
-                    'name' => '小王',
-                    'dept' => '教务处',
-                    'val' => $val['val'],
-                    'date'=>time(),
-                    'content' => $content
+                    'family' => $family,
+                    'ruleid' => $getid['ruleid'],
+                    'objects' => $objects,
+                    'val' => $val,
+                    'comments' => $comments,
                 );
 
-                if (db::insert('t_group', $data)) {
+                if (db::insert('t_rule', $data)) {
                     $success = true;
                 } else {
                     $error = '提交失败';
@@ -258,8 +149,20 @@ class record
         web::layout('/admin/views/layout/admin');
         web::render('/record/views/groupadd', array(
             'success' => $success,
-            'error' => $error
-           // 'msg' => $msg
+            'error' => $error,
+            'msg' => $msg,
+            'data' => array(
+                'grade' => $postgrade,
+                'class' => $postclass,
+                'project' => $project,
+                'family' => $postfamily,
+                'comments' => stripslashes($comments),
+                'objects' => $objects,
+                'val' => $val
+            ),
+            'grades' => $grades,
+            'familys' => $familys,
+            'ftypes' => $ftypes
         ));
 
     }
@@ -280,9 +183,9 @@ class record
         $comments = '';
         $types = array();
 
-        $types_data = db::query_get('select `ruleid`,`category` from `t_family` where `category`!=\'\'');
+        $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
         foreach ($types_data as $v) {
-            $types[$v['ruleid']] = $v['category'];
+            $types[$v['ruleid']] = $v['name'];
         }
 
         if (!empty($_POST)) {
@@ -307,7 +210,7 @@ class record
                 $msg['content'] = '备注内容太长';
             }
 
-            $getid = db::first('select `ruleid` from `t_family` where `category`=\'' . $family . '\'');
+            $getid = db::first('select `ruleid` from `t_family` where `name`=\'' . $family . '\'');
 
             if (empty($msg)) {
                 $data = array(
@@ -378,9 +281,9 @@ class record
         $ruleid = '';
         $comments = '';
         $types = array();
-        $types_data = db::query_get('select `ruleid`,`category` from `t_family` where `category`!=\'\'');
+        $types_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
         foreach ($types_data as $v){
-            $types[$v['ruleid']] = $v['category'];
+            $types[$v['ruleid']] = $v['name'];
         }
 
         if ($id>0)
@@ -432,7 +335,7 @@ class record
                 $msg['content'] = '备注内容太长';
             }
 
-            $getid = db::first('select `ruleid` from `t_family` where `category`=\''.$family.'\'');
+            $getid = db::first('select `ruleid` from `t_family` where `name`=\''.$family.'\'');
 
 
             if (empty($msg))

@@ -16,6 +16,8 @@ CREATE TABLE `t_family` (
   `id` int(11) NOT NULL auto_increment COMMENT '序号',
   `ruleid` int(11) NOT NULL default '200' COMMENT '类别编号',
   `name` varchar(360) collate utf8_unicode_ci default '' COMMENT '类别名称',
+  `deptid` int(11) NOT NULL default '200' COMMENT '部门编号',
+  `dept` varchar(80) collate utf8_unicode_ci default '' COMMENT '部门',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -103,12 +105,12 @@ CREATE TABLE `t_group` (
   `id` int(11) NOT NULL auto_increment COMMENT '序号',
   `grade` int(11) NOT NULL DEFAULT '0' COMMENT '年级',
   `class` int(11) NOT NULL DEFAULT '0' COMMENT '班级',
-  `project` varchar(360) collate utf8_unicode_ci NOT NULL COMMENT '项目',
-  `family` varchar(360) collate utf8_unicode_ci NOT NULL COMMENT '类别',
+  `project` varchar(360) collate utf8_unicode_ci DEFAULT '' COMMENT '项目',
+  `family` varchar(360) collate utf8_unicode_ci DEFAULT '' COMMENT '类别',
   `ruleid` int(11) NOT NULL default '200' COMMENT '类别编号',
   `val` float NOT NULL default '0' COMMENT '分值',
-  `name`  varchar(360) collate utf8_unicode_ci NOT NULL COMMENT '记录人',
-  `dept` varchar(360) collate utf8_unicode_ci NOT NULL COMMENT '检查部门',
+  `name`  varchar(360) collate utf8_unicode_ci DEFAULT '' COMMENT '记录人',
+  `dept` varchar(360) collate utf8_unicode_ci DEFAULT '' COMMENT '检查部门',
   `date` int(11) NOT NULL default '0' COMMENT '检查时间',
   `content` longtext COLLATE utf8_unicode_ci COMMENT '备注',
   PRIMARY KEY  (`id`)
