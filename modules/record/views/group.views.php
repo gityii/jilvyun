@@ -11,7 +11,7 @@
 <body>
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
-<div class="col-md-9 col-md-push-3" role="main">
+<div class="col-md-9" style="left: 21%" role="main">
 
     <div class="page-header">
         <h2>集体项</h2>
@@ -50,7 +50,7 @@
                     <td class="text-center"><?php echo $v['val'];?></td>
                     <td class="text-center"><?php echo $v['name'];?></td>
                     <td class="text-center"><?php echo $v['dept'];?></td>
-                    <td class="text-center"><?php echo date('Y-m-d',$v['date']);?></td>
+                    <td class="text-center"><?php echo date('Y-m-d  H:i:s',$v['date']);?></td>
                     <td class="text-center"><?php echo $v['content'];?></td>
                     <td class="text-center">
                         <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['project'];?>')">删除</a>

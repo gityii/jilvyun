@@ -57,6 +57,138 @@ class record
         ));
     }
 
+    public static function single()
+    {
+//        $ruleid = web::get('id');
+//        $where = '';
+//        if ($ruleid!='')
+//        {
+//            $where = ' where `ruleid`=\''.$ruleid.'\'';
+//        }
+//        $per = 20;
+//        $countdata = db::first('select count(*) from `t_group`'.$where);
+//        $recordcount = $countdata['count(*)'];
+//        page::init(0,$recordcount,$per);
+        $list = db::query_get('select * from `t_single` order by `date` asc');
+        web::layout('admin/views/layout/admin');
+        web::render('record/views/single',array(
+            'list'=>$list
+        ));
+    }
+
+
+    public static function singleadd()
+    {
+        $msg = array();
+        $success = false;
+        $error = '';
+        $uname = '';
+        $val = 0;
+        $uid = 0;
+        $content = '';
+        $types = array();
+
+        if (!empty($_POST)) {
+            $uname = web::post('uname', '');
+            $uid = web::post('uid', '');
+            $category = web::post('category', '');
+            $project = web::post('project', '');
+            $grade = web::post('nianji', '');
+            $class = web::post('banji', '');
+
+            $val = db::first('select `val` from `t_rule` where `project`=\'' . $project.'\' and `family`=\''.$category.'\'');
+
+//            foreach ($class as $v) {
+//                $types[$v['id']] = $v['class'];
+//            }
+//
+//            $isin = in_array($postclass, $types);
+//            if($isin){
+//            } else{
+//                $msg['class'] = "输入的班级号超出范围";
+//            }
+//
+//
+//            if ($project == '') {
+//                $msg['project'] = '请输入项目名称';
+//            } else if (web::strlen($project) > 240) {
+//                $msg['project'] = '项目名称不能超过100个汉字';
+//
+//            }
+
+            if (empty($msg)) {
+                $data = array(
+                    'class' => $class,
+                    'grade' => $grade,
+                    'project' => $project,
+                    'family' => $category,
+                    'uname' => $uname,
+                    'uid' => $uid,
+                    'name' => '小王',
+                    'dept' => '教务处',
+                    'val' => $val['val'],
+                    'date'=>time(),
+                    'content' => $content
+                );
+
+                if (db::insert('t_single', $data)) {
+                    $success = true;
+                } else {
+                    $error = '提交失败';
+                }
+            }
+        }
+
+        web::layout('/admin/views/layout/admin');
+        web::render('/record/views/singleadd', array(
+            'success' => $success,
+            'error' => $error,
+            'msg' => $msg
+        ));
+    }
+
+
+    public static function jiliansingle()
+    {
+        $postcateg = '';
+        $chtml = '';
+        $phtml = '';
+
+        $category = db::query_get('select `category` from `t_family`');
+
+        foreach ($category as $v) {
+            $chtml .= '<option value="' . $v['category'] . '">' . $v['category'] . '</option>';
+        }
+
+        if(!empty($_POST['category']))
+        {
+            $postcateg = web::post('category', '');
+            $postproj = db::query_get('select `project`,`val` from `t_rule` where `family`=\''.$postcateg.'\'  and `objects`=\'个人\'');
+
+            foreach ($postproj as $v) {
+                $phtml .= '<option value="' . $v['project'] . '">' . $v['project'] . '</option>';
+            }
+        }
+
+        if(empty($postcateg))
+        {
+            $html = '<div class="category form-group">
+                     <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">类别： </label> 
+                     <div class="col-xs-3">
+                     <select name="category" id="category" class="form-control"><option value="">请选择</option>' . $chtml . '</select>
+                     </div></div>';
+        }else{
+            $html = '<div class="proj form-group">
+                     <label class="col-sm-2 control-label" style="text-align:left;width: 8%" for="">项目： </label>
+                     <div class="col-xs-3">
+                     <select name="project" class="form-control"><option value="">请选择</option>' . $phtml . '</select>
+                     </div></div>';
+        }
+
+        echo($html);
+    }
+
+
     public static function groupdel()
     {
         $id = intval(web::post('id', 0));
@@ -167,7 +299,7 @@ class record
         if(!empty($_POST['category']))
         {
             $postcateg = web::post('category', '');
-            $postproj = db::query_get('select `project`,`val` from `t_rule` where `family`=\''.$postcateg.'\'');
+            $postproj = db::query_get('select `project`,`val` from `t_rule` where `family`=\''.$postcateg.'\'  and `objects`=\'集体\'');
             foreach ($postproj as $v) {
                 $phtml .= '<option value="' . $v['project'] . '">' . $v['project'] . '</option>';
             }

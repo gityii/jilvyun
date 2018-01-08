@@ -25,8 +25,8 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">类别名称 :</label>
                 <div class="col-xs-3">
-                    <input type="text" name="name" class="form-control" id="exampleInputName2" value="<?php echo $data['name'];?>">
-                    <?php if (isset($msg['name'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['name'].'</span>';}?>
+                    <input type="text" name="category" class="form-control" id="exampleInputName2" value="<?php echo $data['category'];?>">
+                    <?php if (isset($msg['category'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['category'].'</span>';}?>
                 </div>
             </div>
 

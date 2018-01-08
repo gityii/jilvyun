@@ -117,6 +117,24 @@ CREATE TABLE `t_group` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+DROP TABLE IF EXISTS `t_single`;
+CREATE TABLE `t_single` (
+  `id` int(11) NOT NULL auto_increment COMMENT '序号',
+  `grade` int(11) NOT NULL DEFAULT '0' COMMENT '年级',
+  `class` int(11) NOT NULL DEFAULT '0' COMMENT '班级',
+  `project` varchar(360) collate utf8_unicode_ci DEFAULT '' COMMENT '项目',
+  `family` varchar(360) collate utf8_unicode_ci DEFAULT '' COMMENT '类别',
+  `val` float NOT NULL default '0' COMMENT '分值',
+  `uname`  varchar(360) collate utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '被记录人',
+  `uid` int(11) NOT NULL default '0' COMMENT '被记录人学号',
+  `name`  varchar(360) collate utf8_unicode_ci  DEFAULT '' COMMENT '记录人',
+  `dept` varchar(360) collate utf8_unicode_ci DEFAULT '' COMMENT '检查部门',
+  `date` int(11) NOT NULL default '0' COMMENT '检查时间',
+  `content` longtext COLLATE utf8_unicode_ci COMMENT '备注',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 
 
 

@@ -99,6 +99,7 @@ class db {
 					$tg = ',';
 				}
 				$sql='INSERT INTO '.$table.' ( '.$sk.' ) VALUES '.$sv;
+
 			}else {
 				$sk = '`'.implode('`,`',array_keys($value)).'`';
 				$sv = '\''.implode('\',\'',$value).'\'';

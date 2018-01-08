@@ -20,7 +20,7 @@
         <a class="btn btn-lg btn-success" href="/record/record/group" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 集体项录入
         </a>
-        <a class="btn btn-lg btn-success" href="/record/record/person" role="button">
+        <a class="btn btn-lg btn-success" href="/record/record/single" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 个人项录入
         </a>
 </div>

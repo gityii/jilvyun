@@ -12,12 +12,13 @@
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
 <div class="col-md-9" style="left: 21%" role="main">
+
     <div class="page-header">
-        <h2>头条设置</h2>
+        <h2>个人项</h2>
     </div>
     <p>
-        <a class="btn btn-lg btn-success" href="/home/home/topicadd" role="button">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加头条
+        <a class="btn btn-lg btn-success" href="/record/record/singleadd" role="button">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加记录
         </a>
     </p>
 
@@ -27,7 +28,15 @@
             <table class="table table-bordered table-responsive table-striped table-hover" cellspacing="0">
                 <thead>
                 <tr>
-                    <th class="text-center">标题</th>
+                    <th class="text-center" width="70px">年级</th>
+                    <th class="text-center" width="70px">班级</th>
+                    <th class="text-center">类别</th>
+                    <th class="text-center">项目</th>
+                    <th class="text-center">分值</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">学号</th>
+                    <th class="text-center">记录人</th>
+                    <th class="text-center">部门</th>
                     <th class="text-center">时间</th>
                     <th class="text-center">操作</th>
                 </tr>
@@ -35,11 +44,18 @@
                 <tbody>
                 <?php foreach ($list as $v){?>
                     <tr id="tr_<?php echo $v['id'];?>">
-                        <td class="text-center"><?php echo $v['title'];?></td>
-                        <td class="text-center"><?php echo date('Y-m-d',$v['date']);?></td>
+                        <td class="text-center"><?php echo $v['grade'];?></td>
+                        <td class="text-center"><?php echo $v['class'];?></td>
+                        <td class="text-center"><?php echo $v['family'];?></td>
+                        <td class="text-center"><?php echo $v['project'];?></td>
+                        <td class="text-center"><?php echo $v['val'];?></td>
+                        <td class="text-center"><?php echo $v['uname'];?></td>
+                        <td class="text-center"><?php echo $v['uid'];?></td>
+                        <td class="text-center"><?php echo $v['name'];?></td>
+                        <td class="text-center"><?php echo $v['dept'];?></td>
+                        <td class="text-center"><?php echo date('Y-m-d  H:i:s',$v['date']);?></td>
                         <td class="text-center">
-                            <a class="btn btn-primary" href="/home/home/topicedit?id=<?php echo $v['id'];?>">编辑</a>
-                            <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['title'];?>')">删除</a>
+                            <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['project'];?>')">删除</a>
                         </td>
                     </tr>
                 <?php }?>
@@ -53,7 +69,7 @@
         layer.confirm('确认要删除"'+title+'"?',{icon:3,title:'删除确认'},function(){
             $.ajax({
                 type:"post",
-                url:"topicdel",
+                url:"perdel",
                 data:{'id':id},
                 dataType:'json',
                 async:false,

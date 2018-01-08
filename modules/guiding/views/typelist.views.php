@@ -40,12 +40,12 @@
                 <tbody>
                 <?php foreach ($list as $v){?>
                     <tr id="tr_<?php echo $v['id'];?>">
-                        <td class="text-center"><?php echo $v['name'];?></td>
+                        <td class="text-center"><?php echo $v['category'];?></td>
                         <td class="text-center"><?php echo $v['ruleid'];?></td>
                         <td class="text-center"><?php echo $v['dept'];?></td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="/guiding/guiding/typeedit?id=<?php echo $v['id'];?>">编辑</a>
-                            <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['name'];?>')">删除</a>
+                            <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['category'];?>')">删除</a>
                         </td>
                     </tr>
                 <?php }?>
