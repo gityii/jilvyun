@@ -290,7 +290,7 @@ class record
         $chtml = '';
         $phtml = '';
 
-        $category = db::query_get('select `category` from `t_family`');
+        $category = db::query_get('select DISTINCT `category` from `t_family`');
 
         foreach ($category as $v) {
             $chtml .= '<option value="' . $v['category'] . '">' . $v['category'] . '</option>';
