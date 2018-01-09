@@ -305,8 +305,6 @@ class record
             }
         }
 
-
-
         if(empty($postcateg))
         {
             $html = '<div class="category form-group">

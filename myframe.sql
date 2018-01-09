@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: myframe
 Target Host: localhost
 Target Database: myframe
-Date: 2018/1/7 ������ ���� 9:21:34
+Date: 2018/1/7 ������ ���� 9:21:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -19,37 +19,6 @@ CREATE TABLE `admin_user` (
   PRIMARY KEY (`uid`),
   UNIQUE KEY `adminuser_s1` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Table structure for t_articlec
--- ----------------------------
-CREATE TABLE `t_articlec` (
-  `articleid` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(360) COLLATE utf8_unicode_ci NOT NULL COMMENT '文章标题',
-  `type` int(11) NOT NULL DEFAULT '0' COMMENT '分类ID',
-  `img` varchar(360) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '缩略图',
-  `from` varchar(120) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '来自',
-  `content` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '内容',
-  `order` int(11) NOT NULL DEFAULT '999999' COMMENT '排序',
-  `url` varchar(1200) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '外部链接',
-  `dateline` int(11) NOT NULL DEFAULT '0' COMMENT '发布时间',
-  `viewcount` int(11) NOT NULL DEFAULT '0' COMMENT '阅读量',
-  `goodcount` int(11) NOT NULL DEFAULT '0' COMMENT '点赞量',
-  PRIMARY KEY (`articleid`),
-  KEY `articlec_s1` (`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Table structure for t_articlec_type
--- ----------------------------
-CREATE TABLE `t_articlec_type` (
-  `typeid` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(720) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `img` varchar(720) COLLATE utf8_unicode_ci NOT NULL,
-  `desc` varchar(1200) COLLATE utf8_unicode_ci NOT NULL,
-  `order` int(11) NOT NULL DEFAULT '999999' COMMENT '排序',
-  PRIMARY KEY (`typeid`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_carousel
@@ -205,32 +174,7 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- ----------------------------
--- Table structure for t_zwfw_detail
--- ----------------------------
-CREATE TABLE `t_zwfw_detail` (
-  `projectid` int(11) NOT NULL DEFAULT '1' COMMENT '服务编号',
-  `name` varchar(36) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '服务名称',
-  `titleid` int(11) NOT NULL DEFAULT '1' COMMENT '标题编号',
-  `title` varchar(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '办公标题',
-  `address` varchar(720) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '地址',
-  `lng` decimal(10,6) NOT NULL DEFAULT '116.306070' COMMENT '经度',
-  `lat` decimal(10,6) NOT NULL DEFAULT '39.982163' COMMENT '纬度',
-  `worktime` varchar(360) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '办公时间',
-  `tel` varchar(15) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '咨询电话',
-  `order` int(11) NOT NULL AUTO_INCREMENT COMMENT '排序',
-  PRIMARY KEY (`order`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- ----------------------------
--- Table structure for t_zwfw_project
--- ----------------------------
-CREATE TABLE `t_zwfw_project` (
-  `projectid` int(11) NOT NULL DEFAULT '1' COMMENT '服务编号',
-  `name` varchar(36) COLLATE utf8_unicode_ci DEFAULT '' COMMENT '服务名称',
-  `order` int(11) NOT NULL AUTO_INCREMENT COMMENT '排序',
-  PRIMARY KEY (`order`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records 

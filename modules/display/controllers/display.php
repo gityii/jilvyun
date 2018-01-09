@@ -14,16 +14,15 @@ use base\controllers\file;
 
 class display
 {
-    public static function echarts()
+    public static function jiti()
     {
 
         $msg = array();
         $success = false;
         $error = '';
 
-
         web::layout('/admin/views/layout/admin');
-        web::render('/display/views/echarts', array(
+        web::render('/display/views/jiti', array(
             'success' => $success,
             'error' => $error,
             'msg' => $msg

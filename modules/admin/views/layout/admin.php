@@ -187,7 +187,9 @@
                   <ul class="dropdown-menu  nav" style="width: 100%; text-align:center;font-size:22px;font-family:'幼圆';" >
                       <li><a  href="">日 报 周 报</a></li>
                       <li><a  href="">文明班评比</a></li>
-                      <li><a  href="/display/display/echarts">数 据 分 析</a></li>
+                      <li><a  href="/display/display/jiti">集体项分析</a></li>
+                      <li><a  href="/display/display/banji">班 级 分 析</a></li>
+                      <li><a  href="/display/display/geren">个人项分析</a></li>
                   </ul>
 
               </li>

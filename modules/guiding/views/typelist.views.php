@@ -11,10 +11,10 @@
 <body>
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
-<div class="col-md-9 col-md-push-3" role="main">
+<div class="col-md-9" style="left: 21%" role="main">
 
     <div class="page-header">
-        <h2>规则类别列表</h2>
+        <h2>类别列表</h2>
     </div>
     <p>
         <a class="btn btn-lg btn-success" href="/guiding/guiding/typeadd" role="button">
@@ -33,7 +33,7 @@
                 <tr>
                     <th class="text-center">类别</th>
                     <th class="text-center">编号</th>
-                    <th class="text-center">所属部门</th>
+                    <th class="text-center">对象</th>
                     <th class="text-center">操作</th>
                 </tr>
                 </thead>
@@ -41,8 +41,8 @@
                 <?php foreach ($list as $v){?>
                     <tr id="tr_<?php echo $v['id'];?>">
                         <td class="text-center"><?php echo $v['category'];?></td>
-                        <td class="text-center"><?php echo $v['ruleid'];?></td>
-                        <td class="text-center"><?php echo $v['dept'];?></td>
+                        <td class="text-center"><?php echo $v['classid'];?></td>
+                        <td class="text-center"><?php echo $v['obj'];?></td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="/guiding/guiding/typeedit?id=<?php echo $v['id'];?>">编辑</a>
                             <a class="btn btn-danger" href="javascript:;" onclick="del('<?php echo $v['id'];?>','<?php echo $v['category'];?>')">删除</a>

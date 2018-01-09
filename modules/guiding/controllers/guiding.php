@@ -165,9 +165,55 @@ class guiding
         }
 
 
+    public static function jilianobject()
+    {
+
+        $postcate = '';
+        $chtml = '';
+        $ghtml = '';
+
+        /*去重*/
+        $category = db::query_get('select DISTINCT `category` from `t_family`');
+
+        foreach ($category as $v) {
+            $ghtml .= '<option value="' . $v['category'] . '">' . $v['category'] . '</option>';
+        }
+
+        if(!empty($_POST['family']))
+        {
+            $postcate = web::post('family', '');
+
+            $postobj = db::query_get('select `obj` from `t_family` where `category`=\''.$postcate.'\'');
+
+            foreach ($postobj as $v) {
+                $chtml .= '<option value="' . $v['obj'] . '">' . $v['obj'] . '</option>';
+            }
+        }
+
+        if(empty($postcate))
+        {
+            $html = '<div class="category form-group">
+                     <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">所属类别： </label> 
+                     <div class="col-xs-3">
+                     <select name="family" id="category" class="form-control"><option value="">请选择</option>' . $ghtml . '</select>
+                     </div></div>';
+        }else{
+            $html = '<div class="obj form-group">
+                     <label class="col-sm-2 control-label" style="text-align:left;width: 8%" for="">对象： </label>
+                     <div class="col-xs-3">
+                     <select name="objects" class="form-control"><option value="">请选择</option>' . $chtml . '</select>
+                     </div></div>';
+        }
+
+        //输出下拉菜单
+        echo($html);
+
+    }
+
     public static function ruleadd()
     {
         $msg = array();
+        $getid = array();
         $success = false;
         $error = '';
         $project = '';
@@ -175,16 +221,6 @@ class guiding
         $objects = '';
         $val = '';
         $comments = '';
-        $types = array();
-        $ftypes = array();
-
-        $ftypes[0] = '个人';
-        $ftypes[1] = '集体';
-
-        $types_data = db::query_get('select `ruleid`,`category` from `t_family` where `category`!=\'\'');
-        foreach ($types_data as $v) {
-            $types[$v['ruleid']] = $v['category'];
-        }
 
         if (!empty($_POST)) {
             $project = web::post('project', '');
@@ -203,13 +239,13 @@ class guiding
                 $msg['content'] = '备注内容太长';
             }
 
-            $getid = db::first('select `ruleid` from `t_family` where `category`=\'' . $family . '\'');
+            $getid = db::first('select `classid` from `t_family` where `category`=\'' . $family . '\' and `obj`=\''.$objects.'\'');
 
             if (empty($msg)) {
                 $data = array(
                     'project' => $project,
                     'family' => $family,
-                    'ruleid' => $getid['ruleid'],
+                    'classid' => $getid['classid'],
                     'objects' => $objects,
                     'val' => $val,
                     'comments' => $comments,
@@ -230,14 +266,9 @@ class guiding
             'msg' => $msg,
             'data' => array(
                 'project' => $project,
-                'family' => $family,
                 'comments' => stripslashes($comments),
-                'objects' => $objects,
                 'val' => $val
-            ),
-            'types' => $types,
-            'ftypes' => $ftypes
-        ));
+            )));
     }
 
 
@@ -267,7 +298,7 @@ class guiding
         $countdata = db::first('select count(*) from `t_family`');
         $count = $countdata['count(*)'];
         page::init(0,$count,$per);
-        $list = db::query_get('select `ruleid`,`category`,`id`,`dept` from `t_family` where `category`!=\'\' order by `id` desc'.page::limitsql());
+        $list = db::query_get('select `classid`,`category`,`id`,`obj` from `t_family` where `category`!=\'\' order by `id` desc'.page::limitsql());
         web::layout('/admin/views/layout/admin');
         web::render('/guiding/views/typelist',array(
         'list'=>$list,
@@ -277,8 +308,8 @@ class guiding
 
     public static function typeadd()
     {
-        $ruleid = '';
-        $dept = '';
+        $classid = '';
+        $obj = '';
         $deptid = '';
         $category = '';
         $success ='';
@@ -286,48 +317,44 @@ class guiding
         $msg = array();
         $ftypes = array();
 
-        $ftypes_data = db::query_get('select `id`,`deptid`,`name` from `t_dept` where `name`!=\'\'');
-        foreach ($ftypes_data as $v) {
-            $ftypes[$v['id']] = $v['name'];
-        }
+        $ftypes[0] = '个人';
+        $ftypes[1] = '集体';
+
 
         if (!empty($_POST))
         {
-            $ruleid = intval(web::post('ruleid', 0));
+            $classid = intval(web::post('classid', 0));
             $category = web::post('category', '');
-            $dept = web::post('dept', '');
+            $obj = web::post('obj', '');
 
-            $types_data = db::query_get('select `ruleid`,`category` from `t_family` where `category`!=\'\'');
+            $types_data = db::query_get('select `classid`,`category`, `obj` from `t_family` where `category`!=\'\'');
 
             foreach ($types_data as $v) {
-                $types[$v['ruleid']] = $v['category'];
+                $types[$v['classid']] = $v['category'];
 
-                if ($ruleid == '')
+                if ($classid == '')
                 {
-                    $msg['ruleid'] = '请输入类别编码';
-                } else if($v['ruleid'] == $ruleid)
+                    $msg['classid'] = '请输入类别编码';
+                } else if($v['classid'] == $classid)
                 {
-                    $msg['ruleid'] = '此类别编码已存在！';
+                    $msg['classid'] = '此类别编码已存在！';
                 }
 
                 if($v['category'] == '')
                 {
                     $msg['category'] = '请输入类别名称';
-                } else if($v['category'] == $category)
+                } else if(($v['category'] == $category)&&($v['obj'] == $obj))
                 {
                     $msg['category'] = '此类别名称已存在！';
                 }
             }
 
-            $deptid = db::first('select `deptid` from `t_dept` where `name`=\'' . $dept . '\'');
-
 
             if (empty($msg)) {
                 $data = array(
-                    'ruleid' => $ruleid,
+                    'classid' => $classid,
                     'category' => $category,
-                    'dept' => $dept,
-                    'deptid' => $deptid['deptid']
+                    'obj' => $obj
                 );
 
 
@@ -346,9 +373,9 @@ class guiding
             'error' => $error,
             'msg' => $msg,
             'data' => array(
-                'ruleid' => $ruleid,
+                'classid' => $classid,
                 'category' => $category,
-                'dept' => $dept
+                'obj' => $obj
             ),
             'ftypes' => $ftypes,
         ));
@@ -358,18 +385,18 @@ class guiding
 
     public static function typeedit()
     {
-        $ruleid = '';
+        $classid = '';
         $category = '';
         $success ='';
         $error = '';
         $msg = array();
         $id = web::request('id','');
 
-            $info = db::first('select `ruleid`,`category` from `t_family` where `id`=\''.$id.'\'');
+            $info = db::first('select `classid`,`category` from `t_family` where `id`=\''.$id.'\'');
 
             if (!empty($info))
             {
-                $ruleid = $info['ruleid'];
+                $classid = $info['classid'];
                 $category = $info['category'];
             }else {
                 $msg['title'] = '查询有误，请核实数据';
@@ -378,11 +405,11 @@ class guiding
         if (!empty($_POST))
         {
             $category = web::post('category', '');
-            $ruleid = intval(web::post('ruleid', 0));
+            $classid = intval(web::post('classid', 0));
 
 
-            if ($ruleid == '') {
-                $msg['ruleid'] = '请输入类别编号';
+            if ($classid == '') {
+                $msg['classid'] = '请输入类别编号';
             }
 
             if ($category == '') {
@@ -393,7 +420,7 @@ class guiding
             if (empty($msg))
             {
                 $data = array(
-                    'ruleid' => $ruleid,
+                    'classid' => $classid,
                     'category' => $category,
                 );
 
@@ -412,7 +439,7 @@ class guiding
             'error' => $error,
             'msg' => $msg,
             'data' => array(
-                'ruleid' => $ruleid,
+                'classid' => $classid,
                 'category' => $category,
             ),
         ));

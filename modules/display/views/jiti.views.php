@@ -53,7 +53,7 @@
         // 指定图表的配置项和数据
         var option = {
             title: {
-                text: '按类别分析'
+                text: '集体项：按类别分析'
             },
             tooltip: {
                 show: true
@@ -68,14 +68,14 @@
                 }
             ],
             yAxis: {
-               // splitLine: { show: false },//去除网格线
-               // name: '',
+                minInterval: 1,
                 type: 'value'
             },
             series : [
                 {
-                    "name":"family_count",
+                    "name":"",
                     "type":"bar",
+                    barMaxWidth:20,
                     "data":arr2
                 }
             ]

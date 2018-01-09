@@ -31,17 +31,6 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">对象 :</label>
-                <div class=" col-xs-3">
-                    <select name="objects" id="" class="form-control">
-                        <?php foreach ($ftypes as $k=>$v){?>
-                            <option value="<?php echo $v;?>"<?php echo $data['objects']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
-                        <?php }?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">分值 :</label>
                 <div class="col-xs-3">
                     <input type="text" name="val" class="form-control" id="exampleInputName2" value="<?php echo $data['val'];?>">
@@ -49,22 +38,13 @@
                 </div>
             </div>
 
+            <div id="jilianobject"></div>
+
             <div class="form-group" action="" >
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">备注 :</label>
                 <div class="col-xs-3">
                     <input type="text" name="comments" class="form-control" id="exampleInputName2" value="<?php echo $data['comments'];?>">
                     <?php if (isset($msg['comments'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['comments'].'</span>';}?>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">所属类别：</label>
-                <div class=" col-xs-3">
-                    <select name="family" id="" class="form-control">
-                        <?php foreach ($types as $k=>$v){?>
-                            <option value="<?php echo $v;?>"<?php echo $data['family']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
-                        <?php }?>
-                    </select>
                 </div>
             </div>
 
@@ -79,6 +59,40 @@
 
 
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var getData = function(obj){
+
+            $.ajax({
+                url:'/guiding/guiding/jilianobject',
+                type:'POST',
+                data:{"family":obj.val()},
+                //dataType:'json',
+                //async:false,
+                success:function(data){
+                    console.log($(obj).index())
+                    if($("#category").length){
+                        $(".obj").remove();    //移除后面所有子级下拉菜单
+                        $(".category:last").after(data);                    //添加子级下拉菜单
+                    }else {
+                        $("#jilianobject").append(data);                    //初始加载情况
+                    }
+                    //所有下拉响应
+                    $("#category").unbind().change(function(){
+                        getData($(this));
+                    });
+                },
+                error:function(msg){
+                    //console.log(msg);
+                    alert('error');
+                }
+            });
+        }
+        //Init
+        getData($(this));
+    });
+</script>
 
 <script type="text/javascript">
     <?php if ($success){?>

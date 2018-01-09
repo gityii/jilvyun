@@ -25,8 +25,8 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">类别编号 :</label>
                 <div class="col-xs-3">
-                    <input type="text" name="ruleid" class="form-control" id="exampleInputName2" value="<?php echo $data['ruleid'];?>">
-                    <?php if (isset($msg['ruleid'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['ruleid'].'</span>';}?>
+                    <input type="text" name="classid" class="form-control" id="exampleInputName2" value="<?php echo $data['classid'];?>">
+                    <?php if (isset($msg['classid'])){ echo '<span class="form-tips c-warning"><i class="fa fa-exclamation-triangle"></i> '.$msg['classid'].'</span>';}?>
                 </div>
             </div>
 
@@ -39,11 +39,11 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">所属部门 :</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 8%" for="">对象 :</label>
                 <div class=" col-xs-3">
-                    <select name="dept" id="" class="form-control">
+                    <select name="obj" id="" class="form-control">
                         <?php foreach ($ftypes as $k=>$v){?>
-                            <option value="<?php echo $v;?>"<?php echo $data['dept']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
+                            <option value="<?php echo $v;?>"<?php echo $data['obj']==$v?' selected="selected"':'';?>><?php echo $v;?></option>
                         <?php }?>
                     </select>
                 </div>

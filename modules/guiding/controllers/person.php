@@ -352,9 +352,10 @@ class person
             $types[$v['deptid']] = $v['name'];
         }
 
-        $ftypes_data = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\'');
+        $ftypes_data = db::query_get('select DISTINCT `category`  from `t_family` where `category`!=\'\'');
+
         foreach ($ftypes_data as $v) {
-            $ftypes[$v['ruleid']] = $v['name'];
+            $ftypes[] = $v['category'];
         }
 
 
