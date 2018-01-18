@@ -173,7 +173,7 @@
                       <li><a  href="">移 动 录 入</a></li>
                       <li><a  href="/record/record/pcrecord">网 页 录 入</a></li>
                       <li><a  href="">批 量 导 入</a></li>
-                      <li><a  href="">记 录 查 询</a></li>
+                      <li><a  href="/display/display/query">记 录 查 询</a></li>
                       <li><a  href="">处 分 管 理</a></li>
                   </ul>
 
@@ -188,7 +188,7 @@
                       <li><a  href="">日 报 周 报</a></li>
                       <li><a  href="">文明班评比</a></li>
                       <li><a  href="/display/display/jiti">集体项分析</a></li>
-                      <li><a  href="/display/display/banji">班 级 分 析</a></li>
+                      <li><a  href="/display/display/banjifenxi">班 级 分 析</a></li>
                       <li><a  href="/display/display/geren">个人项分析</a></li>
                   </ul>
 

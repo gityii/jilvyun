@@ -52,10 +52,10 @@ class page
         }
         $url .= self::url() . 'page=';
         $return = '<div class="page-wrap f-tar"><div class="page-con"><span class="page-nav-area">';
-        $return .= '<a href="' . (self::$page > 1 ? $url . (self::$page - 1) : 'javascript:;') . '" class="page-prev"><i class="fa fa-caret-left"></i></a>';
+        $return .= '<a href="' . (self::$page > 1 ? $url . (self::$page - 1) : 'javascript:;') . '" ><button class="glyphicon glyphicon-chevron-left"></button></a>';
         $return .= '<span class="page-num">' . self::$page . '/' . self::$pages . '</span>';
-        $return .= '<a href="' . (self::$page < self::$pages ? $url . (self::$page + 1) : 'javascript:;') . '" class="page-next"><i class="fa fa-caret-right"></i></a>';
-        $return .= '</span><span class="page-go-area"><input id="page_num" type="text"><a href="javascript:var page=document.getElementById(\'page_num\').value;window.location.href=\'' . $url . '\'+page;" class="btn btn-short">跳转</a></span></div></div>';
+        $return .= '<a href="' . (self::$page < self::$pages ? $url . (self::$page + 1) : 'javascript:;') . '" ><button class="glyphicon glyphicon-chevron-right"></button></a>';
+        $return .= '</span><span class="page-go-area"><input id="page_num" type="text"><button href="javascript:var page=document.getElementById(\'page_num\').value;window.location.href=\'' . $url . '\'+page;" class="btn-group btn-group-sm">跳转</button></span></div></div>';
         return $return;
     }
 

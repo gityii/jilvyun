@@ -136,7 +136,7 @@ class db {
 		}
 	}	
 	
-    public static function first($sql) {
+    public static function first($sql) {echo $sql;
     	self::db_conn();
 		$row = array();
 		$result='';

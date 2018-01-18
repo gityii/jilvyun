@@ -17,39 +17,25 @@ class guiding
 
     public static function rule()
     {
-        $ruleid = web::get('id');
+        $category = web::get('category');
         $where = '';
-        if ($ruleid!='')
+        if (!empty($category))
         {
-            $where = ' where `ruleid`=\''.$ruleid.'\'';
+            $where = ' where `family`=\''.$category.'\'';
         }
         $per = 20;
         $countdata = db::first('select count(*) from `t_rule`'.$where);
         $recordcount = $countdata['count(*)'];
         page::init(0,$recordcount,$per);
         $list = db::query_get('select * from `t_rule`'.$where);
-        $rules = db::query_get('select `ruleid`,`name` from `t_family` where `name`!=\'\' order by `id` asc');
+        $class = db::query_get('select DISTINCT `category` from `t_family` where `category`!=\'\' order by `id` asc');
         web::layout('admin/views/layout/admin');
         web::render('guiding/views/rule',array(
             'list'=>$list,
-            'rules'=>$rules,
-            'ruleid'=>$ruleid
+            'class'=>$class
         ));
     }
 
-
-    public static function edu()
-    {
-
-
-    }
-
-    public static function add()
-    {
-
-
-
-    }
 
     public static function edit()
     {

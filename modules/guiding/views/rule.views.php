@@ -33,10 +33,10 @@
             <div class="form-group form-group-lg">
                 <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">规则类别 :</label>
                 <div class=" col-xs-3">
-		        <select name="id" id="" class="form-control">
+		        <select name="category" id="" class="form-control">
 		        	<option value="">不选择</option>
-                    <?php foreach ($rules as $v){
-                        echo '<option value="'.$v['ruleid'].'"'.($v['ruleid']==$ruleid?' selected="selected"':'').'>'.$v['name'].'</option>';
+                    <?php foreach ($class as $v){
+                        echo '<option value="'.$v['category'].'">'.$v['category'].'</option>';
                     }?>
 		        </select>
                 </div>

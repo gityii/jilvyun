@@ -15,17 +15,16 @@
 <div class="col-md-9" style="left: 21%" role="main">
 
     <div class="page-header">
-        <h2>数据分析</h2>
+        <h2>集体数据</h2>
     </div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div class="row">
     <div id="main"   class="col-xs-6" style="width: 700px;height:500px;"></div>
-    <div id="main1"  class="col-xs-6" style="width: 700px;height:500px;"></div>
+    <div id="project"  class="col-xs-6" style="width: 700px;height:500px;"></div>
     </div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
-        var myChart1 = echarts.init(document.getElementById('main1'));
         var arr1=[],arr2=[];
         function arrTest() {
             $.ajax({
@@ -57,7 +56,9 @@
         // 指定图表的配置项和数据
         var option = {
             title: {
-                text: '集体项：按类别分析'
+                left: '50%',
+                textAlign: 'center',
+                text: '按类别展示'
             },
             tooltip: {
                 show: true
@@ -67,13 +68,15 @@
             },
             xAxis: [
                 {
+                    name:'类别',
                     type : 'category',
                     data : arr1
                 }
             ],
             yAxis: {
                 minInterval: 1,
-                type: 'value'
+                type: 'value',
+                name:'次数'
             },
             series : [
                 {
@@ -87,7 +90,77 @@
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-        myChart1.setOption(option);
     </script>
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var project = echarts.init(document.getElementById('project'));
+        var arr1=[],arr2=[];
+        function projectmap() {
+            $.ajax({
+                type : "post",
+                async : false, //同步执行
+                url : "/display/display/project",
+                data : {},
+                dataType : "json", //返回数据形式为json
+                success : function(result) {
+                    if (result) {
+                        console.log(result);
+                        for(var i=0;i<result.length;i++){
+                            arr1.push(result[i].project);
+                            arr2.push(result[i].project_count);
+                        }
+                    }
+
+                },
+                error : function(errorMsg) {
+                    alert("sorry，请求数据失败");
+                    project.hideLoading();
+                }
+            })
+            return arr1,arr2;
+        }
+
+        projectmap();
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                left: '50%',
+                textAlign: 'center',
+                text: '按项目展示'
+            },
+            tooltip: {
+                show: true
+            },
+            legend: {
+                data:['次数']
+            },
+            xAxis: [
+                {
+                    type : 'category',
+                    data : arr1,
+                    name:'项目'
+                }
+            ],
+            yAxis: {
+                minInterval: 1,
+                type: 'value',
+                name:'次数'
+            },
+            series : [
+                {
+                    "name":"",
+                    "type":"bar",
+                    barMaxWidth:20,
+                    "data":arr2
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        project.setOption(option);
+    </script>
+
 </body>
 </html>
