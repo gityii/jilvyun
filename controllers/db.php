@@ -104,6 +104,7 @@ class db {
 				$sk = '`'.implode('`,`',array_keys($value)).'`';
 				$sv = '\''.implode('\',\'',$value).'\'';
 				$sql='INSERT INTO '.$table.' ( '.$sk.' ) VALUES ( '.$sv.' ) ';
+
 			}
 			if (mysqli_query(self::$conn,$sql)) {
 				return $insert_id?mysqli_insert_id(self::$conn):true;

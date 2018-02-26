@@ -11,8 +11,21 @@ $_CONFIG = array(
         'db_host'=>'localhost',
         'db_port'=>'3306',
         'db_user'=>'root',
-        'db_pswd'=>'',
+        'db_pswd'=>'xamppaddme',
         'db_db'=>'myframe',
+//    'db'=>array(
+//        'db_host'=>'115.159.147.133',
+//        'db_port'=>'3306',
+//        'db_user'=>'root',
+//        'db_pswd'=>'123987',
+//        'db_db'=>'proxy',
+
+//        'db'=>array(
+//            'db_host'=>'115.159.147.133',   //连接oracle数据库
+//            'db_port'=>'3306',
+//            'db_user'=>'root',
+//            'db_pswd'=>'123987',
+//            'db_db'=>'proxy',
         /*
                 'db_pswd'=>'root',
                 'db_db'=>'qixiaxuanchuanbu',

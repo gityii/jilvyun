@@ -14,16 +14,16 @@
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/assets/js/vendor/echarts.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
-<div class="col-md-9" style="left: 21%" role="main">
+<div class="col-md-9"  role="main">
 
-    <div class="page-header">
-        <h2>班级总体分析</h2>
+    <div class="page-header" style="margin-top: 0px">
+        <h3 style="margin-top: 0px">班级总体分析</h3>
     </div>
 
     <div>
         <form action="" onsubmit="arrTest(); return false;" class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">请选择年级 : </label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 11%" for="">请选择年级 : </label>
                 <div class=" col-xs-3">
                     <select name="grade" id="grade" class="form-control">
                         <option value="">不选择</option>

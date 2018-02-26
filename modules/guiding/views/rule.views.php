@@ -11,10 +11,10 @@
 <body>
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
-<div class="col-md-9" style="left: 21%" role="main">
+<div class="col-md-9"  role="main">
 
-    <div class="page-header">
-        <h2>规则设置</h2>
+    <div class="page-header"  style="margin-top: 0px">
+        <h3 style="margin-top: 0px">规则设置</h3>
     </div>
     <p>
         <a class="btn btn-lg btn-success" href="/guiding/guiding/ruleadd" role="button">
@@ -31,7 +31,7 @@
 <div>
     <form action="" mathod="get" class="form-horizontal">
             <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label" style="text-align:left; width: 9%" for="">规则类别 :</label>
+                <label class="col-sm-2 control-label" style="text-align:left; width: 11%" for="">规则类别 :</label>
                 <div class=" col-xs-3">
 		        <select name="category" id="" class="form-control">
 		        	<option value="">不选择</option>

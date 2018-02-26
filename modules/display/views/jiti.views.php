@@ -12,15 +12,15 @@
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/assets/js/vendor/echarts.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
-<div class="col-md-9" style="left: 21%" role="main">
+<div class="col-md-9" role="main">
 
-    <div class="page-header">
-        <h2>集体数据</h2>
+    <div class="page-header" style="margin-top: 0px">
+        <h3 style="margin-top: 0px">集体数据</h3>
     </div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div class="row">
-    <div id="main"   class="col-xs-6" style="width: 700px;height:500px;"></div>
-    <div id="project"  class="col-xs-6" style="width: 700px;height:500px;"></div>
+    <div class="row" style="width: 1300px">
+    <div id="main"   class="col-xs-6" style="height:450px;"></div>
+    <div id="project"  class="col-xs-6" style="height:450px;"></div>
     </div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例

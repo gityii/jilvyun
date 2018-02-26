@@ -1,95 +1,157 @@
+<?php ob_start();?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" style="height:100%;">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>Blog Template for Bootstrap</title>
+    <title>纪律云首页面</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/bootstrap_3_3_7_dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="/static/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template
-    <link href="/static/css/jumbotron-narrow.css" rel="stylesheet"> -->
-    <link href="/static/css/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="/static/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="/static/assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css">
+    <link href="https://cdn.bootcss.com/magnific-popup.js/1.0.0/magnific-popup.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/screen.css" />
+    <link rel="stylesheet" href="/static/css/login.css" />
+</head>
 
 <style>
+
+    .boxdiv{
+        width:270px;
+        height: 460px;
+        margin: 10px;
+        border:1px solid #ededed;
+
+    }
+
+    .box1{
+        box-shadow: -10px 8px 6px #b4b4b4;
+    }
+
+    .box2{
+        box-shadow: -10px 8px 6px #00C1B3;
+    }
+
+    .box3{
+        box-shadow: -10px 8px 6px #00C;
+    }
+
+    .box4{
+        box-shadow: -10px 8px 6px #059c;
+    }
+
+    p.fontsize{
+        font-family:'幼圆';
+        font-size:22px;
+        text-align:center;
+    }
+
+    p.fontsize1{
+        font-family:'幼圆';
+        font-size:28px;
+        text-align:center;
+    }
+
+    #left-sidebar {
+        margin: 0 auto;
+        padding: 20px;
+    }
+
     .mark{
         background-color: inherit;
         color: white
     }
 
-    .footer {
-        position:absolute;
-        bottom:0;
+
+    #left-sidebar ul li{
+        text-align:left;
         width:100%;
-        height:100px;
-        color: #777;
-        border-top: 1px solid #e5e5e5;
+        height:40px;
+        line-height:40px; 			/*设置行高*/
+        font-size:20px;
+        list-style:none;			 /*清除默认列表样式*/
+        border-bottom:0px solid #ccc;			 /*边框为1px实线*/
     }
 
-    .toper {
-        padding-top: 19px;
-        color: #777;
-        border-top: 1px solid #e5e5e5;
+    #left-sidebar  h2{
+        text-align:left;
+        width:100%;
+        height:40px;
+        line-height:22px; 			/*设置行高*/
+        font-size:21px;
+        list-style:none;			 /*清除默认列表样式*/
+        border-bottom:2px solid #ccc;			 /*边框为1px实线*/
     }
 
-    p{ text-indent:2em;
-        /*width:400px;!*要显示文字的宽度*!*/
-        /*overflow:hidden; !*超出的部分隐藏起来。*!*/
-        /*white-space:nowrap;!*不显示的地方用省略号...代替*!*/
-        /*text-overflow:ellipsis;!* 支持 IE *!*/
+    #left-sidebar ul li a{
+        color:#333;
+        font-family:'微软雅黑';
+        text-decoration:none;			/*清除超链接下划线*/
     }
 
 </style>
 
-  <body>
+<body class="home-template" style="min-height:100%;margin:0;padding:0;position:relative;">
 
+<!-- start header -->
+<header class="main-header"  style="background-image: url(http://static.ghostchina.com/image/6/d1/fcb3879e14429d75833a461572e64.jpg)">
     <div class="container">
-        <nav class=" navbar-default  navbar-fixed-top" style="background-color: #0066CC;">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand"><mark class="mark">TEST</mark></a>
-                </div>
+        <div class="row">
+            <div class="col-sm-12">
 
-                <div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li style="color:white"><a href="/home/home/homepage"><mark class="mark">首页</mark></a></li>
-                        <!--<li><a href=""><mark class="mark">个人设置</mark></a></li>-->
-                        <li><a href="/admin/admin/control"><mark class="mark">控制台</mark></a></li>
-                        <li><a href="javascript:;"><mark class="mark">用户(<?php echo \base\controllers\web::session('user_name');?>)</mark>
-                            </a></li>
-                        <li><a href="/admin/admin/logout"><mark class="mark">退出</mark></a></li>
+                <!-- start logo -->
+                <a class="branding" href="http://www.ghostchina.com" title="纪律云"><img src="http://static.ghostchina.com/image/b/46/4f5566c1f7bc28b3f7ac1fada8abe.png" align="left" alt="纪律云"></a>
+                <!-- end logo -->
+                <h2 class="text-hide">Ghost 是一个简洁、强大的写作平台。你只须专注于用文字表达你的想法就好，其余的事情就让 Ghost 来帮你处理吧。</h2>
+
+                <img src="http://static.ghostchina.com/image/6/d1/fcb3879e14429d75833a461572e64.jpg" alt="Ghost 博客系统" class="hide">
+            </div>
+        </div>
+    </div>
+</header>
+<!-- end header -->
+
+
+<!-- start navigation -->
+<nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header">
+                        <span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars"></i>
+                        </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        <li class="nav-current" role="presentation"><a href="/home/home/homepage">首页</a></li>
+                        <li role="presentation"><a href="/admin/admin/control">控制台</a></li>
+                        <li role="presentation"><?php
+                                if(\base\controllers\web::session('user_name')==NULL)
+                                {
+                                    echo <<<EOT
+                                    <a href="/admin/admin/login">登录</a>
+EOT;
+                                }else{
+echo '用户'."(".\base\controllers\web::session('user_name').")";
+                                }
+                            ?>
+                        </li>
+                        <li role="presentation"><a href="/admin/admin/logout">退出</a></li>
                     </ul>
                 </div>
-
             </div>
-        </nav>
+        </div>
+    </div>
+</nav>
 
-        <header class="toper">
-            <p></p>
-        </header>
-        <div class="row" style="width:1400px">
-            <div class="col-sm-8 blog-main">
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+
+            <main class="col-md-8 main-content">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
                     <!-- 轮播（Carousel）指标 -->
                     <ol class="carousel-indicators">
@@ -123,8 +185,8 @@
 
                 <div class="row marketing" style="padding-top: 20px;">
                     <div class="col-lg-6">
-                      <a href="/home/home/topicinfo?id=<?php echo $topic0['id'];?>" style="font-size: 20px;"><?php echo $topic0['title'];?></a>
-                      <p><?php echo $topic0['content'];?></p>
+                        <a href="/home/home/topicinfo?id=<?php echo $topic0['id'];?>" style="font-size: 20px;"><?php echo $topic0['title'];?></a>
+                        <p><?php echo $topic0['content'];?></p>
                     </div>
 
                     <div class="col-lg-6">
@@ -132,16 +194,26 @@
                         <p><?php echo $topic1['content'];?></p>
                     </div>
                 </div>
-            </div>
+            </main>
 
-            <div class=" col-sm-4 blog-sidebar">
-                <div class="sidebar-module sidebar-module-inset">
-                    <h5>- - 关于纪律云 - -</h5>
-                    <p>纪律云系统是一个为方便学校管理和评估而开发的系统</p>
+            <aside class="col-md-4 sidebar">
+                <!-- start widget -->
+                <!-- end widget -->
+
+                <!-- start tag cloud widget -->
+                <div class="widget">
+                    <h4 class="title">- - 关于纪律云 - -</h4>
+                    <div class="content community">
+                        <p>纪律云系统是一个为方便学校管理和评估而开发的系统</p>
+                        <p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>
+                        <p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>
+                    </div>
                 </div>
-                <div><p></p></div>
-                <div class="sidebar-module">
-                    <h4>重要通知</h4>
+                <!-- end tag cloud widget -->
+
+                <!-- start widget -->
+                <div class="widget">
+                    <h4 class="title">重要通知</h4>
                     <ol class="list-unstyled">
                         <?php foreach ($list as $k=>$v){?>
                             <li>
@@ -150,29 +222,75 @@
                             </li>
                         <?php }?>
                     </ol>
+                    <!--                    <div class="content download">-->
+                    <!--                        <a href="/download/" class="btn btn-default btn-block" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '下载Ghost'])">Ghost 中文版（0.6.0）</a>-->
+                    <!--                    </div>-->
                 </div>
-                <div class="sidebar-module">
-                    <h4>友情连接</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                    </ol>
-                </div>
-            </div><!-- /.blog-sidebar -->
+
+            </aside>
 
         </div>
+    </div>
+</section>
 
-    </div> <!-- /container -->
 
-    <footer class="footer">
-        <p>&copy; 2017 Company, Inc.</p>
-    </footer>
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/static/assets/js/vendor/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/static/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="/static/bootstrap_3_3_7_dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/static/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+<footer style="position:absolute;bottom:0;width:100%;height:82px;">
+    <div class="copyright">
+        <div class="container" style="height: auto">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span>Copyright &copy; <a href="http://www.ghostchina.com/">Ghost中文网</a></span> |
+                    <span><a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备11008151号</a></span> |
+                    <span>京公网安备11010802014853</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--<a href="#" id="back-to-top"><i class="fa fa-angle-up"></i></a>-->
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+<script src="/assets/js/main.js?v=77522159b3"></script>
+<script>
+    $(function(){
+        $('.post-content img').each(function(item){
+            var src = $(this).attr('src');
+
+            $(this).wrap('<a href="' + src + '" class="mfp-zoom" style="display:block;"></a>');
+        });
+
+        /*$('.post-content').magnificPopup({
+         delegate: 'a',
+         type: 'image'
+         });*/
+    });
+</script>
+<!-- 通过JavaScript实现单击更换验证码 -->
+<script>
+    var captcha = document.getElementById("captcha");
+    var change = document.getElementById("change");
+    change.onclick = function(){
+        captcha.src = "/verify/verify/randomcode?rand=" + Math.random(); //增加一个随机参数，防止图片缓存
+        return false; //阻止超链接动作
+    };
+</script>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<script>
+    $(function(){
+        var version = '0.7.4';
+        var $download =  $('.download > a').first();
+        var html = $download.html().replace(/\d\.\d\.\d/, version);
+
+        $download.html(html);
+    });
+</script>
+
+</body>
 </html>

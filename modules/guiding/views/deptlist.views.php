@@ -11,10 +11,10 @@
 <body>
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
-<div class="col-md-9 col-md-push-3" role="main">
+<div class="col-md-9" role="main">
 
-    <div class="page-header">
-        <h2>规则类别列表</h2>
+    <div class="page-header" style="margin-top: 0px">
+        <h3 style="margin-top: 0px">规则类别列表</h3>
     </div>
     <p>
         <a class="btn btn-lg btn-success" href="/guiding/person/person" role="button">

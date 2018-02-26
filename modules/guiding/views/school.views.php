@@ -11,10 +11,10 @@
 <body>
 <script src="/static/assets/js/vendor/jquery.min.js"></script>
 <script src="/static/admin/js/layer/layer.js"></script>
-<div class="col-md-9 col-md-push-3" role="main">
+<div class="col-md-9" role="main">
 
-    <div class="page-header">
-        <h2>班级设置</h2>
+    <div class="page-header" style="margin-top: 0px">
+        <h3 style="margin-top: 0px">班级设置</h3>
     </div>
     <p>
         <a class="btn btn-lg btn-success" href="/guiding/school/classadd" role="button">
